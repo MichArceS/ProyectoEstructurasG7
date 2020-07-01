@@ -1,9 +1,10 @@
 package ec.edu.espol.main;
 
+import ec.edu.espol.views.MainScene;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class main extends Application {
+public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -11,6 +12,8 @@ public class main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
+        MainScene mainScene = new MainScene(primaryStage);
+        setUserAgentStylesheet("/ec/edu/espol/styles/StyleSheet.css");
+        primaryStage.show();
     }
 }
