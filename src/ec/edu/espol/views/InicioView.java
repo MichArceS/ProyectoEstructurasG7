@@ -16,7 +16,6 @@ public class InicioView {
 
     public InicioView(){
         crearEstructura();
-
     }
 
     public void crearEstructura(){
