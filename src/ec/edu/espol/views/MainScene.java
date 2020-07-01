@@ -10,7 +10,8 @@ public class MainScene {
     public MainScene(Stage stage){
         InicioView inicio = new InicioView();
         MedicoView medicoView = new MedicoView();
-        scene = new Scene(medicoView.getRoot(),1000,600);
+        ConsultaView consultaView = new ConsultaView();
+        scene = new Scene(consultaView.getRoot(),1000,600);
         stage.setTitle("INICIO");
         stage.setScene(scene);
     }

@@ -23,15 +23,15 @@
     -fx-background-color: cornsilk;
 }
 VBox{
-    -fx-alignment: center;
-    -fx-padding: 20;
-    -fx-spacing: 10;
+    -fx-alignment: center-left;
+    -fx-padding: 5;
+    -fx-spacing: 5;
 }
 
 HBox{
-    -fx-alignment: center;
-    -fx-padding: 20;
-    -fx-spacing: 10;
+    -fx-alignment: center-left;
+    -fx-padding: 5;
+    -fx-spacing: 5;
 }
 
 Button {
@@ -71,5 +71,30 @@ Label{
     -fx-spacing: 60;
     -fx-text-fill: #4EBABA;
 }
+
+#lblPaciente,#lblHora,#lblNombre,#lblEdad,#lblGenero,#lblSintoma,#lblDiagnostico,#lblReceta{
+    -fx-font-size: 20;
+    -fx-padding: 5;
+    -fx-spacing: 60;
+}
+
+
+TextField {
+    -fx-pref-width: 400;
+    -fx-pref-height: 600;
+    -fx-padding: 5 5 5 5;
+    -fx-border-radius: 5;
+    -fx-background-color: #ADE3E3 , #DEF7F7 , #DEF7F7;
+    -fx-border-color: black;
+    -fx-alignment: top-left;
+}
+
+TextField:focused {
+    -fx-background-color: #ADE3E3 , #DEF7F7 , white;
+    -fx-border-color: #168C8C;
+    -fx-text-alignment: justify;
+    -fx-alignment: top-left;
+}
+
 
 

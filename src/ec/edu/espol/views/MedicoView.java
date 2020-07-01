@@ -14,9 +14,10 @@ public class MedicoView {
 
         public MedicoView () {
             crearEstructura();
+
         }
 
-        public void crearEstructura(){
+        private void crearEstructura(){
             root = new VBox();
             crearBotones();
             crearLabels();
@@ -25,11 +26,11 @@ public class MedicoView {
             root.getChildren().addAll(lblHora,lblNombreMedico,row);
         }
 
-        public void crearBotones(){
+        private void crearBotones(){
             btnSgtTurno = new Button("SIGUIENTE TURNO");
             btnCerrarSesion = new Button("CERRAR SESION");
         }
-        public void crearLabels(){
+        private void crearLabels(){
             lblHora = new Label("12:30");
             lblNombreMedico = new Label("Nombre del Medico");
         }
