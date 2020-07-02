@@ -3,11 +3,13 @@ package ec.edu.espol.views;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class ConsultaView {
-    VBox root;
+    BorderPane root;
     Label lblPaciente;
     Label lblHora;
     Label lblNombre;
@@ -27,23 +29,35 @@ public class ConsultaView {
     }
 
     private void crearEstructura(){
-        root = new VBox();
+        root = new BorderPane();
         crearBotones();
         creatTxtFields();
         crearLabels();
+        AnchorPane top = new AnchorPane();
+        AnchorPane.setLeftAnchor(lblPaciente,10d);
+        AnchorPane.setRightAnchor(lblHora,10d);
+        top.getChildren().addAll(lblPaciente,lblHora);
+        root.setTop(top);
+        AnchorPane bottom = new AnchorPane();
+        AnchorPane.setLeftAnchor(btnCancelar,10d);
+        AnchorPane.setRightAnchor(btnTerminar,10d);
+        bottom.getChildren().addAll(btnCancelar,btnTerminar);
+        root.setBottom(bottom);
         HBox row1 = new HBox();
-        row1.getChildren().addAll(lblPaciente,lblHora);
-        HBox row3 = new HBox();
-        row3.getChildren().addAll(lblEdad,lblGenero);
-        HBox row4 = new HBox();
+        row1.getChildren().addAll(lblEdad,lblGenero);
         VBox diag = new VBox();
         diag.getChildren().addAll(lblDiagnostico,txtDiagnostico);
         VBox rece = new VBox();
         rece.getChildren().addAll(lblReceta,txtReceta);
-        row4.getChildren().addAll(diag,rece);
-        HBox row5 = new HBox();
-        row5.getChildren().addAll(btnCancelar,btnTerminar);
-        root.getChildren().addAll(row1,lblNombre,row3,lblSintoma,row4,row5);
+        VBox info = new VBox();
+        info.getChildren().addAll(lblNombre,row1,lblSintoma);
+        BorderPane center = new BorderPane();
+        center.setTop(info);
+        center.setLeft(diag);
+        center.setRight(rece);
+        root.setCenter(center);
+
+
     }
 
     private void crearBotones(){
@@ -61,27 +75,23 @@ public class ConsultaView {
     private void crearLabels(){
         lblPaciente = new Label("Paciente");
         lblHora = new Label("12:30");
-        lblNombre = new Label("Josue Tomala");
-        lblEdad = new Label("19");
-        lblGenero = new Label("Masculino");
-        lblSintoma = new Label("Ejemplo");
+        lblNombre = new Label("Nombre: Josue Tomala");
+        lblEdad = new Label("Edad: 19");
+        lblGenero = new Label("Genero: Masculino");
+        lblSintoma = new Label("Sintoma: jemplo");
         lblDiagnostico = new Label("DIAGNOSTICO");
         lblReceta = new Label("RECETA");
         instanciarIDs();
     }
 
-    public VBox getRoot(){
+    public BorderPane getRoot(){
         return root;
     }
 
     private void instanciarIDs(){
         lblHora.setId("lblHora");
-        lblNombre.setId("lblNombre");
-        lblEdad.setId("lblEdad");
-        lblGenero.setId("lblGenero");
-        lblSintoma.setId("lblSintoma");
-        lblDiagnostico.setId("lblDiagnostico");
-        lblReceta.setId("lblReceta");
-        root.setId("consulta-view");
+        lblPaciente.setId("lblPaciente");
+        txtReceta.setId("txtReceta");
+        txtDiagnostico.setId("txtDiagnostico");
     }
 }
