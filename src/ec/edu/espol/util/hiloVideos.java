@@ -8,7 +8,7 @@ public class hiloVideos implements  Runnable{
     public hiloVideos(CircularSimplyLinkedList c) {
         CSLL = c;
     }
-    
+
     @Override
     public void run() {
         while (!stop) {
