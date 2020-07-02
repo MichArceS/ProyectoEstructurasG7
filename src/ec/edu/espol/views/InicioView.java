@@ -1,5 +1,6 @@
 package ec.edu.espol.views;
 
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -27,9 +28,12 @@ public class InicioView {
         column2.getChildren().addAll(btnFormPaciente,btnCrearMedico);
         HBox row1 = new HBox();
         row1.getChildren().addAll(column1,column2);
+        row1.setAlignment(Pos.CENTER);
         HBox row2 = new HBox();
         row2.getChildren().addAll(btnSalir);
+        row2.setAlignment(Pos.CENTER);
         root.getChildren().addAll(row1,row2);
+        root.setAlignment(Pos.CENTER);
     }
 
     public void crearBotones(){
