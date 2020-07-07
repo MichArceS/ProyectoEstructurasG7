@@ -4,6 +4,7 @@ import ec.edu.espol.util.Hora;
 import ec.edu.espol.views.MainScene;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
@@ -13,6 +14,7 @@ public class Main extends Application {
     public static Hora hora = new Hora();
     public static Thread hilo= new Thread(hora);
     MainScene mainScene;
+
 
     @Override
     public void stop() throws Exception {
@@ -24,6 +26,8 @@ public class Main extends Application {
         mainScene = new MainScene(primaryStage);
         hilo.start();
         setUserAgentStylesheet("/ec/edu/espol/styles/StyleSheet.css");
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+
         primaryStage.show();
     }
 }

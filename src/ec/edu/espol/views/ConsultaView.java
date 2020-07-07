@@ -3,15 +3,16 @@ package ec.edu.espol.views;
 import ec.edu.espol.main.Main;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class ConsultaView {
+public class ConsultaView implements View{
     BorderPane root;
-    Label lblPaciente;
+    Label lblConsulta;
     public static Label lblHora;
     Label lblNombre;
     Label lblEdad;
@@ -19,8 +20,8 @@ public class ConsultaView {
     Label lblSintoma;
     Label lblDiagnostico;
     Label lblReceta;
-    TextField txtDiagnostico;
-    TextField txtReceta;
+    TextArea txtDiagnostico;
+    TextArea txtReceta;
     Button btnCancelar;
     Button btnTerminar;
 
@@ -35,9 +36,9 @@ public class ConsultaView {
         creatTxtFields();
         crearLabels();
         AnchorPane top = new AnchorPane();
-        AnchorPane.setLeftAnchor(lblPaciente,10d);
+        AnchorPane.setLeftAnchor(lblConsulta,10d);
         AnchorPane.setRightAnchor(lblHora,10d);
-        top.getChildren().addAll(lblPaciente,lblHora);
+        top.getChildren().addAll(lblConsulta,lblHora);
         root.setTop(top);
         AnchorPane bottom = new AnchorPane();
         AnchorPane.setLeftAnchor(btnCancelar,10d);
@@ -63,18 +64,30 @@ public class ConsultaView {
 
     private void crearBotones(){
         btnCancelar = new Button("CANCELAR");
+        btnCancelar.setOnAction(e->{
+            txtDiagnostico.clear();
+            txtReceta.clear();
+            MainScene.scene.setRoot(MainScene.medicoView.getRoot());
+        });
         btnTerminar = new Button("TERMINAR");
+        btnTerminar.setOnAction(e->{
+            txtDiagnostico.clear();
+            txtReceta.clear();
+            MainScene.scene.setRoot(MainScene.medicoView.getRoot());
+        });
     }
 
     private void creatTxtFields(){
-        txtDiagnostico = new TextField();
+        txtDiagnostico = new TextArea();
         txtDiagnostico.setPromptText("Escribir diagnostico");
-        txtReceta = new TextField();
+        txtDiagnostico.setWrapText(true);
+        txtReceta = new TextArea();
         txtReceta.setPromptText("Escribir Receta");
+        txtReceta.setWrapText(true);
     }
 
     private void crearLabels(){
-        lblPaciente = new Label("Paciente");
+        lblConsulta = new Label("Consulta");
         lblHora = new Label("");
         lblNombre = new Label("Nombre: Josue Tomala");
         lblEdad = new Label("Edad: 19");
@@ -91,7 +104,7 @@ public class ConsultaView {
 
     private void instanciarIDs(){
         lblHora.setId("lblHora");
-        lblPaciente.setId("lblPaciente");
+        lblConsulta.setId("lblPaciente");
         txtReceta.setId("txtReceta");
         txtDiagnostico.setId("txtDiagnostico");
     }

@@ -1,18 +1,19 @@
 package ec.edu.espol.views;
 
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class InicioView {
+public class InicioView implements View{
     VBox root;
     //Image image;
     Button btnTurnos;
     Button btnFormPaciente;
     Button btnSisMedico;
-    Button btnCrearMedico;
+    Button btnFormMedico;
     Button btnSalir;
 
     public InicioView(){
@@ -25,7 +26,7 @@ public class InicioView {
         VBox column1 = new VBox();
         column1.getChildren().addAll(btnTurnos,btnSisMedico );
         VBox column2 = new VBox();
-        column2.getChildren().addAll(btnFormPaciente,btnCrearMedico);
+        column2.getChildren().addAll(btnFormPaciente,btnFormMedico);
         HBox row1 = new HBox();
         row1.getChildren().addAll(column1,column2);
         row1.setAlignment(Pos.CENTER);
@@ -47,20 +48,36 @@ public class InicioView {
 
     public void crearBtnTurno(){
         btnTurnos = new Button("TURNOS");
+        btnTurnos.setOnAction(e->{
+            //
+        });
     }
     public void crearBtnFormPaciente(){
         btnFormPaciente = new Button("FORMULARIO PACIENTE");
-
+        btnFormPaciente.setOnAction(e ->{
+            Platform.runLater(()->{
+                MainScene.scene.setRoot(MainScene.formPacienteView.getRoot());
+            });
+        });
     }
     public void crearBtnSisMedico(){
         btnSisMedico = new Button("SISTEMA MEDICO");
+        btnSisMedico.setOnAction(e->{
+            MainScene.scene.setRoot(MainScene.loginView.getRoot());
+        });
     }
 
     public void crearBtnCrearMedico(){
-        btnCrearMedico = new Button("AGREGAR MEDICO");
+        btnFormMedico = new Button("AGREGAR MEDICO");
+        btnFormMedico.setOnAction(e->{
+            MainScene.scene.setRoot(MainScene.formMedicoView.getRoot());
+        });
     }
     public void crearBtnSalir(){
         btnSalir = new Button("SALIR");
+        btnSalir.setOnAction(e->{
+            Platform.exit();
+        });
     }
 
     public VBox getRoot(){

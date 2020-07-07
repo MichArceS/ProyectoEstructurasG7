@@ -1,6 +1,6 @@
 
 .root{
-    -fx-background-color: cornsilk;
+    -fx-background-color: #f4f6ff;
 }
 VBox{
     -fx-alignment: top-left;
@@ -60,7 +60,7 @@ Label{
 }
 
 
-TextField {
+.text-field, .password-field {
     -fx-alignment: center;
     -fx-padding: 5 5 5 5;
     -fx-border-radius: 5;
@@ -69,7 +69,7 @@ TextField {
     -fx-alignment: top-left;
 }
 
-TextField:hover {
+.text-field:hover, .password-field:hover {
     -fx-background-color: #DEF7F7 , #DEF7F7 , white;
 }
 #txtReceta,#txtDiagnostico {
@@ -83,7 +83,7 @@ TextField:hover {
     -fx-alignment: top-left;
 }
 
-TextField:focused {
+.text-field:focused, .password-field:focused {
     -fx-background-color: #ADE3E3 , #DEF7F7 , white, white;
     -fx-background-radius: 6.4, 4, 5, 3;
     -fx-background-insets: -1.4, 0, 1, 2;
