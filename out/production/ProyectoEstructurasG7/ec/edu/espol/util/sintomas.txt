@@ -1,0 +1,10 @@
+vómito|1
+fiebre|0
+resfrio|3
+congestión nasal|3
+apnea|2
+tos|4
+insomnio|5
+disnea|0
+diarrea|1
+escalofríos|2
