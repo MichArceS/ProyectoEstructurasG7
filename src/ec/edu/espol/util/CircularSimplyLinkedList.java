@@ -43,7 +43,7 @@ public class CircularSimplyLinkedList<E> implements Iterable<E>{
 
     //MÉTODOS DE LA LISTA
     public boolean addFirst(E e) {
-        Node<E> n = new Node<E>(e);
+        Node<E> n = new Node<>(e);
         if (e == null) return false;
         else if (isEmpty()) {
             last = n;
@@ -57,7 +57,7 @@ public class CircularSimplyLinkedList<E> implements Iterable<E>{
     }
 
     public boolean addLast(E e) {
-        Node<E> n = new Node<E>(e);
+        Node<E> n = new Node<>(e);
         if (e == null) return false;
         else if (isEmpty()) {
             last = n;
@@ -136,7 +136,7 @@ public class CircularSimplyLinkedList<E> implements Iterable<E>{
         } else if (index == current) {
             return addLast(e);
         } else {
-            Node<E> n = new Node<E>(e);
+            Node<E> n = new Node<>(e);
             Node<E> nlast = last;
             for (int i = 0; i < index; i++)
                 nlast = nlast.next;
