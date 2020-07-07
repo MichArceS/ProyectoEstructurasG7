@@ -1,5 +1,6 @@
 package ec.edu.espol.main;
 
+import ec.edu.espol.util.Hora;
 import ec.edu.espol.views.MainScene;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -9,10 +10,19 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    public static Hora hora = new Hora();
+    public static Thread hilo= new Thread(hora);
+    MainScene mainScene;
+
+    @Override
+    public void stop() throws Exception {
+        hilo.stop();
+    }
 
     @Override
     public void start(Stage primaryStage) {
-        MainScene mainScene = new MainScene(primaryStage);
+        mainScene = new MainScene(primaryStage);
+        hilo.start();
         setUserAgentStylesheet("/ec/edu/espol/styles/StyleSheet.css");
         primaryStage.show();
     }

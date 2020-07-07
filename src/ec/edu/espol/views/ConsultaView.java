@@ -1,5 +1,6 @@
 package ec.edu.espol.views;
 
+import ec.edu.espol.main.Main;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -11,7 +12,7 @@ import javafx.scene.layout.VBox;
 public class ConsultaView {
     BorderPane root;
     Label lblPaciente;
-    Label lblHora;
+    public static Label lblHora;
     Label lblNombre;
     Label lblEdad;
     Label lblGenero;
@@ -74,7 +75,7 @@ public class ConsultaView {
 
     private void crearLabels(){
         lblPaciente = new Label("Paciente");
-        lblHora = new Label("12:30");
+        lblHora = new Label("");
         lblNombre = new Label("Nombre: Josue Tomala");
         lblEdad = new Label("Edad: 19");
         lblGenero = new Label("Genero: Masculino");

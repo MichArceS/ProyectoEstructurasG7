@@ -18,13 +18,14 @@ import java.util.Observer;
 public class TurnosView implements Observer {
 
     private BorderPane root;
+    public static Label lblHora;
     private VBox sup;
     private Label bot;
     private VBox mid;
     private MediaView mediaView;
     private VBox boxPuestos;
 
-    public TurnosView(Scene scene) {
+    public TurnosView() {
         inicializarObjetos();
         crearEstructuraSuperior();
         crearEstructuraInferior();
@@ -33,6 +34,7 @@ public class TurnosView implements Observer {
 
     private void inicializarObjetos() {
         root = new BorderPane();
+        lblHora = new Label("");
         sup = new VBox();
         bot = new Label();
         mid = new VBox();
@@ -45,12 +47,12 @@ public class TurnosView implements Observer {
     }
 
     private void crearEstructuraSuperior() {
-        Image image = new Image("Ejemplo");
-        ImageView imageView = new ImageView(image);
-        imageView.setScaleX(50);
-        imageView.setScaleY(50);
+        //Image image = new Image("Ejemplo");
+        //ImageView imageView = new ImageView(image);
+        //imageView.setScaleX(50);
+        //imageView.setScaleY(50);
         Label label = new Label("Hora de ejemplo");
-        sup.getChildren().addAll(imageView,label);
+        sup.getChildren().addAll(label);
     }
 
     private void crearEstructuraInferior() {
