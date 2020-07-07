@@ -30,7 +30,7 @@ public class MainScene {
         allowDrag(stage);
     }
 
-    public void allowDrag(Stage stage){
+    private void allowDrag(Stage stage){
         scene.getRoot().setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

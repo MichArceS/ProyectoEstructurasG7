@@ -1,5 +1,7 @@
 package ec.edu.espol.views;
 
+import ec.edu.espol.constants.Especialidad;
+import ec.edu.espol.constants.Genero;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -20,7 +22,7 @@ public class FormMedicoView implements View{
     Label lblEdad;
     TextField txtEdad;
     Label lblGenero;
-    TextField txtGenero;
+    ComboBox comboGenero;
     Label lblEspecialidad;
     ComboBox comboEspecialidad;
     Label lblUsuario;
@@ -40,6 +42,7 @@ public class FormMedicoView implements View{
         crearBotones();
         creatTxtFields();
         crearLabels();
+        crearComboBoxs();
         AnchorPane top = new AnchorPane();
         AnchorPane.setLeftAnchor(lblFormMedico,10d);
         AnchorPane.setRightAnchor(lblHora,10d);
@@ -62,10 +65,8 @@ public class FormMedicoView implements View{
         grid.add(lblEdad,0,2);
         grid.add(txtEdad,1,2);
         grid.add(lblGenero,0,3);
-        grid.add(txtGenero,1,3);
+        grid.add(comboGenero,1,3);
         grid.add(lblEspecialidad,0,4);
-        ObservableList lista = FXCollections.observableArrayList("1","2","3");
-        comboEspecialidad = new ComboBox(lista);
         grid.add(comboEspecialidad,1,4);
         grid.add(lblUsuario,0,5);
         grid.add(txtUsuario,1,5);
@@ -79,7 +80,6 @@ public class FormMedicoView implements View{
         btnCancelar.setOnAction(e->{
             txtNombre.clear();
             txtApellido.clear();
-            txtGenero.clear();
             txtEdad.clear();
             MainScene.scene.setRoot(MainScene.inicio.getRoot());
         });
@@ -87,7 +87,6 @@ public class FormMedicoView implements View{
         btnTerminar.setOnAction(e->{
             txtNombre.clear();
             txtApellido.clear();
-            txtGenero.clear();
             txtEdad.clear();
             txtPassword.clear();
             txtUsuario.clear();
@@ -97,7 +96,6 @@ public class FormMedicoView implements View{
 
     private void creatTxtFields(){
         txtEdad = new TextField();
-        txtGenero = new TextField();
         txtNombre = new TextField();
         txtApellido = new TextField();
         txtUsuario = new TextField();
@@ -116,6 +114,11 @@ public class FormMedicoView implements View{
         lblEspecialidad = new Label("Especialidad: ");
         lblPassword = new Label("Contraseña: ");
         instanciarIDs();
+    }
+
+    private void crearComboBoxs(){
+        comboGenero = new ComboBox(FXCollections.observableArrayList(Genero.values()));
+        comboEspecialidad = new ComboBox(FXCollections.observableArrayList(Especialidad.values()));
     }
 
     public BorderPane getRoot(){

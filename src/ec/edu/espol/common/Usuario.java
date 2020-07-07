@@ -1,11 +1,13 @@
 package ec.edu.espol.common;
 
+import ec.edu.espol.constants.Genero;
+
 public class Usuario {
 
     protected String nombre;
     protected String apellido;
     protected int edad;
-    protected String genero;
+    protected Genero genero;
 
     public String getNombre() {
         return nombre;
@@ -16,11 +18,11 @@ public class Usuario {
     }
 
 
-    public String getGenero() {
+    public Genero getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(Genero genero) {
         this.genero = genero;
     }
 

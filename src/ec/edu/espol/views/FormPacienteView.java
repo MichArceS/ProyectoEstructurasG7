@@ -1,5 +1,7 @@
 package ec.edu.espol.views;
 
+import ec.edu.espol.constants.Especialidad;
+import ec.edu.espol.constants.Genero;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -21,7 +23,7 @@ public class FormPacienteView implements View{
     Label lblEdad;
     TextField txtEdad;
     Label lblGenero;
-    TextField txtGenero;
+    ComboBox comboGenero;
     Label lblSintoma;
     ComboBox comboSintoma;
     Label lblEspecialidad;
@@ -39,6 +41,7 @@ public class FormPacienteView implements View{
         crearBotones();
         creatTxtFields();
         crearLabels();
+        crearComboBoxs();
         AnchorPane top = new AnchorPane();
         AnchorPane.setLeftAnchor(lblFormPaciente,10d);
         AnchorPane.setRightAnchor(lblHora,10d);
@@ -61,13 +64,10 @@ public class FormPacienteView implements View{
         grid.add(lblEdad,0,2);
         grid.add(txtEdad,1,2);
         grid.add(lblGenero,0,3);
-        grid.add(txtGenero,1,3);
-        ObservableList lista = FXCollections.observableArrayList("1","2","3");
-        comboSintoma = new ComboBox(lista);
+        grid.add(comboGenero,1,3);
         grid.add(lblSintoma,0,4);
         grid.add(comboSintoma,1,4);
         grid.add(lblEspecialidad,0,5);
-        comboEspecialidad = new ComboBox(lista);
         grid.add(comboEspecialidad,1,5);
         root.setCenter(grid);
     }
@@ -77,7 +77,6 @@ public class FormPacienteView implements View{
         btnCancelar.setOnAction(e->{
             txtNombre.clear();
             txtApellido.clear();
-            txtGenero.clear();
             txtEdad.clear();
             MainScene.scene.setRoot(MainScene.inicio.getRoot());
         });
@@ -85,7 +84,6 @@ public class FormPacienteView implements View{
         btnTerminar.setOnAction(e->{
             txtNombre.clear();
             txtApellido.clear();
-            txtGenero.clear();
             txtEdad.clear();
             MainScene.scene.setRoot(MainScene.inicio.getRoot());
         });
@@ -93,7 +91,6 @@ public class FormPacienteView implements View{
 
     private void creatTxtFields(){
         txtEdad = new TextField();
-        txtGenero = new TextField();
         txtNombre = new TextField();
         txtApellido = new TextField();
 
@@ -110,6 +107,13 @@ public class FormPacienteView implements View{
         lblSintoma = new Label("Sintoma:");
         lblEspecialidad = new Label("Especialidad");
         instanciarIDs();
+    }
+
+    private void crearComboBoxs(){
+        ObservableList lista = FXCollections.observableArrayList("1","2","3");
+        comboGenero = new ComboBox(FXCollections.observableArrayList(Genero.values()));
+        comboSintoma = new ComboBox(lista);
+        comboEspecialidad = new ComboBox(FXCollections.observableArrayList(Especialidad.values()));
     }
 
     public BorderPane getRoot(){

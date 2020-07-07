@@ -1,11 +1,14 @@
 package ec.edu.espol.common;
 
+import ec.edu.espol.constants.Especialidad;
+import ec.edu.espol.constants.Genero;
+
 public class UsrMedico extends Usuario{
 
-    private String especialidad;
+    private Especialidad especialidad;
     private boolean disponible;
 
-    public UsrMedico(String n, String a, int e, String g, String s, String esp) {
+    public UsrMedico(String n, String a, int e, Genero g, Especialidad esp) {
         super.nombre = n;
         super.apellido = a;
         super.edad = e;
@@ -14,11 +17,11 @@ public class UsrMedico extends Usuario{
         disponible = true;
     }
 
-    public String getEspecialidad() {
+    public Especialidad getEspecialidad() {
         return especialidad;
     }
 
-    public void setEspecialidad(String especialidad) {
+    public void setEspecialidad(Especialidad especialidad) {
         this.especialidad = especialidad;
     }
 
