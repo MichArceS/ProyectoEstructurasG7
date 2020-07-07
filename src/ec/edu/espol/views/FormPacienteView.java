@@ -13,7 +13,7 @@ import javafx.scene.layout.*;
 public class FormPacienteView {
     BorderPane root;
     Label lblPaciente;
-    Label lblHora;
+    public static Label lblHora;
     Label lblNombre;
     TextField txtNombre;
     Label lblApellido;

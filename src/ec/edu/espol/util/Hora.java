@@ -1,34 +1,31 @@
 package ec.edu.espol.util;
 
-import java.time.LocalDateTime;
+import ec.edu.espol.views.ConsultaView;
+import ec.edu.espol.views.FormPacienteView;
+import ec.edu.espol.views.MedicoView;
+import ec.edu.espol.views.TurnosView;
+import javafx.application.Platform;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Hora implements Runnable{
 
-    LocalDateTime localDateTime;
-    int hora;
-    int minuto;
-    int segundo;
+    Date objDate;
     boolean stop;
 
     public Hora() {
-        localDateTime = LocalDateTime.now();
-        hora = localDateTime.getHour();
-        minuto = localDateTime.getMinute();
-        segundo = localDateTime.getSecond();
     }
 
     @Override
     public void run() {
         while(!stop) {
-            segundo ++;
-            if (segundo >= 60) {
-                minuto ++;
-                segundo = 0;
-                if (minuto >= 60) {
-                    hora ++;
-                    minuto = 0;
-                }
-            }
+            Date objDate = new Date();
+            String strDateFormat = "hh:mm:ss";
+            SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat);
+            Platform.runLater(()->{ConsultaView.lblHora.setText(objSDF.format(objDate));});
+            Platform.runLater(()->{FormPacienteView.lblHora.setText(objSDF.format(objDate));});
+            Platform.runLater(()->{MedicoView.lblHora.setText(objSDF.format(objDate));});
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -40,4 +37,5 @@ public class Hora implements Runnable{
     public void stopThread() {
         stop = true;
     }
+
 }
