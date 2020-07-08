@@ -3,6 +3,8 @@ package ec.edu.espol.main;
 import ec.edu.espol.constants.Constantes;
 import ec.edu.espol.system.SysData;
 import ec.edu.espol.util.Hora;
+import ec.edu.espol.util.LeerEscribirDatos;
+import ec.edu.espol.util.hiloVideos;
 import ec.edu.espol.views.MainScene;
 import javafx.application.Application;
 import javafx.stage.Stage;

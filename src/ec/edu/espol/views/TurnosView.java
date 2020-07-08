@@ -1,28 +1,25 @@
 package ec.edu.espol.views;
 
 import ec.edu.espol.util.Video;
-import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 
-import java.util.Observable;
-import java.util.Observer;
+import java.io.File;
 
-
-public class TurnosView implements Observer {
+public class TurnosView {
 
     private BorderPane root;
     public static Label lblHora;
     private VBox sup;
-    private Label bot;
+    private HBox bot;
     private VBox mid;
-    private MediaView mediaView;
+    public static MediaView mediaView;
     private VBox boxPuestos;
 
     public TurnosView() {
@@ -34,12 +31,16 @@ public class TurnosView implements Observer {
 
     private void inicializarObjetos() {
         root = new BorderPane();
-        lblHora = new Label("");
+        lblHora = new Label();
         sup = new VBox();
-        bot = new Label();
+        bot = new HBox();
         mid = new VBox();
         mediaView = new MediaView();
         boxPuestos = new VBox();
+        root.setTop(sup);
+        root.setCenter(mid);
+        root.setBottom(bot);
+        setVideo();
     }
 
     private void crearEstructuraMid() {
@@ -51,17 +52,23 @@ public class TurnosView implements Observer {
         //ImageView imageView = new ImageView(image);
         //imageView.setScaleX(50);
         //imageView.setScaleY(50);
-        Label label = new Label("Hora de ejemplo");
-        sup.getChildren().addAll(label);
+        sup.getChildren().addAll(lblHora);
     }
 
     private void crearEstructuraInferior() {
-        bot.setText("Bienvenidos! Los horarios de atención son: lunes a viernes de 6:00 -- 18:00");
+        Label l = new Label("Bienvenidos! Los horarios de atención son: lunes a viernes de 6:00 -- 18:00");
+        Button boton = new Button("Volver");
+        boton.setOnAction(e -> {
+            MainScene.scene.setRoot(MainScene.inicio.getRoot());
+        });
+        bot.getChildren().addAll(boton,l);
     }
 
-    private void setVideo(Video video) {
-        Media media = video.getMedia();
+    public static void setVideo() {
+        String s = new File("src/ec/edu/espol/media/patricio.mp4").getAbsolutePath();
+        Media media = new Media((new File(s).toURI().toString()));
         MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
         mediaView.setMediaPlayer(mediaPlayer);
     }
 
@@ -69,9 +76,7 @@ public class TurnosView implements Observer {
 
     }
 
-    @Override
-    public void update(Observable observable, Object o) {
-        Video video = (Video)o;
-        setVideo(video);
+    public BorderPane getRoot() {
+        return root;
     }
 }

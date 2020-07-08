@@ -6,6 +6,7 @@ import ec.edu.espol.common.Usuario;
 import ec.edu.espol.constants.Especialidad;
 import ec.edu.espol.constants.Genero;
 import ec.edu.espol.util.CircularSimplyLinkedList;
+import ec.edu.espol.util.LeerEscribirDatos;
 import ec.edu.espol.util.Video;
 
 import java.util.LinkedList;
@@ -32,6 +33,10 @@ public class SysData {
         pacientes.offer(pac);
     }
 
+    public static void cargarVideos() {
+        videos = LeerEscribirDatos.cargarVideos();
+    }
+
     private void añadirInfo(){
         addMedico(new UsrMedico("Jose","Alban",35, Genero.MASCULINO, Especialidad.MEDICINA_GENERAL));
         addMedico(new UsrMedico("Bruce","Banner",42, Genero.MASCULINO, Especialidad.PSIQUIATRIA));
@@ -43,6 +48,7 @@ public class SysData {
         addPaciente(new UsrPaciente("Peter","Parker",21,Genero.MASCULINO));
         addPaciente(new UsrPaciente("Barry","Allen",25,Genero.MASCULINO));
 
+        cargarVideos();
     }
 
 }

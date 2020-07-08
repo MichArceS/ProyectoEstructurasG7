@@ -14,6 +14,7 @@ public class MainScene {
     static FormPacienteView formPacienteView;
     static FormMedicoView formMedicoView;
     static LoginView loginView;
+    static TurnosView turnosView;
     private double x=0;
     private double y=0;
 
@@ -24,6 +25,7 @@ public class MainScene {
         formPacienteView = new FormPacienteView();
         formMedicoView = new FormMedicoView();
         loginView = new LoginView();
+        turnosView = new TurnosView();
         scene = new Scene(inicio.getRoot(),1000,600);
         stage.setTitle("INICIO");
         stage.setScene(scene);

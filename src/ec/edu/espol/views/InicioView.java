@@ -49,7 +49,7 @@ public class InicioView implements View{
     public void crearBtnTurno(){
         btnTurnos = new Button("TURNOS");
         btnTurnos.setOnAction(e->{
-            //
+            MainScene.scene.setRoot(MainScene.turnosView.getRoot());
         });
     }
     public void crearBtnFormPaciente(){

@@ -67,6 +67,22 @@ public class LeerEscribirDatos {
         return true;
     }
 
+    //Videos
+    public static CircularSimplyLinkedList<Video> cargarVideos(){
+        CircularSimplyLinkedList<Video> videos = new CircularSimplyLinkedList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(Constantes.RUTAVIDEOS))){
+            String line = br.readLine();
+            while(line != null){
+                String[] data = line.split("\\|");
+                videos.addFirst(new Video(data[0],data[1]));
+                line = br.readLine();
+            }
+        }catch(IOException ex){
+            System.out.println(ex.getMessage());
+        }
+        return videos;
+    }
+
 
     /*public static void main(String[] args){
         List<Sintoma> sintomas = cargarSintomas();
