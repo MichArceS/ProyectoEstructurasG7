@@ -6,15 +6,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 
-public class FormPacienteView implements View{
+public class FormMedicoView implements View{
     BorderPane root;
-    Label lblFormPaciente;
+    Label lblFormMedico;
     public static Label lblHora;
     Label lblNombre;
     TextField txtNombre;
@@ -24,14 +23,16 @@ public class FormPacienteView implements View{
     TextField txtEdad;
     Label lblGenero;
     ComboBox comboGenero;
-    Label lblSintoma;
-    ComboBox comboSintoma;
     Label lblEspecialidad;
     ComboBox comboEspecialidad;
+    Label lblUsuario;
+    TextField txtUsuario;
+    Label lblPassword;
+    PasswordField txtPassword;
     Button btnCancelar;
     Button btnTerminar;
 
-    public FormPacienteView(){
+    public FormMedicoView(){
         crearEstructura();
 
     }
@@ -43,9 +44,9 @@ public class FormPacienteView implements View{
         crearLabels();
         crearComboBoxs();
         AnchorPane top = new AnchorPane();
-        AnchorPane.setLeftAnchor(lblFormPaciente,10d);
+        AnchorPane.setLeftAnchor(lblFormMedico,10d);
         AnchorPane.setRightAnchor(lblHora,10d);
-        top.getChildren().addAll(lblFormPaciente,lblHora);
+        top.getChildren().addAll(lblFormMedico,lblHora);
         root.setTop(top);
         AnchorPane bottom = new AnchorPane();
         AnchorPane.setLeftAnchor(btnCancelar,10d);
@@ -65,10 +66,12 @@ public class FormPacienteView implements View{
         grid.add(txtEdad,1,2);
         grid.add(lblGenero,0,3);
         grid.add(comboGenero,1,3);
-        grid.add(lblSintoma,0,4);
-        grid.add(comboSintoma,1,4);
-        grid.add(lblEspecialidad,0,5);
-        grid.add(comboEspecialidad,1,5);
+        grid.add(lblEspecialidad,0,4);
+        grid.add(comboEspecialidad,1,4);
+        grid.add(lblUsuario,0,5);
+        grid.add(txtUsuario,1,5);
+        grid.add(lblPassword,0,6);
+        grid.add(txtPassword,1,6);
         root.setCenter(grid);
     }
 
@@ -85,6 +88,8 @@ public class FormPacienteView implements View{
             txtNombre.clear();
             txtApellido.clear();
             txtEdad.clear();
+            txtPassword.clear();
+            txtUsuario.clear();
             MainScene.scene.setRoot(MainScene.inicio.getRoot());
         });
     }
@@ -93,26 +98,26 @@ public class FormPacienteView implements View{
         txtEdad = new TextField();
         txtNombre = new TextField();
         txtApellido = new TextField();
-
+        txtUsuario = new TextField();
+        txtPassword = new PasswordField();
 
     }
 
     private void crearLabels(){
-        lblFormPaciente = new Label("Formulario Paciente");
+        lblFormMedico = new Label("Formulario Medico");
         lblHora = new Label("12:30");
         lblNombre = new Label("Nombre:");
         lblApellido = new Label("Apellido: ");
         lblEdad = new Label("Edad:");
         lblGenero = new Label("Genero:");
-        lblSintoma = new Label("Sintoma:");
-        lblEspecialidad = new Label("Especialidad");
+        lblUsuario = new Label("Usuario:");
+        lblEspecialidad = new Label("Especialidad: ");
+        lblPassword = new Label("Contraseña: ");
         instanciarIDs();
     }
 
     private void crearComboBoxs(){
-        ObservableList lista = FXCollections.observableArrayList("1","2","3");
         comboGenero = new ComboBox(FXCollections.observableArrayList(Genero.values()));
-        comboSintoma = new ComboBox(lista);
         comboEspecialidad = new ComboBox(FXCollections.observableArrayList(Especialidad.values()));
     }
 
@@ -122,6 +127,7 @@ public class FormPacienteView implements View{
 
     private void instanciarIDs(){
         lblHora.setId("lblHora");
-        lblFormPaciente.setId("lblPaciente");
+        lblFormMedico.setId("lblPaciente");
+        txtPassword.setId("lblPassword");
     }
 }

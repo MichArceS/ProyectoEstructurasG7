@@ -1,10 +1,12 @@
 package ec.edu.espol.common;
 
+import ec.edu.espol.constants.Genero;
+
 public class UsrPaciente extends Usuario{
 
     private Sintoma sintoma;
 
-    public UsrPaciente(String n, String a, int e, String g, String s) {
+    public UsrPaciente(String n, String a, int e, Genero g) {
         super.nombre = n;
         super.apellido = a;
         super.edad = e;

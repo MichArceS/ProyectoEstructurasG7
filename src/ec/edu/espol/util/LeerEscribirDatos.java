@@ -2,6 +2,8 @@ package ec.edu.espol.util;
 
 import ec.edu.espol.common.*;
 import ec.edu.espol.constants.Constantes;
+import ec.edu.espol.constants.Especialidad;
+import ec.edu.espol.constants.Genero;
 
 import java.io.*;
 import java.util.LinkedList;
@@ -9,6 +11,7 @@ import java.util.List;
 
 public class LeerEscribirDatos {
 
+    //SINTOMAS
     public static List<Sintoma> cargarSintomas(){
         List<Sintoma> sintomas = new LinkedList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(Constantes.RUTASINTOMAS))){
@@ -24,18 +27,46 @@ public class LeerEscribirDatos {
         return sintomas;
     }
 
-    public static boolean añadirSintoma(String nombre, String prioridad){
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/ec/edu/espol/util/sintomas.txt",true))){
-            String line = nombre + "|" + prioridad;
+    public static boolean añadirSintoma(Sintoma s){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(Constantes.RUTASINTOMAS,true))){
+            String line = s.getNombre() + "|" + s.getPrioridad();
             bw.newLine();
             bw.write(line);
-
         }catch(IOException ex){
             System.out.println(ex.getMessage());
             return false;
         }
         return true;
     }
+
+    //MEDICOS
+    public static List<UsrMedico> cargarMedicos(){
+        List<UsrMedico> medicos = new LinkedList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(Constantes.RUTAMEDICOS))){
+            String line = br.readLine();
+            while(line != null){
+                String[] data = line.split("\\|");
+                medicos.add(new UsrMedico(data[0],data[1],Integer.valueOf(data[2]),Genero.valueOf(data[3]),Especialidad.valueOf(data[4])));
+                line = br.readLine();
+            }
+        }catch(IOException ex){
+            System.out.println(ex.getMessage());
+        }
+        return medicos;
+    }
+
+    public static boolean añadirMedico(UsrMedico m){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(Constantes.RUTAMEDICOS,true))){
+            String line = m.getNombre() + "|" + m.getApellido() + "|" + m.getEdad() + "|" + m.getGenero().toString() + "|" + m.getEspecialidad().toString();
+            bw.newLine();
+            bw.write(line);
+        }catch(IOException ex){
+            System.out.println(ex.getMessage());
+            return false;
+        }
+        return true;
+    }
+
 
     /*public static void main(String[] args){
         List<Sintoma> sintomas = cargarSintomas();
@@ -44,10 +75,21 @@ public class LeerEscribirDatos {
             System.out.println(s);
         }
         System.out.println("#############");
-        System.out.println(añadirSintoma("escalofríos","2"));
+        System.out.println(añadirSintoma(new Sintoma("dolor de cabeza",4)));
         sintomas = cargarSintomas();
         for(Sintoma s: sintomas){
             System.out.println(s);
+        }
+
+        List<UsrMedico> medicos = cargarMedicos();
+        for(UsrMedico m: medicos){
+            System.out.println(m);
+        }
+        System.out.println("#############");
+        System.out.println(añadirMedico(new UsrMedico("Juanito","Alcachofa",31,Genero.MASCULINO,Especialidad.PEDIATRIA)));
+        medicos = cargarMedicos();
+        for(UsrMedico m: medicos){
+            System.out.println(m);
         }
     }*/
 }

@@ -8,3 +8,4 @@ insomnio|5
 disnea|0
 diarrea|1
 escalofríos|2
+dolor de cabeza|4

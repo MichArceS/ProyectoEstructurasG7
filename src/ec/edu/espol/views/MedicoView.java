@@ -8,7 +8,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class MedicoView {
+public class MedicoView implements View{
         BorderPane root;
         public static Label lblHora;
         Label lblNombreMedico;
@@ -25,9 +25,9 @@ public class MedicoView {
             crearBotones();
             crearLabels();
             AnchorPane rowBottom = new AnchorPane();
-            AnchorPane.setLeftAnchor(btnSgtTurno,250d);
-            AnchorPane.setRightAnchor(btnCerrarSesion,250d);
-            rowBottom.getChildren().addAll(btnSgtTurno,btnCerrarSesion);
+            AnchorPane.setLeftAnchor(btnCerrarSesion,250d);
+            AnchorPane.setRightAnchor(btnSgtTurno ,250d);
+            rowBottom.getChildren().addAll(btnCerrarSesion,btnSgtTurno);
             VBox center = new VBox();
             center.getChildren().addAll(lblNombreMedico,rowBottom);
             VBox hora = new VBox(lblHora);
@@ -40,12 +40,20 @@ public class MedicoView {
 
         private void crearBotones(){
             btnSgtTurno = new Button("SIGUIENTE TURNO");
+            btnSgtTurno.setOnAction(e->{
+                MainScene.scene.setRoot(MainScene.consultaView.getRoot());
+            });
             btnCerrarSesion = new Button("CERRAR SESION");
+            btnCerrarSesion.setOnAction(e->{
+                MainScene.scene.setRoot(MainScene.inicio.getRoot());
+            });
         }
         private void crearLabels(){
             lblHora = new Label("");
+            lblHora.setId("lblHora");
             lblNombreMedico = new Label("Nombre del Medico");
             lblNombreMedico.setId("lblNombreMedico");
+
         }
 
         public BorderPane getRoot(){
