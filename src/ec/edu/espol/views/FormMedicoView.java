@@ -3,7 +3,6 @@ package ec.edu.espol.views;
 import ec.edu.espol.constants.Especialidad;
 import ec.edu.espol.constants.Genero;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -12,25 +11,25 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
 public class FormMedicoView implements View{
-    BorderPane root;
-    Label lblFormMedico;
+    private BorderPane root;
+    private Label lblFormMedico;
     public static Label lblHora;
-    Label lblNombre;
-    TextField txtNombre;
-    Label lblApellido;
-    TextField txtApellido;
-    Label lblEdad;
-    TextField txtEdad;
-    Label lblGenero;
-    ComboBox comboGenero;
-    Label lblEspecialidad;
-    ComboBox comboEspecialidad;
-    Label lblUsuario;
-    TextField txtUsuario;
-    Label lblPassword;
-    PasswordField txtPassword;
-    Button btnCancelar;
-    Button btnTerminar;
+    private Label lblNombre;
+    private TextField txtNombre;
+    private Label lblApellido;
+    private TextField txtApellido;
+    private Label lblEdad;
+    private TextField txtEdad;
+    private Label lblGenero;
+    private ComboBox comboGenero;
+    private Label lblEspecialidad;
+    private ComboBox comboEspecialidad;
+    private Label lblUsuario;
+    private TextField txtUsuario;
+    private Label lblPassword;
+    private PasswordField txtPassword;
+    private Button btnCancelar;
+    private Button btnTerminar;
 
     public FormMedicoView(){
         crearEstructura();
@@ -55,7 +54,7 @@ public class FormMedicoView implements View{
         root.setBottom(bottom);
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
-        grid.setHgap(100);
+        grid.setHgap(30);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
         grid.add(lblNombre,0,0);
@@ -78,19 +77,23 @@ public class FormMedicoView implements View{
     private void crearBotones(){
         btnCancelar = new Button("CANCELAR");
         btnCancelar.setOnAction(e->{
-            txtNombre.clear();
-            txtApellido.clear();
-            txtEdad.clear();
-            MainScene.scene.setRoot(MainScene.inicio.getRoot());
+            if(MainScene.confirmStage.confirmar("cancelar el Formulario?")){
+                txtNombre.clear();
+                txtApellido.clear();
+                txtEdad.clear();
+                MainScene.scene.setRoot(MainScene.inicio.getRoot());
+            }
         });
         btnTerminar = new Button("TERMINAR");
         btnTerminar.setOnAction(e->{
-            txtNombre.clear();
-            txtApellido.clear();
-            txtEdad.clear();
-            txtPassword.clear();
-            txtUsuario.clear();
-            MainScene.scene.setRoot(MainScene.inicio.getRoot());
+            if(MainScene.confirmStage.confirmar("terminar el Formulario?")) {
+                txtNombre.clear();
+                txtApellido.clear();
+                txtEdad.clear();
+                txtPassword.clear();
+                txtUsuario.clear();
+                MainScene.scene.setRoot(MainScene.inicio.getRoot());
+            }
         });
     }
 

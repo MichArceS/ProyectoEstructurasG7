@@ -4,7 +4,7 @@ import ec.edu.espol.constants.Constantes;
 import ec.edu.espol.system.SysData;
 import ec.edu.espol.util.Hora;
 import ec.edu.espol.util.LeerEscribirDatos;
-import ec.edu.espol.util.hiloVideos;
+import ec.edu.espol.util.HiloVideos;
 import ec.edu.espol.views.MainScene;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -17,7 +17,7 @@ public class Main extends Application {
     }
     public static Hora hora = new Hora();
     public static Thread hilo= new Thread(hora);
-    public static hiloVideos videos = new hiloVideos(LeerEscribirDatos.cargarVideos());
+    public static HiloVideos videos = new HiloVideos(LeerEscribirDatos.cargarVideos());
     public static Thread hiloVideos= new Thread(videos);
     MainScene mainScene;
     SysData sysData;

@@ -8,13 +8,13 @@ import javafx.scene.media.MediaPlayer;
 import java.io.File;
 import java.util.Iterator;
 
-public class hiloVideos implements Runnable{
+public class HiloVideos implements Runnable{
 
     CircularSimplyLinkedList<Video> CSLL;
     private boolean stop;
     MediaPlayer mediaPlayer;
 
-    public hiloVideos(CircularSimplyLinkedList<Video> c) {
+    public HiloVideos(CircularSimplyLinkedList<Video> c) {
         CSLL = c;
     }
 

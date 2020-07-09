@@ -3,19 +3,19 @@ package ec.edu.espol.views;
 import ec.edu.espol.main.Main;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class InicioView implements View{
-    VBox root;
+    private VBox root;
     //Image image;
-    Button btnTurnos;
-    Button btnFormPaciente;
-    Button btnSisMedico;
-    Button btnFormMedico;
-    Button btnSalir;
+    private Button btnTurnos;
+    private Button btnFormPaciente;
+    private Button btnSisMedico;
+    private Button btnFormMedico;
+    private Button btnPuestos;
+    private Button btnSalir;
 
     public InicioView(){
         crearEstructura();
@@ -25,16 +25,13 @@ public class InicioView implements View{
         root = new VBox();
         crearBotones();
         VBox column1 = new VBox();
-        column1.getChildren().addAll(btnTurnos,btnSisMedico );
+        column1.getChildren().addAll(btnTurnos,btnSisMedico,btnPuestos);
         VBox column2 = new VBox();
-        column2.getChildren().addAll(btnFormPaciente,btnFormMedico);
+        column2.getChildren().addAll(btnFormPaciente,btnFormMedico,btnSalir);
         HBox row1 = new HBox();
         row1.getChildren().addAll(column1,column2);
         row1.setAlignment(Pos.CENTER);
-        HBox row2 = new HBox();
-        row2.getChildren().addAll(btnSalir);
-        row2.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(row1,row2);
+        root.getChildren().addAll(row1);
         root.setAlignment(Pos.CENTER);
     }
 
@@ -45,6 +42,7 @@ public class InicioView implements View{
         crearBtnSisMedico();
         crearBtnCrearMedico();
         crearBtnSalir();
+        crearBtnPuestos();
     }
 
     public void crearBtnTurno(){
@@ -70,15 +68,26 @@ public class InicioView implements View{
     }
 
     public void crearBtnCrearMedico(){
-        btnFormMedico = new Button("AGREGAR MEDICO");
+        btnFormMedico = new Button("FORMULARIO MEDICO");
         btnFormMedico.setOnAction(e->{
             MainScene.scene.setRoot(MainScene.formMedicoView.getRoot());
+        });
+    }
+
+    public void crearBtnPuestos(){
+        btnPuestos = new Button("PUESTOS");
+        btnPuestos.setOnAction(e ->{
+            Platform.runLater(()->{
+                MainScene.scene.setRoot(MainScene.puestosView.getRoot());
+            });
         });
     }
     public void crearBtnSalir(){
         btnSalir = new Button("SALIR");
         btnSalir.setOnAction(e->{
-            Platform.exit();
+            if(MainScene.confirmStage.confirmar("salir del sistema?")) {
+                Platform.exit();
+            }
         });
     }
 

@@ -13,23 +13,23 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 
 public class FormPacienteView implements View{
-    BorderPane root;
-    Label lblFormPaciente;
+    private BorderPane root;
+    private Label lblFormPaciente;
     public static Label lblHora;
-    Label lblNombre;
-    TextField txtNombre;
-    Label lblApellido;
-    TextField txtApellido;
-    Label lblEdad;
-    TextField txtEdad;
-    Label lblGenero;
-    ComboBox comboGenero;
-    Label lblSintoma;
-    ComboBox comboSintoma;
-    Label lblEspecialidad;
-    ComboBox comboEspecialidad;
-    Button btnCancelar;
-    Button btnTerminar;
+    private Label lblNombre;
+    private TextField txtNombre;
+    private Label lblApellido;
+    private TextField txtApellido;
+    private Label lblEdad;
+    private TextField txtEdad;
+    private Label lblGenero;
+    private ComboBox comboGenero;
+    private Label lblSintoma;
+    private ComboBox comboSintoma;
+    private Label lblEspecialidad;
+    private ComboBox comboEspecialidad;
+    private Button btnCancelar;
+    private Button btnTerminar;
 
     public FormPacienteView(){
         crearEstructura();
@@ -54,7 +54,7 @@ public class FormPacienteView implements View{
         root.setBottom(bottom);
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
-        grid.setHgap(100);
+        grid.setHgap(30);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
         grid.add(lblNombre,0,0);
@@ -75,17 +75,21 @@ public class FormPacienteView implements View{
     private void crearBotones(){
         btnCancelar = new Button("CANCELAR");
         btnCancelar.setOnAction(e->{
-            txtNombre.clear();
-            txtApellido.clear();
-            txtEdad.clear();
-            MainScene.scene.setRoot(MainScene.inicio.getRoot());
+            if(MainScene.confirmStage.confirmar("cancelar el Formulario?")) {
+                txtNombre.clear();
+                txtApellido.clear();
+                txtEdad.clear();
+                MainScene.scene.setRoot(MainScene.inicio.getRoot());
+            }
         });
         btnTerminar = new Button("TERMINAR");
         btnTerminar.setOnAction(e->{
-            txtNombre.clear();
-            txtApellido.clear();
-            txtEdad.clear();
-            MainScene.scene.setRoot(MainScene.inicio.getRoot());
+            if(MainScene.confirmStage.confirmar("terminar el Formulario?")) {
+                txtNombre.clear();
+                txtApellido.clear();
+                txtEdad.clear();
+                MainScene.scene.setRoot(MainScene.inicio.getRoot());
+            }
         });
     }
 

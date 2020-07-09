@@ -1,29 +1,27 @@
 package ec.edu.espol.views;
 
-import ec.edu.espol.main.Main;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class ConsultaView implements View{
-    BorderPane root;
-    Label lblConsulta;
+    private BorderPane root;
+    private  Label lblConsulta;
     public static Label lblHora;
-    Label lblNombre;
-    Label lblEdad;
-    Label lblGenero;
-    Label lblSintoma;
-    Label lblDiagnostico;
-    Label lblReceta;
-    TextArea txtDiagnostico;
-    TextArea txtReceta;
-    Button btnCancelar;
-    Button btnTerminar;
+    private Label lblNombre;
+    private Label lblEdad;
+    private Label lblGenero;
+    private Label lblSintoma;
+    private Label lblDiagnostico;
+    private Label lblReceta;
+    private TextArea txtDiagnostico;
+    private TextArea txtReceta;
+    private Button btnCancelar;
+    private Button btnTerminar;
 
     public ConsultaView(){
         crearEstructura();
@@ -67,13 +65,17 @@ public class ConsultaView implements View{
         btnCancelar.setOnAction(e->{
             txtDiagnostico.clear();
             txtReceta.clear();
-            MainScene.scene.setRoot(MainScene.medicoView.getRoot());
+            if(MainScene.confirmStage.confirmar("cancelar la consulta?")) {
+                MainScene.scene.setRoot(MainScene.medicoView.getRoot());
+            }
         });
         btnTerminar = new Button("TERMINAR");
         btnTerminar.setOnAction(e->{
             txtDiagnostico.clear();
             txtReceta.clear();
-            MainScene.scene.setRoot(MainScene.medicoView.getRoot());
+            if(MainScene.confirmStage.confirmar("terminar la consula?")) {
+                MainScene.scene.setRoot(MainScene.medicoView.getRoot());
+            }
         });
     }
 

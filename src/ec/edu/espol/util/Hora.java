@@ -27,6 +27,12 @@ public class Hora implements Runnable{
             Platform.runLater(()->{LoginView.lblHora.setText(objSDF.format(objDate));});
             Platform.runLater(()->{MedicoView.lblHora.setText(objSDF.format(objDate));});
             Platform.runLater(()->{TurnosView.lblHora.setText(objSDF.format(objDate));});
+            Platform.runLater(()->{NuevoPuestoView.lblHora.setText(objSDF.format(objDate));});
+            Platform.runLater(()->{AsignarEditarPuestoView.lblHora.setText(objSDF.format(objDate));});
+            Platform.runLater(()->{EliminarPuestoView.lblHora.setText(objSDF.format(objDate));});
+            Platform.runLater(()->{PuestosView.lblHora.setText(objSDF.format(objDate));});
+            Platform.runLater(()->{
+                PuestosView.lblHora.setText(objSDF.format(objDate));});
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {

@@ -5,15 +5,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class MedicoView implements View{
-        BorderPane root;
-        public static Label lblHora;
-        Label lblNombreMedico;
-        Button btnSgtTurno;
-        Button btnCerrarSesion;
+    private BorderPane root;
+    public static Label lblHora;
+    private Label lblNombreMedico;
+    private Button btnSgtTurno;
+    private Button btnCerrarSesion;
 
         public MedicoView () {
             crearEstructura();
@@ -45,7 +44,9 @@ public class MedicoView implements View{
             });
             btnCerrarSesion = new Button("CERRAR SESION");
             btnCerrarSesion.setOnAction(e->{
-                MainScene.scene.setRoot(MainScene.inicio.getRoot());
+                if(MainScene.confirmStage.confirmar("cerrar sesion?")) {
+                    MainScene.scene.setRoot(MainScene.inicio.getRoot());
+                }
             });
         }
         private void crearLabels(){

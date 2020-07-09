@@ -47,7 +47,7 @@ Button:pressed{
 Label{
     -fx-text-alignment: center;
     -fx-font-weight: bold;
-    -fx-font-size: 20;
+    -fx-font-size: 35;
     -fx-text-fill: #4EBABA;
 }
 
@@ -72,16 +72,6 @@ Label{
 .text-field:hover, .password-field:hover {
     -fx-background-color: #DEF7F7 , #DEF7F7 , white;
 }
-#txtReceta,#txtDiagnostico {
-    -fx-alignment: center;
-    -fx-pref-width: 350;
-    -fx-pref-height: 600;
-    -fx-padding: 5 5 5 5;
-    -fx-border-radius: 5;
-    -fx-background-color: #ADE3E3 , #DEF7F7 , #DEF7F7;
-    -fx-border-color: black;
-    -fx-alignment: top-left;
-}
 
 .text-field:focused, .password-field:focused {
     -fx-background-color: #ADE3E3 , #DEF7F7 , white, white;
@@ -91,12 +81,35 @@ Label{
     -fx-alignment: top-left;
 }
 
+#txtReceta,#txtDiagnostico {
+    -fx-alignment: center;
+    -fx-pref-width: 500;
+    -fx-pref-height: 600;
+    -fx-padding: 5 5 5 5;
+    -fx-border-radius: 5;
+    -fx-background-color: #ADE3E3 , #DEF7F7 , #DEF7F7;
+    -fx-border-color: black;
+    -fx-alignment: top-left;
+}
+#txtReceta:hover,#txtDiagnostico:hover {
+    -fx-background-color: #DEF7F7 , #DEF7F7 , white;
+}
+
+#txtReceta:focused,#txtDiagnostico:focused{
+    -fx-background-color: #ADE3E3 , #DEF7F7 , white, white;
+    -fx-background-radius: 6.4, 4, 5, 3;
+    -fx-background-insets: -1.4, 0, 1, 2;
+    -fx-text-alignment: justify;
+    -fx-alignment: top-left;
+}
+
+
 BorderPane{
     -fx-alignment: top-center;
     -fx-padding: 20;
 }
 
-#lblNombreMedico{
+#lblNombreMedico,#lblPuesto{
     -fx-font-size: 40;
     -fx-padding: 30;
 }
@@ -145,6 +158,43 @@ BorderPane{
     -fx-background-color: #DEF7F7 , #DEF7F7 , white, white;
 }
 
+#turno,#puesto{
+    -fx-font-size: 50;
+    -fx-pref-width: 350;
+    -fx-pref-height: 65;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+}
+#turno{
+    -fx-background-color: #2E9C9C;
+}
+
+#puesto{
+    -fx-background-color: #4EBABA;
+}
+
+#box-turnos{
+    -fx-padding: 10;
+    -fx-border-insets: 2;
+    -fx-alignment: center;
+}
+
+.dialog-pane{
+    -fx-background-color: #77D5D5;
+}
+
+.dialog-pane > .content.label{
+    -fx-font-size: 30;
+    -fx-text-fill: white;
+}
+.dialog-pane .button{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+}
+
+.dialog-pane > .button-bar > .container{
+    -fx-alignment: center;
+}
 
 
 
