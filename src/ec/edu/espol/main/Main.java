@@ -26,15 +26,15 @@ public class Main extends Application {
     @Override
     public void stop() throws Exception {
         hilo.stop();
-        videos.stopThread();
+        hiloVideos.stop();
     }
 
     @Override
     public void start(Stage primaryStage) {
         mainScene = new MainScene(primaryStage);
         sysData = new SysData();
-        hilo.start();
         hiloVideos.start();
+        hilo.start();
         setUserAgentStylesheet(Constantes.RUTASTYLE);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();

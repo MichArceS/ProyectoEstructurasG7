@@ -1,5 +1,6 @@
 package ec.edu.espol.views;
 
+import ec.edu.espol.main.Main;
 import ec.edu.espol.util.Video;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -59,16 +60,9 @@ public class TurnosView {
         Button boton = new Button("Volver");
         boton.setOnAction(e -> {
             MainScene.scene.setRoot(MainScene.inicio.getRoot());
+            Main.videos.mutearVideo();
         });
         bot.getChildren().addAll(boton,l);
-    }
-
-    public static void setVideo() {
-        String s = new File("src/ec/edu/espol/media/patricio.mp4").getAbsolutePath();
-        Media media = new Media((new File(s).toURI().toString()));
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.play();
-        mediaView.setMediaPlayer(mediaPlayer);
     }
 
     private void añadirTurnos() {

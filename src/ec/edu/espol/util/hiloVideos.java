@@ -12,6 +12,7 @@ public class hiloVideos implements Runnable{
 
     CircularSimplyLinkedList<Video> CSLL;
     private boolean stop;
+    MediaPlayer mediaPlayer;
 
     public hiloVideos(CircularSimplyLinkedList<Video> c) {
         CSLL = c;
@@ -25,9 +26,10 @@ public class hiloVideos implements Runnable{
             System.out.println(video);
             String s = new File(video.getMedia()).getAbsolutePath();
             Media media = new Media((new File(s).toURI().toString()));
-            MediaPlayer mediaPlayer = new MediaPlayer(media);
+            mediaPlayer = new MediaPlayer(media);
             Long tiempo = video.getDuracion();
             mediaPlayer.play();
+            mediaPlayer.setMute(true);
             Platform.runLater(() -> {TurnosView.mediaView.setMediaPlayer(mediaPlayer);});
             System.out.println(tiempo);
             try {
@@ -38,7 +40,16 @@ public class hiloVideos implements Runnable{
         }
     }
 
+    public void iniciarVideo(){
+        mediaPlayer.setMute(false);
+    }
+
+    public void mutearVideo(){
+        mediaPlayer.setMute(true);
+    }
+
     public void stopThread() {
+        mediaPlayer.setMute(true);
         stop = true;
     }
 }

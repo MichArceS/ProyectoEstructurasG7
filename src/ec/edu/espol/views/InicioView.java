@@ -1,5 +1,6 @@
 package ec.edu.espol.views;
 
+import ec.edu.espol.main.Main;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -50,6 +51,7 @@ public class InicioView implements View{
         btnTurnos = new Button("TURNOS");
         btnTurnos.setOnAction(e->{
             MainScene.scene.setRoot(MainScene.turnosView.getRoot());
+            Main.videos.iniciarVideo();
         });
     }
     public void crearBtnFormPaciente(){
