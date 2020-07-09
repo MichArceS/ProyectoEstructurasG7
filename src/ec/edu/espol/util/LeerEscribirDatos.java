@@ -46,7 +46,7 @@ public class LeerEscribirDatos {
             String line = br.readLine();
             while(line != null){
                 String[] data = line.split("\\|");
-                medicos.add(new UsrMedico(data[0],data[1],Integer.valueOf(data[2]),Genero.valueOf(data[3]),Especialidad.valueOf(data[4])));
+                medicos.add(new UsrMedico(data[0],data[1],Integer.valueOf(data[2]),Genero.valueOf(data[3]),Especialidad.valueOf(data[4]),String.valueOf(data[5]),String.valueOf(data[6])));
                 line = br.readLine();
             }
         }catch(IOException ex){
