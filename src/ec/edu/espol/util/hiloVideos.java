@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 import java.util.Iterator;
 
 public class hiloVideos implements Runnable{
@@ -18,17 +19,19 @@ public class hiloVideos implements Runnable{
 
     @Override
     public void run() {
+        Iterator<Video> it = CSLL.iterator();
         while (!stop) {
-            Iterator<Video> it = CSLL.iterator();
             Video video = it.next();
-            Media media = video.getMedia();
+            System.out.println(video);
+            String s = new File(video.getMedia()).getAbsolutePath();
+            Media media = new Media((new File(s).toURI().toString()));
             MediaPlayer mediaPlayer = new MediaPlayer(media);
+            Long tiempo = video.getDuracion();
             mediaPlayer.play();
-            System.out.println("F");
             Platform.runLater(() -> {TurnosView.mediaView.setMediaPlayer(mediaPlayer);});
-            System.out.println("F2");
+            System.out.println(tiempo);
             try {
-                Thread.sleep(1000000000);
+                Thread.sleep(tiempo);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

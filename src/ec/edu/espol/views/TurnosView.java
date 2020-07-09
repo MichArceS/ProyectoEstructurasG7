@@ -40,7 +40,6 @@ public class TurnosView {
         root.setTop(sup);
         root.setCenter(mid);
         root.setBottom(bot);
-        setVideo();
     }
 
     private void crearEstructuraMid() {

@@ -73,8 +73,10 @@ public class LeerEscribirDatos {
         try(BufferedReader br = new BufferedReader(new FileReader(Constantes.RUTAVIDEOS))){
             String line = br.readLine();
             while(line != null){
-                String[] data = line.split("\\|");
-                videos.addFirst(new Video(data[0],data[1]));
+                String[] data = line.split("-");
+                long l = Integer.parseInt(data[2]);
+                System.out.println(l);
+                videos.addLast(new Video(data[0],data[1],l));
                 line = br.readLine();
             }
         }catch(IOException ex){

@@ -17,6 +17,8 @@ public class Main extends Application {
     }
     public static Hora hora = new Hora();
     public static Thread hilo= new Thread(hora);
+    public static hiloVideos videos = new hiloVideos(LeerEscribirDatos.cargarVideos());
+    public static Thread hiloVideos= new Thread(videos);
     MainScene mainScene;
     SysData sysData;
 
@@ -24,6 +26,7 @@ public class Main extends Application {
     @Override
     public void stop() throws Exception {
         hilo.stop();
+        videos.stopThread();
     }
 
     @Override
@@ -31,6 +34,7 @@ public class Main extends Application {
         mainScene = new MainScene(primaryStage);
         sysData = new SysData();
         hilo.start();
+        hiloVideos.start();
         setUserAgentStylesheet(Constantes.RUTASTYLE);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
