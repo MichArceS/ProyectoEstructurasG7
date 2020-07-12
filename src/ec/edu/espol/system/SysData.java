@@ -53,13 +53,14 @@ public class SysData {
         addMedico(new UsrMedico("Tony","Stark",32, Genero.MASCULINO, Especialidad.CARDIOLOGIA,"tonyst@espol.edu.ec","1234"));
         addMedico(new UsrMedico("Tony","Stark",32, Genero.MASCULINO, Especialidad.CARDIOLOGIA,"root","admin"));
 
-        addPaciente(new UsrPaciente("Natasha","Romanov",31,Genero.FEMENINO));
+        /*addPaciente(new UsrPaciente("Natasha","Romanov",31,Genero.FEMENINO));
         addPaciente(new UsrPaciente("Mary","Jane",28,Genero.FEMENINO));
         addPaciente(new UsrPaciente("Peter","Parker",21,Genero.MASCULINO));
-        addPaciente(new UsrPaciente("Barry","Allen",25,Genero.MASCULINO));
+        addPaciente(new UsrPaciente("Barry","Allen",25,Genero.MASCULINO));*/
 
         cargarVideos();
     }
+
 
     public static UsrMedico iniciarSesion(String usuario, String contrasenia){
         for (UsrMedico m: medicosRegistrados){
@@ -92,7 +93,7 @@ public class SysData {
         }
     }
 
-    public static void simulacion(){
+    private static void simulacion(){
         Scanner sc = new Scanner(System.in);
         String opcion="";
         while(!opcion.equals("6")){
@@ -101,7 +102,7 @@ public class SysData {
                     "2. Ingresar Paciente\n" +
                     "3. Agregar Medico\n" +
                     "4. Ingresar como Medico\n" +
-                    "5. Supongo que turnos :v\n" +
+                    "5. Supongo que puestos :v\n" +
                     "6. Salir");
             System.out.print("Ingrese una opción: ");
             opcion = sc.next();

@@ -14,10 +14,10 @@ public class SysController {
         return true;
     }
 
-    public boolean añadirPaciente(String nomb, String ape, String ed, Genero gen){
+    /*public boolean añadirPaciente(String nomb, String ape, String ed, Genero gen){
         UsrPaciente pac = new UsrPaciente(nomb, ape, Integer.parseInt(ed), gen);
         SysData.addPaciente(pac);
         return true;
-    }
+    }*/
 
 }

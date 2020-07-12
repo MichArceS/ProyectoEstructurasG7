@@ -6,11 +6,9 @@ public class UsrPaciente extends Usuario{
 
     private Sintoma sintoma;
 
-    public UsrPaciente(String n, String a, int e, Genero g) {
-        super.nombre = n;
-        super.apellido = a;
-        super.edad = e;
-        super.genero = g;
+    public UsrPaciente(String n, String a, int e, Genero g, Sintoma s) {
+        super(n,a,e,g);
+        sintoma = s;
     }
 
     public Sintoma getSintoma() {

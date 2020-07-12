@@ -9,6 +9,13 @@ public class Usuario {
     protected int edad;
     protected Genero genero;
 
+    public Usuario(String nombre, String apellido, int edad, Genero genero){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.genero = genero;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -16,7 +23,6 @@ public class Usuario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
 
     public Genero getGenero() {
         return genero;

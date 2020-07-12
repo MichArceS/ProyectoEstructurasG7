@@ -6,6 +6,8 @@ import ec.edu.espol.constants.Especialidad;
 import ec.edu.espol.constants.Genero;
 
 import java.io.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -67,7 +69,7 @@ public class LeerEscribirDatos {
         return true;
     }
 
-    //Videos
+    //VIDEOS
     public static CircularSimplyLinkedList<Video> cargarVideos(){
         CircularSimplyLinkedList<Video> videos = new CircularSimplyLinkedList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(Constantes.RUTAVIDEOS))){
@@ -85,6 +87,22 @@ public class LeerEscribirDatos {
         return videos;
     }
 
+    //CONSULTAS
+    public static boolean registrarConsulta(Consulta c){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(Constantes.RUTACONSULTAS,true))){
+            String line = "Medico: " + c.getMedico().getNombre() + " " + c.getMedico().getApellido() + " | " +
+                          "Paciente: " + c.getPaciente().getNombre() + " " + c.getPaciente().getApellido() + " | " +
+                          "Fecha: " + LocalDate.now() + " | " +
+                          "Hora: " + LocalDateTime.now().getHour() + "h" + LocalDateTime.now().getMinute() + " | " +
+                          "Diagnostico: " + c.getDiagnostico() + " | " +
+                          "Receta: " + c.getReceta() + "\n";
+            bw.write(line);
+        }catch(IOException ex){
+            System.out.println(ex.getMessage());
+            return false;
+        }
+        return true;
+    }
 
     /*public static void main(String[] args){
         List<Sintoma> sintomas = cargarSintomas();
@@ -109,5 +127,6 @@ public class LeerEscribirDatos {
         for(UsrMedico m: medicos){
             System.out.println(m);
         }
+        System.out.println(registrarConsulta(new Consulta(new UsrMedico("a","b",15,Genero.MASCULINO,Especialidad.CARDIOLOGIA, "sdsds","dsdsds"), new UsrPaciente("aaa","bbb",21,Genero.FEMENINO,new Sintoma("fiebre",1)),"diagnostico","receta")));
     }*/
 }

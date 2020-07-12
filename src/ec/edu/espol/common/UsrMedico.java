@@ -6,22 +6,19 @@ import ec.edu.espol.constants.Genero;
 import java.util.PriorityQueue;
 
 public class UsrMedico extends Usuario{
-
     private Especialidad especialidad;
     private boolean disponible;
     private String usuario;
     private String contraseña;
-    private static PriorityQueue<Turno> turnos;
+    private PriorityQueue<UsrPaciente> pacientesXatender;
 
-    public UsrMedico(String n, String a, int e, Genero g, Especialidad esp,String usr,String contra) {
-        super.nombre = n;
-        super.apellido = a;
-        super.edad = e;
-        super.genero = g;
+    public UsrMedico(String n, String a, int e, Genero g, Especialidad esp, String usr, String contra) {
+        super(n,a,e,g);
         especialidad = esp;
-        disponible = true;
         usuario = usr;
         contraseña = contra;
+        disponible = true;
+        pacientesXatender = new PriorityQueue<>((UsrPaciente p1, UsrPaciente p2)->p1.getSintoma().getPrioridad()-p2.getSintoma().getPrioridad());
     }
 
     public Especialidad getEspecialidad() {
