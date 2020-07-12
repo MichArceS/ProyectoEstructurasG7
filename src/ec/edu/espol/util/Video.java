@@ -1,15 +1,15 @@
 package ec.edu.espol.util;
 
-import javafx.scene.media.Media;
-
 public class Video {
 
     private String nombre;
-    private Media media;
+    private String media;
+    private Long duracion;
 
-    public Video(String n, String uri) {
+    public Video(String n, String uri, long d) {
         nombre = n;
-        media = new Media(uri);
+        media = uri;
+        duracion = d;
     }
 
     public String getNombre() {
@@ -20,11 +20,28 @@ public class Video {
         this.nombre = nombre;
     }
 
-    public Media getMedia() {
+    public String getMedia() {
         return media;
     }
 
-    public void setMedia(Media media) {
+    public void setMedia(String media) {
         this.media = media;
+    }
+
+    public Long getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(Long duracion) {
+        this.duracion = duracion;
+    }
+
+    @Override
+    public String toString() {
+        return "Video{" +
+                "nombre='" + nombre + '\'' +
+                ", media='" + media + '\'' +
+                ", duracion=" + duracion +
+                '}';
     }
 }

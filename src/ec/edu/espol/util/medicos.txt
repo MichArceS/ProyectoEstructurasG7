@@ -1,5 +1,5 @@
-Jose|Alban|35|MASCULINO|MEDICINA_GENERAL
-Bruce|Banner|42|MASCULINO|PSIQUIATRIA
-Peppa|Pig|29|FEMENINO|PEDIATRIA
-Tony|Stark|32|MASCULINO|CARDIOLOGIA
-Juanito|Alcachofa|31|MASCULINO|PEDIATRIA
+Jose|Alban|35|MASCULINO|MEDICINA_GENERAL|josealb@espol.edu.ec|1234
+Bruce|Banner|42|MASCULINO|PSIQUIATRIA|bruban@espol.edu.ec|1234
+Peppa|Pig|29|FEMENINO|PEDIATRIA|pepapi@espol.edu.ec|1234
+Tony|Stark|32|MASCULINO|CARDIOLOGIA|tonyst@espol.edu.ec|1234
+Juanito|Alcachofa|31|MASCULINO|PEDIATRIA|juanito@espol.edu.ec|1234

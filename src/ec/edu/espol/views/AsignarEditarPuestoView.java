@@ -3,25 +3,24 @@ package ec.edu.espol.views;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
-public class LoginView implements View{
+public class AsignarEditarPuestoView {
     private BorderPane root;
     private Label lblInicioSesion;
     public static Label lblHora;
-    private Label lblUsuario;
-    private TextField txtUsuario;
-    private Label lblPassword;
-    private PasswordField txtPassword;
+    private Label lblPuesto;
+    private ComboBox txtPuesto;
+    private Label lblMedico;
+    private ComboBox txtMedico;
     private Button btnCancelar;
-    private Button btnIniciarSesion;
+    private Button btnAgregarPuesto;
 
-    public LoginView(){
+    public AsignarEditarPuestoView(){
         crearEstructura();
 
     }
@@ -29,7 +28,7 @@ public class LoginView implements View{
     private void crearEstructura(){
         root = new BorderPane();
         crearBotones();
-        creatTxtFields();
+        crearComboBox();
         crearLabels();
         AnchorPane top = new AnchorPane();
         AnchorPane.setLeftAnchor(lblInicioSesion,10d);
@@ -38,47 +37,45 @@ public class LoginView implements View{
         root.setTop(top);
         AnchorPane bottom = new AnchorPane();
         AnchorPane.setLeftAnchor(btnCancelar,10d);
-        AnchorPane.setRightAnchor(btnIniciarSesion,10d);
-        bottom.getChildren().addAll(btnCancelar,btnIniciarSesion);
+        AnchorPane.setRightAnchor(btnAgregarPuesto,10d);
+        bottom.getChildren().addAll(btnCancelar,btnAgregarPuesto);
         root.setBottom(bottom);
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(20);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
-        grid.add(lblUsuario,0,0);
-        grid.add(txtUsuario,1,0);
-        grid.add(lblPassword,0,1);
-        grid.add(txtPassword,1,1);
+        grid.add(lblPuesto,0,0);
+        grid.add(txtPuesto,1,0);
+        grid.add(lblMedico,0,1);
+        grid.add(txtMedico,1,1);
         root.setCenter(grid);
     }
 
     private void crearBotones(){
         btnCancelar = new Button("CANCELAR");
         btnCancelar.setOnAction(e->{
-            txtUsuario.clear();
-            txtPassword.clear();
-            MainScene.scene.setRoot(MainScene.inicio.getRoot());
+            MainScene.scene.setRoot(MainScene.puestosView.getRoot());
         });
-        btnIniciarSesion = new Button("INICIAR SESION");
-        btnIniciarSesion.setOnAction(e->{
-            txtUsuario.clear();
-            txtPassword.clear();
-            MainScene.scene.setRoot(MainScene.medicoView.getRoot());
+        btnAgregarPuesto = new Button("REASIGNAR PUESTO");
+        btnAgregarPuesto.setOnAction(e->{
+            if(MainScene.confirmStage.confirmar("reasignar el puesto?")) {
+                MainScene.scene.setRoot(MainScene.puestosView.getRoot());
+            }
         });
     }
 
-    private void creatTxtFields(){
-        txtUsuario = new TextField();
-        txtPassword = new PasswordField();
+    private void crearComboBox(){
+        txtPuesto = new ComboBox();
+        txtMedico = new ComboBox();
 
     }
 
     private void crearLabels(){
-        lblInicioSesion = new Label("Inicio de Sesion");
+        lblInicioSesion = new Label("Reasignar Puesto");
         lblHora = new Label("12:30");
-        lblUsuario = new Label("Usuario:");
-        lblPassword = new Label("Contraseña: ");
+        lblPuesto = new Label("Puesto:");
+        lblMedico = new Label("Medico Asignado: ");
         instanciarIDs();
     }
 
@@ -89,6 +86,5 @@ public class LoginView implements View{
     private void instanciarIDs(){
         lblHora.setId("lblHora");
         lblInicioSesion.setId("lblPaciente");
-        txtPassword.setId("lblPassword");
     }
 }

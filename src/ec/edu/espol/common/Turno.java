@@ -4,10 +4,10 @@ public class Turno {
 
     private UsrMedico medicoAsignado;
     private UsrPaciente pacienteAtender;
-    private int puestoAsignado;
+    private Puesto puestoAsignado;
     private int turnoAsignado;
 
-    public Turno(UsrMedico m, UsrPaciente p, int pA, int t) {
+    public Turno(UsrMedico m, UsrPaciente p, Puesto pA, int t) {
         medicoAsignado = m;
         pacienteAtender = p;
         puestoAsignado = pA;
@@ -30,11 +30,11 @@ public class Turno {
         this.pacienteAtender = pacienteAtender;
     }
 
-    public int getPuestoAsignado() {
+    public Puesto getPuestoAsignado() {
         return puestoAsignado;
     }
 
-    public void setPuestoAsignado(int puestoAsignado) {
+    public void setPuestoAsignado(Puesto puestoAsignado) {
         this.puestoAsignado = puestoAsignado;
     }
 

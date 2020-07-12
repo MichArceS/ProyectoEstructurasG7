@@ -1,6 +1,5 @@
 package ec.edu.espol.views;
 
-import ec.edu.espol.common.Turno;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
@@ -14,6 +13,12 @@ public class MainScene {
     static FormPacienteView formPacienteView;
     static FormMedicoView formMedicoView;
     static LoginView loginView;
+    static TurnosView turnosView;
+    static PuestosView puestosView;
+    static NuevoPuestoView nuevoPuestoView;
+    static AsignarEditarPuestoView asignarEditarPuestoView;
+    static EliminarPuestoView eliminarPuestoView;
+    static ConfirmStage confirmStage;
     private double x=0;
     private double y=0;
 
@@ -24,10 +29,16 @@ public class MainScene {
         formPacienteView = new FormPacienteView();
         formMedicoView = new FormMedicoView();
         loginView = new LoginView();
-        scene = new Scene(inicio.getRoot(),1000,600);
+        turnosView = new TurnosView();
+        puestosView = new PuestosView();
+        nuevoPuestoView = new NuevoPuestoView();
+        asignarEditarPuestoView = new AsignarEditarPuestoView();
+        eliminarPuestoView = new EliminarPuestoView();
+        scene = new Scene(inicio.getRoot(),1200,600);
         stage.setTitle("INICIO");
         stage.setScene(scene);
         allowDrag(stage);
+        confirmStage = new ConfirmStage(stage);
     }
 
     private void allowDrag(Stage stage){

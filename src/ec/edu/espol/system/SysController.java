@@ -8,8 +8,8 @@ import ec.edu.espol.constants.Genero;
 
 public class SysController {
 
-    public boolean añadirMedico(String nomb, String ape, String ed, Genero gen, Especialidad esp) {
-        UsrMedico med = new UsrMedico(nomb, ape, Integer.parseInt(ed), gen, esp);
+    public boolean añadirMedico(String nomb, String ape, String ed, Genero gen, Especialidad esp,String usr,String contr) {
+        UsrMedico med = new UsrMedico(nomb, ape, Integer.parseInt(ed), gen, esp,usr,contr);
         SysData.addMedico(med);
         return true;
     }

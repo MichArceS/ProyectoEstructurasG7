@@ -46,7 +46,7 @@ public class LeerEscribirDatos {
             String line = br.readLine();
             while(line != null){
                 String[] data = line.split("\\|");
-                medicos.add(new UsrMedico(data[0],data[1],Integer.valueOf(data[2]),Genero.valueOf(data[3]),Especialidad.valueOf(data[4])));
+                medicos.add(new UsrMedico(data[0],data[1],Integer.valueOf(data[2]),Genero.valueOf(data[3]),Especialidad.valueOf(data[4]),String.valueOf(data[5]),String.valueOf(data[6])));
                 line = br.readLine();
             }
         }catch(IOException ex){
@@ -65,6 +65,24 @@ public class LeerEscribirDatos {
             return false;
         }
         return true;
+    }
+
+    //Videos
+    public static CircularSimplyLinkedList<Video> cargarVideos(){
+        CircularSimplyLinkedList<Video> videos = new CircularSimplyLinkedList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(Constantes.RUTAVIDEOS))){
+            String line = br.readLine();
+            while(line != null){
+                String[] data = line.split("-");
+                long l = Integer.parseInt(data[2]);
+                System.out.println(l);
+                videos.addLast(new Video(data[0],data[1],l));
+                line = br.readLine();
+            }
+        }catch(IOException ex){
+            System.out.println(ex.getMessage());
+        }
+        return videos;
     }
 
 
