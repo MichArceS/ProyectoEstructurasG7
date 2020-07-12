@@ -1,13 +1,9 @@
 package ec.edu.espol.system;
 
 //<<<<<<< HEAD
-import ec.edu.espol.common.Sintoma;
+import ec.edu.espol.common.*;
 //=======
-import ec.edu.espol.common.Puesto;
 //>>>>>>> 76a2a74796b79431e135fa07aa631d8ba5e6d878
-import ec.edu.espol.common.UsrMedico;
-import ec.edu.espol.common.UsrPaciente;
-import ec.edu.espol.common.Usuario;
 import ec.edu.espol.constants.Especialidad;
 import ec.edu.espol.constants.Genero;
 import ec.edu.espol.util.CircularSimplyLinkedList;
@@ -20,27 +16,28 @@ import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class SysData {
-    private static PriorityQueue<UsrPaciente> pacientes;
+    //private static PriorityQueue<UsrPaciente> pacientes;
     private static List<UsrMedico> medicosRegistrados;
-    private static LinkedList<Puesto> puestos;
+    private static PriorityQueue<Puesto> puestos;
     private static CircularSimplyLinkedList<Video> videos;
     private static List<Sintoma> sintomasActuales;
 
     public SysData(){
-        pacientes = new PriorityQueue<>();
+        //pacientes = new PriorityQueue<>();
         medicosRegistrados = LeerEscribirDatos.cargarMedicos();
+        puestos = new PriorityQueue<>((Puesto p1, Puesto p2)->p1.getMedico().getPacientesXatender().size()-p2.getMedico().getPacientesXatender().size());
+        puestos.addAll(LeerEscribirDatos.cargarPuestos(medicosRegistrados));
         sintomasActuales = LeerEscribirDatos.cargarSintomas();
         videos = new CircularSimplyLinkedList<>();
-        //usuarios = new LinkedList<>();
     }
 
     public static void addMedico(UsrMedico med){
         medicosRegistrados.add(med);
     }
 
-    public static void addPaciente(UsrPaciente pac){
+    /*public static void addPaciente(UsrPaciente pac){
         pacientes.offer(pac);
-    }
+    }*/
 
     public static void cargarVideos() {
         videos = LeerEscribirDatos.cargarVideos();
@@ -70,10 +67,17 @@ public class SysData {
         return null;
     }
 
-    //SIMULACION EN CONSOLA
+    public static Puesto ingresarPaciente(UsrPaciente p){
+        Puesto puesto = puestos.poll();
+        puesto.getMedico().getPacientesXatender().offer(p);
+        puestos.offer(puesto);
+        return puesto;
+    }
 
+    //SIMULACION EN CONSOLA
     private static void menuMedico(UsrMedico m){
         Scanner sc = new Scanner(System.in);
+        sc.useDelimiter("\n");
         String opcion = "";
         while(!opcion.equals("2")){
             System.out.println("Medico " + m.getNombre() + " " + m.getApellido());
@@ -83,6 +87,19 @@ public class SysData {
             opcion = sc.next();
             switch (opcion){
                 case "1":
+                    if(!m.getPacientesXatender().isEmpty()){
+                        UsrPaciente p = m.atenderPaciente();
+                        System.out.println("Paciente: " + p.getNombre() + " " + p.getApellido());
+                        System.out.println("Edad: " + p.getEdad());
+                        System.out.println("Prioridad de Sintoma: " + p.getSintoma().getPrioridad());
+                        System.out.print("Ingrese Diagnostico: ");
+                        String diag = sc.next();
+                        System.out.print("Ingrese Receta: ");
+                        String rec = sc.next();
+                        Consulta c = new Consulta(m,p,diag,rec);
+                        LeerEscribirDatos.registrarConsulta(c);
+                    }else
+                        System.out.println("No tiene pacientes por atender");
                     break;
                 case "2":
                     simulacion();
@@ -95,6 +112,7 @@ public class SysData {
 
     private static void simulacion(){
         Scanner sc = new Scanner(System.in);
+        sc.useDelimiter("\n");
         String opcion="";
         while(!opcion.equals("6")){
             System.out.println("SIMULACION SISTEMA CLINICO");
@@ -110,6 +128,22 @@ public class SysData {
                 case "1":
                     break;
                 case "2":
+                    System.out.print("Ingrese nombre: ");
+                    String nombre = sc.next();
+                    System.out.print("Ingrese apellido: ");
+                    String apellido = sc.next();
+                    System.out.print("Ingrese su edad: ");
+                    int edad = sc.nextInt();
+                    System.out.print("Ingrese su genero: ");
+                    Genero gen = Genero.valueOf(sc.next());
+                    System.out.print("Ingrese nombre de sintoma: ");
+                    String nSin = sc.next();
+                    System.out.print("Ingrese la prioridad: ");
+                    int prior = sc.nextInt();
+                    Sintoma s = new Sintoma(nSin, prior);
+                    UsrPaciente paciente = new UsrPaciente(nombre,apellido,edad,gen,s);
+                    Puesto p = ingresarPaciente(paciente);
+                    System.out.println("Se le ha derivado al puesto " + p.getNumPuesto() + " con el medico " + p.getMedico().getNombre() + " " + p.getMedico().getApellido());
                     break;
                 case "3":
                     break;

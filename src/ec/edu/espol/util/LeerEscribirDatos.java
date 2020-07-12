@@ -104,6 +104,16 @@ public class LeerEscribirDatos {
         return true;
     }
 
+    //PUESTOS
+    public static List<Puesto> cargarPuestos(List<UsrMedico> medicos){
+        List<Puesto> puestos = new LinkedList<>();
+        int cont=1;
+        for(UsrMedico m: medicos){
+            puestos.add(new Puesto(cont++, m));
+        }
+        return puestos;
+    }
+
     /*public static void main(String[] args){
         List<Sintoma> sintomas = cargarSintomas();
         //System.out.println(sintomas.size());

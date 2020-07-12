@@ -37,8 +37,16 @@ public class UsrMedico extends Usuario{
         this.disponible = disponible;
     }
 
+    public PriorityQueue<UsrPaciente> getPacientesXatender() {
+        return pacientesXatender;
+    }
+
     public boolean verificarUsuario(String usuario, String contrasenia){
         return (this.usuario.equals(usuario)) && (this.contraseña.equals(contrasenia));
+    }
+
+    public UsrPaciente atenderPaciente(){
+        return pacientesXatender.poll();
     }
 
     @Override

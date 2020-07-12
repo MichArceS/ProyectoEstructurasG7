@@ -4,6 +4,11 @@ public class Puesto {
     private int numPuesto;
     private UsrMedico medico;
 
+    public Puesto(int numPuesto, UsrMedico medico){
+        this.numPuesto = numPuesto;
+        this.medico = medico;
+    }
+
     public int getNumPuesto() {
         return numPuesto;
     }
