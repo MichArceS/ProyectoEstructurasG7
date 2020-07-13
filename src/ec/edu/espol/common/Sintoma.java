@@ -28,9 +28,6 @@ public class Sintoma {
 
     @Override
     public String toString() {
-        return "Sintoma{" +
-                "nombre='" + nombre + '\'' +
-                ", prioridad=" + prioridad +
-                '}';
+        return nombre.toUpperCase();
     }
 }
