@@ -1,5 +1,6 @@
 package ec.edu.espol.views;
 
+import ec.edu.espol.common.Turno;
 import ec.edu.espol.main.Main;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,6 +12,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.MediaView;
 
+import java.util.LinkedList;
+
 public class TurnosView {
 
     private BorderPane root;
@@ -20,8 +23,10 @@ public class TurnosView {
     private HBox mid;
     public static MediaView mediaView;
     private GridPane turnos;
+    private static LinkedList<Turno> turnosMostrar;
 
     public TurnosView() {
+        turnosMostrar = new LinkedList<>();
         inicializarObjetos();
         crearEstructuraSuperior();
         crearEstructuraInferior();
@@ -100,8 +105,11 @@ public class TurnosView {
         turnos.add(puesto4,1,4);
     }
 
-    private void añadirTurnos() {
-
+    public static void añadirTurnos(Turno turno) {
+        if (turnosMostrar.size() < 4) turnosMostrar.addFirst(turno);
+        else if (turnosMostrar.size() >= 4){
+            turnosMostrar.remove(turnosMostrar.size()-1);
+            turnosMostrar.addFirst(turno); }
     }
 
     public BorderPane getRoot() {

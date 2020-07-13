@@ -4,6 +4,7 @@ import ec.edu.espol.common.*;
 import ec.edu.espol.constants.Especialidad;
 import ec.edu.espol.constants.Genero;
 import ec.edu.espol.util.LeerEscribirDatos;
+import ec.edu.espol.views.TurnosView;
 
 import java.util.Iterator;
 
@@ -30,6 +31,7 @@ public class SysController {
             SysData.addConsulta(c);
             LeerEscribirDatos.registrarConsulta(c);
             consulta = c;
+            TurnosView.añadirTurnos(turno);
             return c;
         }
         return null;
