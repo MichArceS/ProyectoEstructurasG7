@@ -1,5 +1,6 @@
 package ec.edu.espol.views;
 
+import ec.edu.espol.system.SysController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -62,9 +63,11 @@ public class LoginView implements View{
         });
         btnIniciarSesion = new Button("INICIAR SESION");
         btnIniciarSesion.setOnAction(e->{
-            txtUsuario.clear();
-            txtPassword.clear();
-            MainScene.scene.setRoot(MainScene.medicoView.getRoot());
+            if(SysController.iniciarSesion(txtUsuario.getText(),txtPassword.getText())){
+                txtUsuario.clear();
+                txtPassword.clear();
+                MainScene.scene.setRoot(MainScene.medicoView.getRoot());
+            }
         });
     }
 

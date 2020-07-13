@@ -24,6 +24,8 @@ public class SysData {
         //medicosRegistrados = LeerEscribirDatos.cargarMedicos();
         sintomasActuales = LeerEscribirDatos.cargarSintomas();
         videos = new CircularSimplyLinkedList<>();
+        añadirInfo();
+        System.out.println(sintomasActuales);
     }
 
     public static void addMedico(UsrMedico med){
@@ -43,6 +45,10 @@ public class SysData {
 
     public static void addConsulta(Consulta c){
         consultas.add(c);
+    }
+
+    public static List<Sintoma> getSintomasActuales() {
+        return sintomasActuales;
     }
 
     private void añadirInfo(){

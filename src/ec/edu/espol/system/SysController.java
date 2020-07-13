@@ -25,7 +25,7 @@ public class SysController {
         return false;
     }
 
-    public boolean añadirPaciente(String nomb, String ape, String ed, Genero gen, Sintoma s){
+    public static boolean añadirPaciente(String nomb, String ape, String ed, Genero gen, Sintoma s){
         UsrPaciente pac = new UsrPaciente(nomb, ape, Integer.parseInt(ed), gen,s);
         SysData.addPaciente(pac);
         return true;
@@ -35,7 +35,7 @@ public class SysController {
         return medicoLogeado.getTurnos().poll();
     }
 
-    public boolean siguienteTurno(){
+    public static boolean siguienteTurno(){
         Turno turno = medicoLogeado.atenderPaciente();
         Consulta c = new Consulta(medicoLogeado,turno.getPacienteAtender());
         SysData.addConsulta(c);

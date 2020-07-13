@@ -1,16 +1,20 @@
 package ec.edu.espol.views;
 
+import ec.edu.espol.common.Sintoma;
 import ec.edu.espol.constants.Especialidad;
 import ec.edu.espol.constants.Genero;
+import ec.edu.espol.system.SysController;
+import ec.edu.espol.system.SysData;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 
 public class FormPacienteView implements View{
     private BorderPane root;
@@ -33,7 +37,6 @@ public class FormPacienteView implements View{
 
     public FormPacienteView(){
         crearEstructura();
-
     }
 
     private void crearEstructura(){
@@ -85,10 +88,12 @@ public class FormPacienteView implements View{
         btnTerminar = new Button("TERMINAR");
         btnTerminar.setOnAction(e->{
             if(MainScene.confirmStage.confirmar("terminar el Formulario?")) {
-                txtNombre.clear();
-                txtApellido.clear();
-                txtEdad.clear();
-                MainScene.scene.setRoot(MainScene.inicio.getRoot());
+                if(SysController.añadirPaciente(txtNombre.getText(),txtApellido.getText(),txtEdad.getText(),(Genero)comboGenero.getSelectionModel().getSelectedItem(),(Sintoma) comboSintoma.getSelectionModel().getSelectedItem())){
+                    txtNombre.clear();
+                    txtApellido.clear();
+                    txtEdad.clear();
+                    MainScene.scene.setRoot(MainScene.inicio.getRoot());
+                }
             }
         });
     }
@@ -114,9 +119,8 @@ public class FormPacienteView implements View{
     }
 
     private void crearComboBoxs(){
-        ObservableList lista = FXCollections.observableArrayList("1","2","3");
         comboGenero = new ComboBox(FXCollections.observableArrayList(Genero.values()));
-        comboSintoma = new ComboBox(lista);
+        comboSintoma = new ComboBox(FXCollections.observableList(SysData.getSintomasActuales()));
         comboEspecialidad = new ComboBox(FXCollections.observableArrayList(Especialidad.values()));
     }
 

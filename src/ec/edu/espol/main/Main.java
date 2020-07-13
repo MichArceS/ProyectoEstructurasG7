@@ -31,8 +31,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        mainScene = new MainScene(primaryStage);
         sysData = new SysData();
+        mainScene = new MainScene(primaryStage);
         hiloVideos.start();
         hilo.start();
         setUserAgentStylesheet(Constantes.RUTASTYLE);
