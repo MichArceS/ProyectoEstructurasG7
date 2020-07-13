@@ -1,0 +1,3 @@
+Medico: Tony Stark | Paciente: Julio Zevallos | Fecha: 2020-07-12 | Hora: 3h7 | Diagnostico: tiene que tomar agua | Receta: paracetamol y agua
+Medico: Tony Stark | Paciente: qwerty dcdcd | Fecha: 2020-07-12 | Hora: 3h7 | Diagnostico: asasasa | Receta: cxcxcxc
+Medico: Juanito Alcachofa | Paciente: Wacho Rivas | Fecha: 2020-07-12 | Hora: 3h8 | Diagnostico: qwerty | Receta: qw

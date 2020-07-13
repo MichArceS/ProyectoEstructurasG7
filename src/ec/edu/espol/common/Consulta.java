@@ -6,11 +6,14 @@ public class Consulta {
     private String diagnostico;
     private String receta;
 
-    public Consulta(UsrMedico medico, UsrPaciente paciente, String diagnostico, String receta){
+    public Consulta(UsrMedico medico, UsrPaciente paciente){
         this.medico = medico;
         this.paciente = paciente;
-        this.diagnostico = diagnostico;
-        this.receta = receta;
+    }
+
+    public void setDiagnostico(String dig){diagnostico = dig;}
+
+    public void setReceta(String rec){receta = rec;
     }
 
     public UsrMedico getMedico() {
