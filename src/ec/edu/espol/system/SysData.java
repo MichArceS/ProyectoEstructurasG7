@@ -8,6 +8,8 @@ import ec.edu.espol.util.CircularSimplyLinkedList;
 import ec.edu.espol.util.LeerEscribirDatos;
 import ec.edu.espol.util.Video;
 
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -18,14 +20,25 @@ public class SysData {
     protected static CircularSimplyLinkedList<Video> videos;
     protected static List<Consulta> consultas;
     protected static List<Sintoma> sintomasActuales;
+    protected static LinkedList<Puesto> puestos;
 
     public SysData(){
         medicosRegistrados = new PriorityQueue<>((UsrMedico m1,UsrMedico m2)->m1.getTurnos().size() - m2.getTurnos().size());
         //medicosRegistrados = LeerEscribirDatos.cargarMedicos();
         sintomasActuales = LeerEscribirDatos.cargarSintomas();
+        puestos = new LinkedList<>();
         videos = new CircularSimplyLinkedList<>();
         añadirInfo();
         System.out.println(sintomasActuales);
+    }
+
+    protected static Puesto buscarPuestoNumero(int num) {
+        Iterator<Puesto> it = puestos.iterator();
+        while(it.hasNext()) {
+            Puesto p = it.next();
+            if (num == p.getNumPuesto()) return p;
+        }
+        return null;
     }
 
     public static void addMedico(UsrMedico med){
@@ -39,6 +52,9 @@ public class SysData {
         medicosRegistrados.offer(medico);
     }
 
+    public static void addPuesto(Puesto p) {
+        puestos.add(p);
+    }
     public static void cargarVideos() {
         videos = LeerEscribirDatos.cargarVideos();
     }
