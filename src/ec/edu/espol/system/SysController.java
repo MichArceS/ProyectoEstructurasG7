@@ -53,4 +53,70 @@ public class SysController {
         consulta = null;
         return true;
     }
+    
+    public boolean crearPuesto(String numeroPuesto, UsrMedico medico) {
+        if (medico.getPuesto() != null) return false;
+        try {
+            int numeroP = Integer.parseInt(numeroPuesto);
+            Puesto puesto = new Puesto(numeroP,medico);
+            Iterator<Puesto> it = SysData.puestos.iterator();
+            while(it.hasNext()) {
+                if (it.next().getNumPuesto() == numeroP) return false;
+            }
+            SysData.addPuesto(puesto);
+            return true;
+        }
+        catch(Exception ex) {
+            return false;
+        }
+    }
+
+    public boolean asignarMedicoPuesto(String numeroPuesto, UsrMedico medico) {
+        if (medico.getPuesto() != null) return false;
+        try {
+            int nPuesto = Integer.parseInt(numeroPuesto);
+            Puesto p = SysData.buscarPuestoNumero(nPuesto);
+            if (p == null) return false;
+            else {
+                if (p.getMedico() == null) {
+                    p.setMedico(medico);
+                    return true;}
+                else {
+                    p.getMedico().setPuesto(null);
+                    medico.setPuesto(p);
+                    p.setMedico(medico);
+                    return true; } } }
+        catch(Exception ex) {
+            return false; }
+    }
+
+    public boolean desasignarPuesto(String numero) {
+        try {
+            int n = Integer.parseInt(numero);
+            Puesto p = SysData.buscarPuestoNumero(n);
+            if(p != null) {
+                if (p.getMedico() == null) {
+                    return false; }
+                else if (p.getMedico() != null) {
+                    p.getMedico().setPuesto(null);
+                    p.setMedico(null);
+                    return true; } }
+            return false; }
+        catch(Exception ex) {
+            return false; }
+    }
+    public boolean eliminarPuesto(String numero) {
+        try {
+            int n = Integer.parseInt(numero);
+            Puesto p = SysData.buscarPuestoNumero(n);
+            if (p != null) {
+                if (p.getMedico() == null) {
+                    SysData.puestos.remove(p);
+                    return true; } }
+            return false;
+        }
+        catch(Exception ex) {
+            return false;
+        }
+    }
 }
