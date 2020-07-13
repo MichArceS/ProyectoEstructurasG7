@@ -5,13 +5,16 @@ public class Turno {
     private UsrMedico medicoAsignado;
     private UsrPaciente pacienteAtender;
     private Puesto puestoAsignado;
-    private static int turnoAsignado=0;
+    private int turnoAsignado;
+    private static int turnosTotales=0;
 
     public Turno(UsrMedico m, UsrPaciente p) {
         medicoAsignado = m;
+        m.setDisponible(true);
         pacienteAtender = p;
         puestoAsignado = m.getPuesto();
-        turnoAsignado +=1;
+        turnoAsignado = turnosTotales+1;
+        turnosTotales+=1;
     }
 
     public UsrMedico getMedicoAsignado() {
@@ -46,13 +49,9 @@ public class Turno {
         this.turnoAsignado = turnoAsignado;
     }
 
+
     @Override
     public String toString() {
-        return "Turno{" +
-                "medicoAsignado=" + medicoAsignado +
-                ", pacienteAtender=" + pacienteAtender +
-                ", puestoAsignado=" + puestoAsignado +
-                ", turnoAsignado=" + turnoAsignado +
-                '}';
+        return String.valueOf(turnoAsignado);
     }
 }

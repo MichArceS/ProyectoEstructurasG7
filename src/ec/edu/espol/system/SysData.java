@@ -2,7 +2,6 @@ package ec.edu.espol.system;
 
 
 import ec.edu.espol.common.*;
-import ec.edu.espol.constants.Especialidad;
 import ec.edu.espol.constants.Genero;
 import ec.edu.espol.util.CircularSimplyLinkedList;
 import ec.edu.espol.util.LeerEscribirDatos;
@@ -29,6 +28,7 @@ public class SysData {
         puestos = new LinkedList<>();
         videos = new CircularSimplyLinkedList<>();
         consultas = new LinkedList<>();
+        añadirInfo();
         System.out.println(medicosRegistrados);
     }
 
@@ -36,7 +36,7 @@ public class SysData {
         Iterator<Puesto> it = puestos.iterator();
         while(it.hasNext()) {
             Puesto p = it.next();
-            if (num == p.getNumPuesto()) return p;
+            if (num == p.getPuestoAsignado()) return p;
         }
         return null;
     }
@@ -77,11 +77,18 @@ public class SysData {
     }
 
     private void añadirInfo(){
+        /*
         addMedico(new UsrMedico("Jose","Alban",35, Genero.MASCULINO, Especialidad.MEDICINA_GENERAL,"josealb@espol.edu.ec","1234"));
         addMedico(new UsrMedico("Bruce","Banner",42, Genero.MASCULINO, Especialidad.PSIQUIATRIA,"bruban@espol.edu.ec","1234"));
         addMedico(new UsrMedico("Peppa","Pig",29, Genero.FEMENINO, Especialidad.PEDIATRIA,"pepapi@espol.edu.ec","1234"));
         addMedico(new UsrMedico("Tony","Stark",32, Genero.MASCULINO, Especialidad.CARDIOLOGIA,"tonyst@espol.edu.ec","1234"));
         addMedico(new UsrMedico("Tony","Stark",32, Genero.MASCULINO, Especialidad.CARDIOLOGIA,"root","admin"));
+        */
+        for(UsrMedico m : medicosRegistrados){
+            Puesto p = new Puesto(m);
+            m.setPuesto(p);
+            puestos.add(p);
+        }
 
         addPaciente(new UsrPaciente("Natasha","Romanov",31,Genero.FEMENINO,sintomasActuales.get(0)));
         addPaciente(new UsrPaciente("Mary","Jane",28,Genero.FEMENINO,sintomasActuales.get(1)));

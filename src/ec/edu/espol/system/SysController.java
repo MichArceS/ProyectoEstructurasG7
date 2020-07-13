@@ -60,7 +60,8 @@ public class SysController {
         if (medico.getPuesto() != null) return false;
         try {
             Puesto puesto = new Puesto(medico);
-            Iterator<Puesto> it = SysData.puestos.iterator();
+            medico.setPuesto(puesto);
+            medico.setDisponible(true);
             SysData.addPuesto(puesto);
             return true;
         }
@@ -76,10 +77,13 @@ public class SysController {
             else {
                 if (p.getMedico() == null) {
                     p.setMedico(medico);
+                    medico.setPuesto(p);
+                    medico.setDisponible(true);
                     return true;}
                 else {
                     p.getMedico().setPuesto(null);
                     medico.setPuesto(p);
+                    medico.setDisponible(true);
                     p.setMedico(medico);
                     return true; } } }
         catch(Exception ex) {
@@ -92,6 +96,7 @@ public class SysController {
                 if (p.getMedico() == null) {
                     return false; }
                 else if (p.getMedico() != null) {
+                    p.getMedico().setDisponible(false);
                     p.getMedico().setPuesto(null);
                     p.setMedico(null);
                     return true; } }

@@ -1,13 +1,13 @@
 package ec.edu.espol.common;
 
 public class Puesto {
-    private int numPuesto;
+    private int puestoAsignado;
     private UsrMedico medico;
     private static int puestosTotales=0;
 
     public Puesto(UsrMedico medico){
         this.medico = medico;
-        numPuesto+= puestosTotales + 1 ;
+        puestoAsignado = puestosTotales + 1 ;
         puestosTotales+=1;
     }
 
@@ -15,12 +15,8 @@ public class Puesto {
         return puestosTotales;
     }
 
-    public int getNumPuesto() {
-        return numPuesto;
-    }
-
-    public void setNumPuesto(int numPuesto) {
-        this.numPuesto = numPuesto;
+    public int getPuestoAsignado() {
+        return puestoAsignado;
     }
 
     public UsrMedico getMedico() {
@@ -33,7 +29,7 @@ public class Puesto {
 
     @Override
     public String toString() {
-        return String.valueOf(numPuesto+" "+medico);
+        return String.valueOf(puestoAsignado);
     }
 
     @Override
@@ -41,6 +37,6 @@ public class Puesto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Puesto puesto = (Puesto) o;
-        return numPuesto == puesto.numPuesto;
+        return puestoAsignado == puesto.puestoAsignado;
     }
 }
