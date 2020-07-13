@@ -1,14 +1,18 @@
 package ec.edu.espol.common;
 
-import java.util.Objects;
-
 public class Puesto {
     private int numPuesto;
     private UsrMedico medico;
+    private static int puestosTotales=0;
 
-    public Puesto(int numPuesto, UsrMedico medico){
-        this.numPuesto = numPuesto;
+    public Puesto(UsrMedico medico){
         this.medico = medico;
+        numPuesto+= puestosTotales + 1 ;
+        puestosTotales+=1;
+    }
+
+    public static int getPuestosTotales() {
+        return puestosTotales;
     }
 
     public int getNumPuesto() {
@@ -25,6 +29,11 @@ public class Puesto {
 
     public void setMedico(UsrMedico medico) {
         this.medico = medico;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(numPuesto+" "+medico);
     }
 
     @Override

@@ -1,11 +1,17 @@
 package ec.edu.espol.views;
 
+import ec.edu.espol.common.UsrMedico;
+import ec.edu.espol.system.SysController;
+import ec.edu.espol.system.SysData;
+import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+
+import java.util.LinkedList;
 
 public class NuevoPuestoView {
     private BorderPane root;
@@ -14,7 +20,7 @@ public class NuevoPuestoView {
     private Label lblPuesto;
     private TextField txtPuesto;
     private Label lblMedico;
-    private ComboBox txtMedico;
+    private ComboBox comboMedico;
     private Button btnCancelar;
     private Button btnAgregarPuesto;
 
@@ -46,7 +52,7 @@ public class NuevoPuestoView {
         grid.add(lblPuesto,0,0);
         grid.add(txtPuesto,1,0);
         grid.add(lblMedico,0,1);
-        grid.add(txtMedico,1,1);
+        grid.add(comboMedico,1,1);
         root.setCenter(grid);
     }
 
@@ -59,16 +65,18 @@ public class NuevoPuestoView {
         btnAgregarPuesto = new Button("AGREGAR PUESTO");
         btnAgregarPuesto.setOnAction(e->{
             if(MainScene.confirmStage.confirmar("agregar el nuevo puesto?")) {
-                txtPuesto.clear();
-                MainScene.scene.setRoot(MainScene.puestosView.getRoot());
+                if(SysController.crearPuesto((UsrMedico) comboMedico.getSelectionModel().getSelectedItem())){
+                    txtPuesto.clear();
+                    MainScene.scene.setRoot(MainScene.puestosView.getRoot());
+                }
             }
         });
     }
 
     private void creatTxtFields(){
         txtPuesto = new TextField();
-        txtMedico = new ComboBox();
-
+        txtPuesto.setEditable(false);
+        comboMedico = new ComboBox(FXCollections.observableList(new LinkedList<>(SysData.getMedicosRegistrados())));
     }
 
     private void crearLabels(){
@@ -86,5 +94,9 @@ public class NuevoPuestoView {
     private void instanciarIDs(){
         lblHora.setId("lblHora");
         lblInicioSesion.setId("lblPaciente");
+    }
+
+    public TextField getTxtPuesto() {
+        return txtPuesto;
     }
 }

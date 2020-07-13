@@ -24,12 +24,11 @@ public class SysData {
 
     public SysData(){
         medicosRegistrados = new PriorityQueue<>((UsrMedico m1,UsrMedico m2)->m1.getTurnos().size() - m2.getTurnos().size());
-        //medicosRegistrados = LeerEscribirDatos.cargarMedicos();
+        LeerEscribirDatos.cargarMedicos(medicosRegistrados);
         sintomasActuales = LeerEscribirDatos.cargarSintomas();
         puestos = new LinkedList<>();
         videos = new CircularSimplyLinkedList<>();
         consultas = new LinkedList<>();
-        añadirInfo();
         System.out.println(medicosRegistrados);
     }
 
@@ -52,6 +51,14 @@ public class SysData {
         Turno turno = new Turno(medico,p);
         medico.getTurnos().offer(turno);
         medicosRegistrados.offer(medico);
+    }
+
+    public static PriorityQueue<UsrMedico> getMedicosRegistrados() {
+        return medicosRegistrados;
+    }
+
+    public static LinkedList<Puesto> getPuestos() {
+        return puestos;
     }
 
     public static void addPuesto(Puesto p) {

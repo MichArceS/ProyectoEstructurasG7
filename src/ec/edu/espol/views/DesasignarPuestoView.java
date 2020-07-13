@@ -14,16 +14,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
-public class EliminarPuestoView {
+public class DesasignarPuestoView {
     private BorderPane root;
     private Label lblInicioSesion;
     public static Label lblHora;
     private Label lblPuesto;
     private ComboBox comboPuesto;
     private Button btnCancelar;
-    private Button btnEliminarPuesto;
+    private Button btnDesasignarPuesto;
 
-    public EliminarPuestoView(){
+    public DesasignarPuestoView(){
         crearEstructura();
 
     }
@@ -40,8 +40,8 @@ public class EliminarPuestoView {
         root.setTop(top);
         AnchorPane bottom = new AnchorPane();
         AnchorPane.setLeftAnchor(btnCancelar,10d);
-        AnchorPane.setRightAnchor(btnEliminarPuesto,10d);
-        bottom.getChildren().addAll(btnCancelar,btnEliminarPuesto);
+        AnchorPane.setRightAnchor(btnDesasignarPuesto,10d);
+        bottom.getChildren().addAll(btnCancelar,btnDesasignarPuesto);
         root.setBottom(bottom);
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -58,10 +58,10 @@ public class EliminarPuestoView {
         btnCancelar.setOnAction(e->{
             MainScene.scene.setRoot(MainScene.puestosView.getRoot());
         });
-        btnEliminarPuesto = new Button("ELIMINAR PUESTO");
-        btnEliminarPuesto.setOnAction(e->{
-            if(MainScene.confirmStage.confirmar("eliminar el puesto seleccionado?")) {
-                if(SysController.eliminarPuesto((Puesto)comboPuesto.getSelectionModel().getSelectedItem())){
+        btnDesasignarPuesto = new Button("DESASIGNAR PUESTO");
+        btnDesasignarPuesto.setOnAction(e->{
+            if(MainScene.confirmStage.confirmar("desasignar el puesto seleccionado?")) {
+                if(SysController.desasignarPuesto((Puesto)comboPuesto.getSelectionModel().getSelectedItem())){
                     MainScene.scene.setRoot(MainScene.puestosView.getRoot());
                 }
             }
@@ -73,9 +73,9 @@ public class EliminarPuestoView {
     }
 
     private void crearLabels(){
-        lblInicioSesion = new Label("Eliminar Puesto");
+        lblInicioSesion = new Label("Quitar a un medico de un puesto");
         lblHora = new Label("12:30");
-        lblPuesto = new Label("Puesto a Eliminar:");
+        lblPuesto = new Label("Puesto a Desasignar:");
         instanciarIDs();
     }
 

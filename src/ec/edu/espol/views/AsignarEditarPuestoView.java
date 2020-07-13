@@ -1,5 +1,11 @@
 package ec.edu.espol.views;
 
+import ec.edu.espol.common.Puesto;
+import ec.edu.espol.common.UsrMedico;
+import ec.edu.espol.system.SysController;
+import ec.edu.espol.system.SysData;
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -9,14 +15,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
+import java.util.LinkedList;
+
 public class AsignarEditarPuestoView {
     private BorderPane root;
     private Label lblInicioSesion;
     public static Label lblHora;
     private Label lblPuesto;
-    private ComboBox txtPuesto;
+    private ComboBox comboPuesto;
     private Label lblMedico;
-    private ComboBox txtMedico;
+    private ComboBox comboMedico;
     private Button btnCancelar;
     private Button btnAgregarPuesto;
 
@@ -46,9 +54,9 @@ public class AsignarEditarPuestoView {
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
         grid.add(lblPuesto,0,0);
-        grid.add(txtPuesto,1,0);
+        grid.add(comboPuesto,1,0);
         grid.add(lblMedico,0,1);
-        grid.add(txtMedico,1,1);
+        grid.add(comboMedico,1,1);
         root.setCenter(grid);
     }
 
@@ -60,14 +68,16 @@ public class AsignarEditarPuestoView {
         btnAgregarPuesto = new Button("REASIGNAR PUESTO");
         btnAgregarPuesto.setOnAction(e->{
             if(MainScene.confirmStage.confirmar("reasignar el puesto?")) {
-                MainScene.scene.setRoot(MainScene.puestosView.getRoot());
+                if(SysController.asignarMedicoPuesto((Puesto)comboPuesto.getSelectionModel().getSelectedItem(),(UsrMedico)comboMedico.getSelectionModel().getSelectedItem())){
+                    MainScene.scene.setRoot(MainScene.puestosView.getRoot());
+                }
             }
         });
     }
 
     private void crearComboBox(){
-        txtPuesto = new ComboBox();
-        txtMedico = new ComboBox();
+        comboPuesto = new ComboBox(FXCollections.observableList(SysData.getPuestos()));
+        comboMedico = new ComboBox(FXCollections.observableList(new LinkedList<>(SysData.getMedicosRegistrados())));
 
     }
 
@@ -86,5 +96,12 @@ public class AsignarEditarPuestoView {
     private void instanciarIDs(){
         lblHora.setId("lblHora");
         lblInicioSesion.setId("lblPaciente");
+    }
+
+    public void actualizarCombos(){
+        Platform.runLater(()->{
+            comboMedico.setItems(FXCollections.observableList(new LinkedList<>(SysData.getMedicosRegistrados())));
+            comboPuesto.setItems(FXCollections.observableList(SysData.getPuestos()));
+        });
     }
 }

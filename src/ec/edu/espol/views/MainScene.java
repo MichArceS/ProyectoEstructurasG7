@@ -18,6 +18,7 @@ public class MainScene {
     static NuevoPuestoView nuevoPuestoView;
     static AsignarEditarPuestoView asignarEditarPuestoView;
     static EliminarPuestoView eliminarPuestoView;
+    static DesasignarPuestoView desasignarPuestoView;
     static ConfirmStage confirmStage;
     private double x=0;
     private double y=0;
@@ -34,6 +35,7 @@ public class MainScene {
         nuevoPuestoView = new NuevoPuestoView();
         asignarEditarPuestoView = new AsignarEditarPuestoView();
         eliminarPuestoView = new EliminarPuestoView();
+        desasignarPuestoView = new DesasignarPuestoView();
         scene = new Scene(inicio.getRoot(),1200,600);
         stage.setTitle("INICIO");
         stage.setScene(scene);

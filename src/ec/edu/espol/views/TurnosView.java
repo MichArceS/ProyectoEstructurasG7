@@ -101,7 +101,7 @@ public class TurnosView {
     }
 
     private void añadirTurnos() {
-
+        
     }
 
     public BorderPane getRoot() {

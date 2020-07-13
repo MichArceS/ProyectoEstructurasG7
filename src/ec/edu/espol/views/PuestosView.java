@@ -1,5 +1,7 @@
 package ec.edu.espol.views;
 
+import ec.edu.espol.common.Puesto;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -12,6 +14,7 @@ public class PuestosView implements View{
     public static Label lblHora;
     private Label lblPuesto;
     private Button btnAsignarEditarPuesto;
+    private Button btnDesasignarPuesto;
     private Button btnEliminarPuesto;
     private Button btnNuevoPuesto;
     private Button btnCancelar;
@@ -31,7 +34,8 @@ public class PuestosView implements View{
         center.add(lblPuesto,0,0);
         center.add(btnNuevoPuesto,0,1);
         center.add(btnAsignarEditarPuesto,1,1);
-        center.add(btnEliminarPuesto,2,1);
+        center.add(btnDesasignarPuesto,2,1);
+        center.add(btnEliminarPuesto,3,1);
         lblHora.setAlignment(Pos.TOP_RIGHT);
         center.setAlignment(Pos.CENTER);
         btnCancelar.setAlignment(Pos.CENTER_LEFT);
@@ -44,14 +48,24 @@ public class PuestosView implements View{
     private void crearBotones(){
         btnAsignarEditarPuesto = new Button("ASIGNAR/EDITAR");
         btnAsignarEditarPuesto.setOnAction(e->{
+            MainScene.asignarEditarPuestoView.actualizarCombos();
             MainScene.scene.setRoot(MainScene.asignarEditarPuestoView.getRoot());
         });
         btnNuevoPuesto = new Button("NUEVO");
         btnNuevoPuesto.setOnAction(e->{
+            Platform.runLater(()->{
+                MainScene.nuevoPuestoView.getTxtPuesto().setPromptText(String.valueOf(Puesto.getPuestosTotales()+1));
+            });
             MainScene.scene.setRoot(MainScene.nuevoPuestoView.getRoot());
+        });
+        btnDesasignarPuesto = new Button("DESASIGNAR");
+        btnDesasignarPuesto.setOnAction(e->{
+            MainScene.desasignarPuestoView.actualizarCombos();
+            MainScene.scene.setRoot(MainScene.desasignarPuestoView.getRoot());
         });
         btnEliminarPuesto = new Button("ELIMINAR");
         btnEliminarPuesto.setOnAction(e->{
+            MainScene.eliminarPuestoView.actualizarCombos();
             MainScene.scene.setRoot(MainScene.eliminarPuestoView.getRoot());
         });
 

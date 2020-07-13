@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class LeerEscribirDatos {
 
@@ -42,19 +43,17 @@ public class LeerEscribirDatos {
     }
 
     //MEDICOS
-    public static List<UsrMedico> cargarMedicos(){
-        List<UsrMedico> medicos = new LinkedList<>();
+    public static void cargarMedicos(PriorityQueue<UsrMedico> medicosRegistrados){
         try(BufferedReader br = new BufferedReader(new FileReader(Constantes.RUTAMEDICOS))){
             String line = br.readLine();
             while(line != null){
                 String[] data = line.split("\\|");
-                medicos.add(new UsrMedico(data[0],data[1],Integer.valueOf(data[2]),Genero.valueOf(data[3]),Especialidad.valueOf(data[4]),String.valueOf(data[5]),String.valueOf(data[6])));
+                medicosRegistrados.offer(new UsrMedico(data[0],data[1],Integer.valueOf(data[2]),Genero.valueOf(data[3]),Especialidad.valueOf(data[4]),String.valueOf(data[5]),String.valueOf(data[6])));
                 line = br.readLine();
             }
         }catch(IOException ex){
             System.out.println(ex.getMessage());
         }
-        return medicos;
     }
 
     public static boolean añadirMedico(UsrMedico m){
@@ -107,9 +106,8 @@ public class LeerEscribirDatos {
     //PUESTOS
     public static List<Puesto> cargarPuestos(List<UsrMedico> medicos){
         List<Puesto> puestos = new LinkedList<>();
-        int cont=1;
         for(UsrMedico m: medicos){
-            puestos.add(new Puesto(cont++, m));
+            puestos.add(new Puesto(m));
         }
         return puestos;
     }
