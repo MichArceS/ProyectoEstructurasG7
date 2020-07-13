@@ -53,6 +53,18 @@ public class SysData {
         medicosRegistrados.offer(medico);
     }
 
+    public static List<UsrMedico> getMedicosSinPuestos(){
+        List<UsrMedico> md = new LinkedList<>(medicosRegistrados);
+        List<UsrMedico> med = new LinkedList<>();
+        for(UsrMedico m: md){
+            if(m.getPuesto() == null){
+                med.add(m);
+            }
+        }
+        md = null;
+        return med;
+    }
+
     public static PriorityQueue<UsrMedico> getMedicosRegistrados() {
         return medicosRegistrados;
     }

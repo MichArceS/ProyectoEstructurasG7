@@ -23,7 +23,6 @@ public class HiloVideos implements Runnable{
         Iterator<Video> it = CSLL.iterator();
         while (!stop) {
             Video video = it.next();
-            System.out.println(video);
             String s = new File(video.getMedia()).getAbsolutePath();
             Media media = new Media((new File(s).toURI().toString()));
             mediaPlayer = new MediaPlayer(media);
@@ -31,7 +30,6 @@ public class HiloVideos implements Runnable{
             mediaPlayer.play();
             mediaPlayer.setMute(true);
             Platform.runLater(() -> {TurnosView.mediaView.setMediaPlayer(mediaPlayer);});
-            System.out.println(tiempo);
             try {
                 Thread.sleep(tiempo);
             } catch (InterruptedException e) {

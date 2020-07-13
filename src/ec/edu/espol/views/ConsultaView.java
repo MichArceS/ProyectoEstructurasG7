@@ -95,10 +95,10 @@ public class ConsultaView implements View{
     private void crearLabels(){
         lblConsulta = new Label("Consulta");
         lblHora = new Label("");
-        lblNombre = new Label("Nombre: Josue Tomala");
-        lblEdad = new Label("Edad: 19");
-        lblGenero = new Label("Genero: Masculino");
-        lblSintoma = new Label("Sintoma: jemplo");
+        lblNombre = new Label("Nombre:");
+        lblEdad = new Label("Edad:");
+        lblGenero = new Label("Genero:");
+        lblSintoma = new Label("Sintoma: ");
         lblDiagnostico = new Label("DIAGNOSTICO");
         lblReceta = new Label("RECETA");
         instanciarIDs();

@@ -3,15 +3,17 @@ package ec.edu.espol.views;
 import ec.edu.espol.common.UsrMedico;
 import ec.edu.espol.system.SysController;
 import ec.edu.espol.system.SysData;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-
-import java.util.LinkedList;
 
 public class NuevoPuestoView {
     private BorderPane root;
@@ -76,7 +78,7 @@ public class NuevoPuestoView {
     private void creatTxtFields(){
         txtPuesto = new TextField();
         txtPuesto.setEditable(false);
-        comboMedico = new ComboBox(FXCollections.observableList(new LinkedList<>(SysData.getMedicosRegistrados())));
+        comboMedico = new ComboBox(FXCollections.observableList(SysData.getMedicosSinPuestos()));
     }
 
     private void crearLabels(){
@@ -98,5 +100,11 @@ public class NuevoPuestoView {
 
     public TextField getTxtPuesto() {
         return txtPuesto;
+    }
+
+    public void actualizarCombos(){
+        Platform.runLater(()->{
+            comboMedico.setItems(FXCollections.observableList(SysData.getMedicosSinPuestos()));
+        });
     }
 }

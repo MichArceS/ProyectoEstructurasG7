@@ -62,9 +62,12 @@ public class UsrMedico extends Usuario{
     }
 
 
-
     @Override
     public String toString() {
+        return nombre+" "+apellido;
+    }
+
+    public String infoCompleta() {
         return "UsrMedico{" +
                 ", disponible=" + disponible +
                 ", nombre='" + nombre + '\'' +

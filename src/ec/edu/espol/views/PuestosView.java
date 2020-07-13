@@ -54,6 +54,7 @@ public class PuestosView implements View{
         btnNuevoPuesto = new Button("NUEVO");
         btnNuevoPuesto.setOnAction(e->{
             Platform.runLater(()->{
+                MainScene.nuevoPuestoView.actualizarCombos();
                 MainScene.nuevoPuestoView.getTxtPuesto().setPromptText(String.valueOf(Puesto.getPuestosTotales()+1));
             });
             MainScene.scene.setRoot(MainScene.nuevoPuestoView.getRoot());
