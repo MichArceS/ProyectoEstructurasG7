@@ -5,13 +5,13 @@ public class Turno {
     private UsrMedico medicoAsignado;
     private UsrPaciente pacienteAtender;
     private Puesto puestoAsignado;
-    private int turnoAsignado;
+    private static int turnoAsignado=0;
 
-    public Turno(UsrMedico m, UsrPaciente p, Puesto pA, int t) {
+    public Turno(UsrMedico m, UsrPaciente p) {
         medicoAsignado = m;
         pacienteAtender = p;
-        puestoAsignado = pA;
-        turnoAsignado = t;
+        puestoAsignado = m.getPuesto();
+        turnoAsignado +=1;
     }
 
     public UsrMedico getMedicoAsignado() {

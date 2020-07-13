@@ -3,12 +3,15 @@ package ec.edu.espol.common;
 import ec.edu.espol.constants.Especialidad;
 import ec.edu.espol.constants.Genero;
 
+import java.util.PriorityQueue;
+
 public class UsrMedico extends Usuario{
     private Especialidad especialidad;
     private boolean disponible;
+    private Puesto puesto;
     private String usuario;
     private String contraseña;
-    //private PriorityQueue<UsrPaciente> pacientesXatender;
+    private PriorityQueue<Turno> turnos;
 
     public UsrMedico(String n, String a, int e, Genero g, Especialidad esp, String usr, String contra) {
         super(n,a,e,g);
@@ -16,6 +19,19 @@ public class UsrMedico extends Usuario{
         usuario = usr;
         contraseña = contra;
         disponible = true;
+        turnos = new PriorityQueue<>((Turno t1, Turno t2)->t2.getPacienteAtender().getSintoma().getPrioridad() - t1.getPacienteAtender().getSintoma().getPrioridad());
+    }
+
+    public Puesto getPuesto() {
+        return puesto;
+    }
+
+    public void setPuesto(Puesto puesto) {
+        this.puesto = puesto;
+    }
+
+    public Turno atenderPaciente(){
+        return turnos.poll();
     }
 
     public Especialidad getEspecialidad() {
@@ -33,15 +49,15 @@ public class UsrMedico extends Usuario{
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
-    /*
-    public PriorityQueue<UsrPaciente> getPacientesXatender() {
-        return pacientesXatender;
+
+    public PriorityQueue<Turno> getTurnos() {
+        return turnos;
     }
 
-    public UsrPaciente atenderPaciente(){
-        return pacientesXatender.poll();
+    public void setTurnos(PriorityQueue<Turno> turnos) {
+        this.turnos = turnos;
     }
-     */
+
     public boolean verificarUsuario(String usuario, String contrasenia){
         return (this.usuario.equals(usuario)) && (this.contraseña.equals(contrasenia));
     }

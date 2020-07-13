@@ -1,9 +1,7 @@
 package ec.edu.espol.system;
 
 
-import ec.edu.espol.common.Sintoma;
-import ec.edu.espol.common.UsrMedico;
-import ec.edu.espol.common.UsrPaciente;
+import ec.edu.espol.common.*;
 import ec.edu.espol.constants.Especialidad;
 import ec.edu.espol.constants.Genero;
 import ec.edu.espol.util.CircularSimplyLinkedList;
@@ -16,29 +14,35 @@ import java.util.PriorityQueue;
 
 
 public class SysData {
-    //private static PriorityQueue<UsrPaciente> pacientes;
-    protected static List<UsrMedico> medicosRegistrados;
-    protected static PriorityQueue<UsrPaciente> pacientes;
+    protected static PriorityQueue<UsrMedico> medicosRegistrados;
     protected static CircularSimplyLinkedList<Video> videos;
+    protected static List<Consulta> consultas;
     protected static List<Sintoma> sintomasActuales;
 
     public SysData(){
-        pacientes = new PriorityQueue<>((UsrPaciente p1, UsrPaciente p2)->p1.getSintoma().getPrioridad()-p2.getSintoma().getPrioridad());
-        medicosRegistrados = LeerEscribirDatos.cargarMedicos();
+        medicosRegistrados = new PriorityQueue<>((UsrMedico m1,UsrMedico m2)->m1.getTurnos().size() - m2.getTurnos().size());
+        //medicosRegistrados = LeerEscribirDatos.cargarMedicos();
         sintomasActuales = LeerEscribirDatos.cargarSintomas();
         videos = new CircularSimplyLinkedList<>();
     }
 
     public static void addMedico(UsrMedico med){
-        medicosRegistrados.add(med);
+        medicosRegistrados.offer(med);
     }
 
-    public static void addPaciente(UsrPaciente pac){
-        pacientes.offer(pac);
+    public static void addPaciente(UsrPaciente p){
+        UsrMedico medico = medicosRegistrados.poll();
+        Turno turno = new Turno(medico,p);
+        medico.getTurnos().offer(turno);
+        medicosRegistrados.offer(medico);
     }
 
     public static void cargarVideos() {
         videos = LeerEscribirDatos.cargarVideos();
+    }
+
+    public static void addConsulta(Consulta c){
+        consultas.add(c);
     }
 
     private void añadirInfo(){
@@ -56,15 +60,10 @@ public class SysData {
         cargarVideos();
     }
 
+
+
+
     /*
-    public static Puesto ingresarPaciente(UsrPaciente p){
-        Puesto puesto = puestos.poll();
-        puesto.getMedico().getPacientesXatender().offer(p);
-        puestos.offer(puesto);
-        return puesto;
-    }
-
-
     //SIMULACION EN CONSOLA
     private static void menuMedico(UsrMedico m){
         Scanner sc = new Scanner(System.in);
@@ -164,9 +163,7 @@ public class SysData {
     }
      */
 
-    public UsrPaciente atenderPaciente(){
-        return pacientes.poll();
-    }
+
 
 
 }

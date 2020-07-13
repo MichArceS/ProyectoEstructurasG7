@@ -1,15 +1,13 @@
 package ec.edu.espol.system;
 
-import ec.edu.espol.common.Consulta;
-import ec.edu.espol.common.Sintoma;
-import ec.edu.espol.common.UsrMedico;
-import ec.edu.espol.common.UsrPaciente;
+import ec.edu.espol.common.*;
 import ec.edu.espol.constants.Especialidad;
 import ec.edu.espol.constants.Genero;
 import ec.edu.espol.util.LeerEscribirDatos;
 
 public class SysController {
     private static UsrMedico medicoLogeado = null;
+    private static Consulta consulta = null;
 
     public boolean añadirMedico(String nomb, String ape, String ed, Genero gen, Especialidad esp,String usr,String contr) {
         UsrMedico med = new UsrMedico(nomb, ape, Integer.parseInt(ed), gen, esp,usr,contr);
@@ -33,16 +31,16 @@ public class SysController {
         return true;
     }
 
-    public UsrPaciente atenderPaciente(){
-        return SysData.pacientes.poll();
+    public Turno atenderPaciente(){
+        return medicoLogeado.getTurnos().poll();
     }
 
     public boolean siguienteTurno(){
-        UsrPaciente p = atenderPaciente();
-        Consulta c = new Consulta(medicoLogeado,p);
+        Turno turno = medicoLogeado.atenderPaciente();
+        Consulta c = new Consulta(medicoLogeado,turno.getPacienteAtender());
+        SysData.addConsulta(c);
         LeerEscribirDatos.registrarConsulta(c);
         return true;
     }
-
 
 }
