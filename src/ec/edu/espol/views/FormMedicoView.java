@@ -2,6 +2,7 @@ package ec.edu.espol.views;
 
 import ec.edu.espol.constants.Especialidad;
 import ec.edu.espol.constants.Genero;
+import ec.edu.espol.system.SysController;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -87,12 +88,14 @@ public class FormMedicoView implements View{
         btnTerminar = new Button("TERMINAR");
         btnTerminar.setOnAction(e->{
             if(MainScene.confirmStage.confirmar("terminar el Formulario?")) {
-                txtNombre.clear();
-                txtApellido.clear();
-                txtEdad.clear();
-                txtPassword.clear();
-                txtUsuario.clear();
-                MainScene.scene.setRoot(MainScene.inicio.getRoot());
+                if(SysController.añadirMedico(txtNombre.getText(),txtApellido.getText(),txtEdad.getText(),(Genero) comboGenero.getSelectionModel().getSelectedItem(),(Especialidad)comboEspecialidad.getSelectionModel().getSelectedItem(),txtUsuario.getText(),txtPassword.getText())){
+                    txtNombre.clear();
+                    txtApellido.clear();
+                    txtEdad.clear();
+                    txtPassword.clear();
+                    txtUsuario.clear();
+                    MainScene.scene.setRoot(MainScene.inicio.getRoot());
+                }
             }
         });
     }

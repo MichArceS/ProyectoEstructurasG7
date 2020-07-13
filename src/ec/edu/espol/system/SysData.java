@@ -8,6 +8,7 @@ import ec.edu.espol.util.CircularSimplyLinkedList;
 import ec.edu.espol.util.LeerEscribirDatos;
 import ec.edu.espol.util.Video;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -24,12 +25,14 @@ public class SysData {
         //medicosRegistrados = LeerEscribirDatos.cargarMedicos();
         sintomasActuales = LeerEscribirDatos.cargarSintomas();
         videos = new CircularSimplyLinkedList<>();
+        consultas = new LinkedList<>();
         añadirInfo();
-        System.out.println(sintomasActuales);
+        System.out.println(medicosRegistrados);
     }
 
     public static void addMedico(UsrMedico med){
         medicosRegistrados.offer(med);
+        System.out.println("Funciona");
     }
 
     public static void addPaciente(UsrPaciente p){
@@ -58,10 +61,10 @@ public class SysData {
         addMedico(new UsrMedico("Tony","Stark",32, Genero.MASCULINO, Especialidad.CARDIOLOGIA,"tonyst@espol.edu.ec","1234"));
         addMedico(new UsrMedico("Tony","Stark",32, Genero.MASCULINO, Especialidad.CARDIOLOGIA,"root","admin"));
 
-        /*addPaciente(new UsrPaciente("Natasha","Romanov",31,Genero.FEMENINO));
-        addPaciente(new UsrPaciente("Mary","Jane",28,Genero.FEMENINO));
-        addPaciente(new UsrPaciente("Peter","Parker",21,Genero.MASCULINO));
-        addPaciente(new UsrPaciente("Barry","Allen",25,Genero.MASCULINO));*/
+        addPaciente(new UsrPaciente("Natasha","Romanov",31,Genero.FEMENINO,sintomasActuales.get(0)));
+        addPaciente(new UsrPaciente("Mary","Jane",28,Genero.FEMENINO,sintomasActuales.get(1)));
+        addPaciente(new UsrPaciente("Peter","Parker",21,Genero.MASCULINO,sintomasActuales.get(2)));
+        addPaciente(new UsrPaciente("Barry","Allen",25,Genero.MASCULINO,sintomasActuales.get(3)));
 
         cargarVideos();
     }

@@ -1,5 +1,9 @@
 package ec.edu.espol.views;
 
+import ec.edu.espol.common.Consulta;
+import ec.edu.espol.common.UsrPaciente;
+import ec.edu.espol.system.SysController;
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -40,7 +44,14 @@ public class MedicoView implements View{
         private void crearBotones(){
             btnSgtTurno = new Button("SIGUIENTE TURNO");
             btnSgtTurno.setOnAction(e->{
-                MainScene.scene.setRoot(MainScene.consultaView.getRoot());
+                Consulta c = SysController.siguienteTurno();
+                if(c != null){
+                    UsrPaciente p = c.getPaciente();
+                    Platform.runLater(()->{
+                        MainScene.consultaView.setInformation(p.getNombre(),p.getApellido(),String.valueOf(p.getEdad()),p.getGenero(),p.getSintoma());
+                    });
+                    MainScene.scene.setRoot(MainScene.consultaView.getRoot());
+                }
             });
             btnCerrarSesion = new Button("CERRAR SESION");
             btnCerrarSesion.setOnAction(e->{

@@ -1,5 +1,8 @@
 package ec.edu.espol.views;
 
+import ec.edu.espol.common.Sintoma;
+import ec.edu.espol.constants.Genero;
+import ec.edu.espol.system.SysController;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -25,7 +28,6 @@ public class ConsultaView implements View{
 
     public ConsultaView(){
         crearEstructura();
-
     }
 
     private void crearEstructura(){
@@ -74,7 +76,9 @@ public class ConsultaView implements View{
             txtDiagnostico.clear();
             txtReceta.clear();
             if(MainScene.confirmStage.confirmar("terminar la consula?")) {
-                MainScene.scene.setRoot(MainScene.medicoView.getRoot());
+                if(SysController.terminarConsulta(txtDiagnostico.getText(),txtReceta.getText())){
+                    MainScene.scene.setRoot(MainScene.medicoView.getRoot());
+                }
             }
         });
     }
@@ -109,5 +113,12 @@ public class ConsultaView implements View{
         lblConsulta.setId("lblPaciente");
         txtReceta.setId("txtReceta");
         txtDiagnostico.setId("txtDiagnostico");
+    }
+
+    public void setInformation(String n, String a, String e, Genero g, Sintoma s){
+        lblNombre.setText("Nombre: "+n+" "+a);
+        lblEdad.setText("Edad: "+e);
+        lblGenero.setText("Genero: "+g);
+        lblSintoma.setText("Sintoma: "+s);
     }
 }
