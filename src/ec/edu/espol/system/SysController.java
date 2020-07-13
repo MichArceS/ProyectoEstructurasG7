@@ -5,6 +5,8 @@ import ec.edu.espol.constants.Especialidad;
 import ec.edu.espol.constants.Genero;
 import ec.edu.espol.util.LeerEscribirDatos;
 
+import java.util.Iterator;
+
 public class SysController {
     private static UsrMedico medicoLogeado = null;
     private static Consulta consulta = null;
@@ -13,16 +15,6 @@ public class SysController {
         UsrMedico med = new UsrMedico(nomb, ape, Integer.parseInt(ed), gen, esp,usr,contr);
         SysData.addMedico(med);
         return true;
-    }
-
-
-    public static boolean iniciarSesion(String usuario, String contrasenia){
-        for (UsrMedico m: SysData.medicosRegistrados){
-            if(m.verificarUsuario(usuario, contrasenia))
-                medicoLogeado = m;
-                return true;
-        }
-        return false;
     }
 
     public boolean añadirPaciente(String nomb, String ape, String ed, Genero gen, Sintoma s){
@@ -43,4 +35,15 @@ public class SysController {
         return true;
     }
 
+    public boolean logIn(String username, String pass) {
+        Iterator<UsrMedico> it = SysData.medicosRegistrados.iterator();
+        while(it.hasNext()) {
+            UsrMedico m = it.next();
+            if (m.verificarUsuario(username,pass) && m.isDisponible()) {
+                medicoLogeado = m;
+                return true;
+            }
+        }
+        return false;
+    }
 }
