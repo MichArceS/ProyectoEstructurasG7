@@ -50,12 +50,14 @@ public class PuestosView implements View{
         btnAsignarEditarPuesto.setOnAction(e->{
             MainScene.asignarEditarPuestoView.actualizarCombos();
             MainScene.scene.setRoot(MainScene.asignarEditarPuestoView.getRoot());
+            MainScene.allowDrag();
         });
         btnNuevoPuesto = new Button("NUEVO");
         btnNuevoPuesto.setOnAction(e->{
             Platform.runLater(()->{
                 MainScene.nuevoPuestoView.actualizarCombos();
                 MainScene.nuevoPuestoView.getTxtPuesto().setPromptText(String.valueOf(Puesto.getPuestosTotales()+1));
+                MainScene.allowDrag();
             });
             MainScene.scene.setRoot(MainScene.nuevoPuestoView.getRoot());
         });
@@ -63,16 +65,19 @@ public class PuestosView implements View{
         btnDesasignarPuesto.setOnAction(e->{
             MainScene.desasignarPuestoView.actualizarCombos();
             MainScene.scene.setRoot(MainScene.desasignarPuestoView.getRoot());
+            MainScene.allowDrag();
         });
         btnEliminarPuesto = new Button("ELIMINAR");
         btnEliminarPuesto.setOnAction(e->{
             MainScene.eliminarPuestoView.actualizarCombos();
             MainScene.scene.setRoot(MainScene.eliminarPuestoView.getRoot());
+            MainScene.allowDrag();
         });
 
         btnCancelar = new Button("CANCELAR");
         btnCancelar.setOnAction(e->{
             MainScene.scene.setRoot(MainScene.inicio.getRoot());
+            MainScene.allowDrag();
         });
     }
     private void crearLabels(){

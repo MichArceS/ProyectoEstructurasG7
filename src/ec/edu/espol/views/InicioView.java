@@ -50,6 +50,7 @@ public class InicioView implements View{
         btnTurnos.setOnAction(e->{
             MainScene.scene.setRoot(MainScene.turnosView.getRoot());
             Main.videos.iniciarVideo();
+            MainScene.allowDrag();
         });
     }
     public void crearBtnFormPaciente(){
@@ -57,6 +58,7 @@ public class InicioView implements View{
         btnFormPaciente.setOnAction(e ->{
             Platform.runLater(()->{
                 MainScene.scene.setRoot(MainScene.formPacienteView.getRoot());
+                MainScene.allowDrag();
             });
         });
     }
@@ -64,6 +66,7 @@ public class InicioView implements View{
         btnSisMedico = new Button("SISTEMA MEDICO");
         btnSisMedico.setOnAction(e->{
             MainScene.scene.setRoot(MainScene.loginView.getRoot());
+            MainScene.allowDrag();
         });
     }
 
@@ -71,6 +74,7 @@ public class InicioView implements View{
         btnFormMedico = new Button("FORMULARIO MEDICO");
         btnFormMedico.setOnAction(e->{
             MainScene.scene.setRoot(MainScene.formMedicoView.getRoot());
+            MainScene.allowDrag();
         });
     }
 
@@ -79,6 +83,7 @@ public class InicioView implements View{
         btnPuestos.setOnAction(e ->{
             Platform.runLater(()->{
                 MainScene.scene.setRoot(MainScene.puestosView.getRoot());
+                MainScene.allowDrag();
             });
         });
     }

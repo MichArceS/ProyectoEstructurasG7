@@ -19,3 +19,5 @@ Medico: Jose Alban | Paciente: Peter Parker | Fecha: 2020-07-13 | Hora: 3h4 | Di
 Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-13 | Hora: 3h6 | Diagnostico: null | Receta: null
 Medico: Jose Alban | Paciente: Peter Parker | Fecha: 2020-07-13 | Hora: 3h6 | Diagnostico: null | Receta: null
 Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-13 | Hora: 3h15 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-14 | Hora: 22h6 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-14 | Hora: 22h15 | Diagnostico: null | Receta: null

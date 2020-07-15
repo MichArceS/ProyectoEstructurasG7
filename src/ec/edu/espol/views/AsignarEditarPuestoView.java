@@ -64,12 +64,14 @@ public class AsignarEditarPuestoView {
         btnCancelar = new Button("CANCELAR");
         btnCancelar.setOnAction(e->{
             MainScene.scene.setRoot(MainScene.puestosView.getRoot());
+            MainScene.allowDrag();
         });
         btnAgregarPuesto = new Button("REASIGNAR PUESTO");
         btnAgregarPuesto.setOnAction(e->{
             if(MainScene.confirmStage.confirmar("reasignar el puesto?")) {
                 if(SysController.asignarMedicoPuesto((Puesto)comboPuesto.getSelectionModel().getSelectedItem(),(UsrMedico)comboMedico.getSelectionModel().getSelectedItem())){
                     MainScene.scene.setRoot(MainScene.puestosView.getRoot());
+                    MainScene.allowDrag();
                 }
             }
         });

@@ -69,6 +69,7 @@ public class ConsultaView implements View{
             txtReceta.clear();
             if(MainScene.confirmStage.confirmar("cancelar la consulta?")) {
                 MainScene.scene.setRoot(MainScene.medicoView.getRoot());
+                MainScene.allowDrag();
             }
         });
         btnTerminar = new Button("TERMINAR");
@@ -78,6 +79,7 @@ public class ConsultaView implements View{
             if(MainScene.confirmStage.confirmar("terminar la consula?")) {
                 if(SysController.terminarConsulta(txtDiagnostico.getText(),txtReceta.getText())){
                     MainScene.scene.setRoot(MainScene.medicoView.getRoot());
+                    MainScene.allowDrag();
                 }
             }
         });

@@ -60,6 +60,7 @@ public class LoginView implements View{
             txtUsuario.clear();
             txtPassword.clear();
             MainScene.scene.setRoot(MainScene.inicio.getRoot());
+            MainScene.allowDrag();
         });
         btnIniciarSesion = new Button("INICIAR SESION");
         btnIniciarSesion.setOnAction(e->{
@@ -67,6 +68,7 @@ public class LoginView implements View{
                 txtUsuario.clear();
                 txtPassword.clear();
                 MainScene.scene.setRoot(MainScene.medicoView.getRoot());
+                MainScene.allowDrag();
             }
         });
     }

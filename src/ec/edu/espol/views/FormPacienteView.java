@@ -83,6 +83,7 @@ public class FormPacienteView implements View{
                 txtApellido.clear();
                 txtEdad.clear();
                 MainScene.scene.setRoot(MainScene.inicio.getRoot());
+                MainScene.allowDrag();
             }
         });
         btnTerminar = new Button("TERMINAR");
@@ -93,6 +94,7 @@ public class FormPacienteView implements View{
                     txtApellido.clear();
                     txtEdad.clear();
                     MainScene.scene.setRoot(MainScene.inicio.getRoot());
+                    MainScene.allowDrag();
                 }
             }
         });

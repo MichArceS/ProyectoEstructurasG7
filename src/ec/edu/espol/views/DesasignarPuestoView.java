@@ -57,12 +57,14 @@ public class DesasignarPuestoView {
         btnCancelar = new Button("CANCELAR");
         btnCancelar.setOnAction(e->{
             MainScene.scene.setRoot(MainScene.puestosView.getRoot());
+            MainScene.allowDrag();
         });
         btnDesasignarPuesto = new Button("DESASIGNAR PUESTO");
         btnDesasignarPuesto.setOnAction(e->{
             if(MainScene.confirmStage.confirmar("desasignar el puesto seleccionado?")) {
                 if(SysController.desasignarPuesto((Puesto)comboPuesto.getSelectionModel().getSelectedItem())){
                     MainScene.scene.setRoot(MainScene.puestosView.getRoot());
+                    MainScene.allowDrag();
                 }
             }
         });

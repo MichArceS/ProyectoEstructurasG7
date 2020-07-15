@@ -63,6 +63,7 @@ public class NuevoPuestoView {
         btnCancelar.setOnAction(e->{
             txtPuesto.clear();
             MainScene.scene.setRoot(MainScene.puestosView.getRoot());
+            MainScene.allowDrag();
         });
         btnAgregarPuesto = new Button("AGREGAR PUESTO");
         btnAgregarPuesto.setOnAction(e->{
@@ -70,6 +71,7 @@ public class NuevoPuestoView {
                 if(SysController.crearPuesto((UsrMedico) comboMedico.getSelectionModel().getSelectedItem())){
                     txtPuesto.clear();
                     MainScene.scene.setRoot(MainScene.puestosView.getRoot());
+                    MainScene.allowDrag();
                 }
             }
         });

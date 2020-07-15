@@ -83,6 +83,7 @@ public class FormMedicoView implements View{
                 txtApellido.clear();
                 txtEdad.clear();
                 MainScene.scene.setRoot(MainScene.inicio.getRoot());
+                MainScene.allowDrag();
             }
         });
         btnTerminar = new Button("TERMINAR");
@@ -95,6 +96,7 @@ public class FormMedicoView implements View{
                     txtPassword.clear();
                     txtUsuario.clear();
                     MainScene.scene.setRoot(MainScene.inicio.getRoot());
+                    MainScene.allowDrag();
                 }
             }
         });

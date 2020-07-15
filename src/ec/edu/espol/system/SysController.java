@@ -13,12 +13,14 @@ public class SysController {
     private static Consulta consulta = null;
 
     public static boolean añadirMedico(String nomb, String ape, String ed, Genero gen, Especialidad esp,String usr,String contr) {
+        if(nomb.equals("") || ape.equals("") || ed.equals("") || gen == null || esp == null || usr.equals("") || usr.equals("")) return false;
         UsrMedico med = new UsrMedico(nomb, ape, Integer.parseInt(ed), gen, esp,usr,contr);
         SysData.addMedico(med);
         return true;
     }
 
     public static boolean añadirPaciente(String nomb, String ape, String ed, Genero gen, Sintoma s){
+        if(nomb.equals("") || ape.equals("") || ed.equals("") || gen == null || s == null) return false;
         UsrPaciente pac = new UsrPaciente(nomb, ape, Integer.parseInt(ed), gen,s);
         SysData.addPaciente(pac);
         return true;
@@ -57,6 +59,7 @@ public class SysController {
     }
     
     public static boolean crearPuesto(UsrMedico medico) {
+        if(medico == null) return false;
         if (medico.getPuesto() != null) return false;
         try {
             Puesto puesto = new Puesto(medico);
@@ -71,6 +74,7 @@ public class SysController {
     }
 
     public static boolean asignarMedicoPuesto(Puesto p, UsrMedico medico) {
+        if(medico == null || p == null) return false;
         if (medico.getPuesto() != null) return false;
         try {
             if (p == null) return false;
@@ -91,6 +95,7 @@ public class SysController {
     }
 
     public static boolean desasignarPuesto(Puesto p) {
+        if(p == null) return false;
         try {
             if(p != null) {
                 if (p.getMedico() == null) {
@@ -105,6 +110,7 @@ public class SysController {
             return false; }
     }
     public static boolean eliminarPuesto(Puesto p) {
+        if(p == null) return false;
         try {
             if (p != null) {
                 if (p.getMedico() == null) {

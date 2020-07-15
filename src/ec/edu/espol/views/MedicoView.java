@@ -49,6 +49,7 @@ public class MedicoView implements View{
                     UsrPaciente p = c.getPaciente();
                     Platform.runLater(()->{
                         MainScene.consultaView.setInformation(p.getNombre(),p.getApellido(),String.valueOf(p.getEdad()),p.getGenero(),p.getSintoma());
+                        MainScene.allowDrag();
                     });
                     MainScene.scene.setRoot(MainScene.consultaView.getRoot());
                 }
@@ -57,6 +58,7 @@ public class MedicoView implements View{
             btnCerrarSesion.setOnAction(e->{
                 if(MainScene.confirmStage.confirmar("cerrar sesion?")) {
                     MainScene.scene.setRoot(MainScene.inicio.getRoot());
+                    MainScene.allowDrag();
                 }
             });
         }

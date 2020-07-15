@@ -57,12 +57,14 @@ public class EliminarPuestoView {
         btnCancelar = new Button("CANCELAR");
         btnCancelar.setOnAction(e->{
             MainScene.scene.setRoot(MainScene.puestosView.getRoot());
+            MainScene.allowDrag();
         });
         btnEliminarPuesto = new Button("ELIMINAR PUESTO");
         btnEliminarPuesto.setOnAction(e->{
             if(MainScene.confirmStage.confirmar("eliminar el puesto seleccionado?")) {
                 if(SysController.eliminarPuesto((Puesto)comboPuesto.getSelectionModel().getSelectedItem())){
                     MainScene.scene.setRoot(MainScene.puestosView.getRoot());
+                    MainScene.allowDrag();
                 }
             }
         });

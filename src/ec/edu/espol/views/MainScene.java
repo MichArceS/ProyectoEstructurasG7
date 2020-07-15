@@ -6,6 +6,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class MainScene {
+    static Stage primaryStage;
     static Scene scene;
     static InicioView inicio;
     static MedicoView medicoView;
@@ -20,10 +21,11 @@ public class MainScene {
     static EliminarPuestoView eliminarPuestoView;
     static DesasignarPuestoView desasignarPuestoView;
     static ConfirmStage confirmStage;
-    private double x=0;
-    private double y=0;
+    private static double x=0;
+    private static double y=0;
 
     public MainScene(Stage stage){
+        primaryStage = stage;
         inicio = new InicioView();
         medicoView = new MedicoView();
         consultaView = new ConsultaView();
@@ -39,11 +41,11 @@ public class MainScene {
         scene = new Scene(inicio.getRoot(),1200,600);
         stage.setTitle("INICIO");
         stage.setScene(scene);
-        allowDrag(stage);
+        allowDrag();
         confirmStage = new ConfirmStage(stage);
     }
 
-    private void allowDrag(Stage stage){
+    protected static void allowDrag(){
         scene.getRoot().setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -54,8 +56,8 @@ public class MainScene {
         scene.getRoot().setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                stage.setX(event.getScreenX() - x);
-                stage.setY(event.getScreenY() - y);
+                primaryStage.setX(event.getScreenX() - x);
+                primaryStage.setY(event.getScreenY() - y);
             }
         });
     }

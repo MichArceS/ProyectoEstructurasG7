@@ -70,6 +70,7 @@ public class TurnosView {
         boton.setOnAction(e -> {
             MainScene.scene.setRoot(MainScene.inicio.getRoot());
             Main.videos.mutearVideo();
+            MainScene.allowDrag();
         });
         bot.getChildren().addAll(boton,l);
     }
