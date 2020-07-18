@@ -33,7 +33,7 @@ public class ConsultaView implements View{
     private void crearEstructura(){
         root = new BorderPane();
         crearBotones();
-        creatTxtFields();
+        crearTxtFields();
         crearLabels();
         AnchorPane top = new AnchorPane();
         AnchorPane.setLeftAnchor(lblConsulta,10d);
@@ -85,7 +85,7 @@ public class ConsultaView implements View{
         });
     }
 
-    private void creatTxtFields(){
+    private void crearTxtFields(){
         txtDiagnostico = new TextArea();
         txtDiagnostico.setPromptText("Escribir diagnostico");
         txtDiagnostico.setWrapText(true);

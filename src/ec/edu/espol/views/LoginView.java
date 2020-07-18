@@ -65,10 +65,12 @@ public class LoginView implements View{
         btnIniciarSesion = new Button("INICIAR SESION");
         btnIniciarSesion.setOnAction(e->{
             if(SysController.iniciarSesion(txtUsuario.getText(),txtPassword.getText())){
-                txtUsuario.clear();
-                txtPassword.clear();
+                MainScene.medicoView.setLblMedico(txtUsuario.getText());
                 MainScene.scene.setRoot(MainScene.medicoView.getRoot());
                 MainScene.allowDrag();
+                txtUsuario.clear();
+                txtPassword.clear();
+
             }
         });
     }

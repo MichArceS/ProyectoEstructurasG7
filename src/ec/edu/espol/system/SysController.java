@@ -14,7 +14,7 @@ public class SysController {
 
     public static boolean añadirMedico(String nomb, String ape, String ed, Genero gen, Especialidad esp,String usr,String contr) {
         if(nomb.equals("") || ape.equals("") || ed.equals("") || gen == null || esp == null || usr.equals("") || usr.equals("")) return false;
-        UsrMedico med = new UsrMedico(nomb, ape, Integer.parseInt(ed), gen, esp,usr,contr);
+        UsrMedico med = new UsrMedico(nomb, ape, Integer.parseInt(ed), gen, esp, usr, contr);
         SysData.addMedico(med);
         return true;
     }

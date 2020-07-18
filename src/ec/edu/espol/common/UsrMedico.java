@@ -18,7 +18,7 @@ public class UsrMedico extends Usuario{
         especialidad = esp;
         usuario = usr;
         contraseña = contra;
-        turnos = new PriorityQueue<>((Turno t1, Turno t2)->t2.getPacienteAtender().getSintoma().getPrioridad() - t1.getPacienteAtender().getSintoma().getPrioridad());
+        turnos = new PriorityQueue<>((Turno t1, Turno t2)->t1.getPacienteAtender().getSintoma().getPrioridad() - t2.getPacienteAtender().getSintoma().getPrioridad());
     }
 
     public Puesto getPuesto() {

@@ -11,9 +11,12 @@ public class Consulta {
         this.paciente = paciente;
     }
 
-    public void setDiagnostico(String dig){diagnostico = dig;}
+    public void setDiagnostico(String dig){
+        diagnostico = dig;
+    }
 
-    public void setReceta(String rec){receta = rec;
+    public void setReceta(String rec){
+        receta = rec;
     }
 
     public UsrMedico getMedico() {
