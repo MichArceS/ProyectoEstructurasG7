@@ -30,8 +30,8 @@ public class FormPacienteView implements View{
     private ComboBox comboGenero;
     private static Label lblSintoma;
     private ComboBox comboSintoma;
-    private static Label lblEspecialidad;
-    private ComboBox comboEspecialidad;
+    //private static Label lblEspecialidad;
+    //private ComboBox comboEspecialidad;
     private Button btnCancelar;
     private Button btnTerminar;
 
@@ -70,8 +70,8 @@ public class FormPacienteView implements View{
         grid.add(comboGenero,1,3);
         grid.add(lblSintoma,0,4);
         grid.add(comboSintoma,1,4);
-        grid.add(lblEspecialidad,0,5);
-        grid.add(comboEspecialidad,1,5);
+        //grid.add(lblEspecialidad,0,5);
+        //grid.add(comboEspecialidad,1,5);
         root.setCenter(grid);
     }
 
@@ -115,14 +115,14 @@ public class FormPacienteView implements View{
         lblEdad = new Label("Edad:");
         lblGenero = new Label("Genero:");
         lblSintoma = new Label("Sintoma:");
-        lblEspecialidad = new Label("Especialidad");
+        //lblEspecialidad = new Label("Especialidad");
         instanciarIDs();
     }
 
     private void crearComboBoxs(){
         comboGenero = new ComboBox(FXCollections.observableArrayList(Genero.values()));
         comboSintoma = new ComboBox(FXCollections.observableList(SysData.getSintomasActuales()));
-        comboEspecialidad = new ComboBox(FXCollections.observableArrayList(Especialidad.values()));
+        //comboEspecialidad = new ComboBox(FXCollections.observableArrayList(Especialidad.values()));
     }
 
     public BorderPane getRoot(){

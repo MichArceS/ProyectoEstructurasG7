@@ -73,4 +73,8 @@ public class MedicoView implements View{
         public BorderPane getRoot(){
             return root;
         }
+
+        public void setLblMedico(String usuario){
+            lblNombreMedico.setText(usuario);
+        }
 }

@@ -33,7 +33,7 @@ public class ConsultaView implements View{
     private void crearEstructura(){
         root = new BorderPane();
         crearBotones();
-        creatTxtFields();
+        crearTxtFields();
         crearLabels();
         AnchorPane top = new AnchorPane();
         AnchorPane.setLeftAnchor(lblConsulta,10d);
