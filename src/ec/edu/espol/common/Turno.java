@@ -18,6 +18,15 @@ public class Turno implements Serializable {
         turnosTotales+=1;
     }
 
+    //Solo para lectura de archivo
+    public Turno(UsrMedico m, UsrPaciente p, int ta) {
+        medicoAsignado = m;
+        pacienteAtender = p;
+        puestoAsignado = m.getPuesto();
+        turnoAsignado = ta;
+        turnosTotales = ta+1;
+    }
+
     public UsrMedico getMedicoAsignado() {
         return medicoAsignado;
     }
@@ -54,5 +63,13 @@ public class Turno implements Serializable {
     @Override
     public String toString() {
         return String.valueOf(turnoAsignado);
+    }
+
+    public String infoText(){
+        return medicoAsignado.getUsuario() + "|" + pacienteAtender.infoText() + "|" + turnoAsignado;
+    }
+
+    public String test(){
+        return "Turno: " + String.valueOf(turnoAsignado) + ", Puesto: " + puestoAsignado.toString();
     }
 }

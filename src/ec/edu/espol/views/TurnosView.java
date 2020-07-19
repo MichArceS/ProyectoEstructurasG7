@@ -2,6 +2,8 @@ package ec.edu.espol.views;
 
 import ec.edu.espol.common.Turno;
 import ec.edu.espol.main.Main;
+import ec.edu.espol.system.SysData;
+import ec.edu.espol.util.LeerEscribirDatos;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -38,7 +40,8 @@ public class TurnosView {
         }
 
     private static void inicializarObjetos() {
-        turnosMostrar = new LinkedList<>();
+
+        turnosMostrar = SysData.getTurnosActuales();
         root = new BorderPane();
         lblHora = new Label();
         lblHora.setId("lblHora");
@@ -133,10 +136,13 @@ public class TurnosView {
     }
 
     public static void añadirTurnos(Turno turno) {
+        System.out.println(turno.test());
         if (turnosMostrar.size() < 4) turnosMostrar.addFirst(turno);
         else if (turnosMostrar.size() >= 4){
             turnosMostrar.remove(turnosMostrar.size()-1);
-            turnosMostrar.addFirst(turno); }
+            turnosMostrar.addFirst(turno);
+        }
+        LeerEscribirDatos.updateTurnos(turnosMostrar);
         actualizarTurnos();
     }
 
@@ -148,7 +154,7 @@ public class TurnosView {
                     if (i1.hasNext()) {
                         Turno t = i1.next();
                         turnos.get(n).setText("A0" + t.getTurnoAsignado());
-                        puestos.get(n).setText("0" + t.getPuestoAsignado());
+                        puestos.get(n).setText("0" + t.getPuestoAsignado().toString());
                     } else {
                         turnos.get(n).setText("-");
                         puestos.get(n).setText("-");

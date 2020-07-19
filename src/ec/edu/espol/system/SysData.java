@@ -21,20 +21,21 @@ public class SysData {
     protected static List<Consulta> consultas;
     protected static List<Sintoma> sintomasActuales;
     protected static LinkedList<Puesto> puestos;
+    protected static LinkedList<Turno> turnosActuales;
 
     public SysData(){
-        puestos = new LinkedList<>();
+
         medicosRegistrados = LeerEscribirDatos.cargarMedicos();
-        System.out.println(medicosRegistrados);
+        puestos = new LinkedList<>();
         addInfo();
+        System.out.println(medicosRegistrados);
+        turnosActuales = LeerEscribirDatos.cargarTurnos();
         medicosDisponibles = new PriorityQueue<>((UsrMedico m1,UsrMedico m2)->m1.getTurnos().size() - m2.getTurnos().size());
         medicosDisponibles.addAll(getMedicosConPuesto());
         sintomasActuales = LeerEscribirDatos.cargarSintomas();
-
         videos = new CircularSimplyLinkedList<>();
         cargarVideos();
         consultas = new LinkedList<>();
-        System.out.println(medicosRegistrados);
     }
 
     protected static Puesto buscarPuestoNumero(int num) {
@@ -71,7 +72,7 @@ public class SysData {
         return med;
     }
 
-    private static List<UsrMedico> getMedicosConPuesto(){
+    public static List<UsrMedico> getMedicosConPuesto(){
         List<UsrMedico> med = new LinkedList<>();
         for(UsrMedico m: medicosRegistrados){
             if(m.getPuesto() != null){
@@ -127,8 +128,9 @@ public class SysData {
         //cargarVideos();
     }
 
-
-
+    public static LinkedList<Turno> getTurnosActuales(){
+        return turnosActuales;
+    }
 
     /*
     //SIMULACION EN CONSOLA

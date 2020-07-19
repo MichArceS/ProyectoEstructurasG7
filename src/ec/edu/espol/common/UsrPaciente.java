@@ -23,6 +23,10 @@ public class UsrPaciente extends Usuario implements Serializable {
 
     @Override
     public String toString() {
+        return nombre + " " + apellido;
+    }
+
+    public String infoText(){
         return nombre + "," + apellido + "," + edad + "," + genero + "," + sintoma.getNombre() + "," + sintoma.getPrioridad();
     }
 }

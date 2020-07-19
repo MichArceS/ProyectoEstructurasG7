@@ -4,6 +4,7 @@ import ec.edu.espol.common.*;
 import ec.edu.espol.constants.Constantes;
 import ec.edu.espol.constants.Especialidad;
 import ec.edu.espol.constants.Genero;
+import ec.edu.espol.system.SysData;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -44,19 +45,6 @@ public class LeerEscribirDatos{
     }
 
     //MEDICOS
-    /*public static void cargarMedicos(PriorityQueue<UsrMedico> medicosRegistrados){
-        try(BufferedReader br = new BufferedReader(new FileReader(Constantes.RUTAMEDICOS))){
-            String line = br.readLine();
-            while(line != null){
-                String[] data = line.split("\\|");
-                medicosRegistrados.offer(new UsrMedico(data[0],data[1],Integer.valueOf(data[2]),Genero.valueOf(data[3]),Especialidad.valueOf(data[4]),String.valueOf(data[5]),String.valueOf(data[6])));
-                line = br.readLine();
-            }
-        }catch(IOException ex){
-            System.out.println(ex.getMessage());
-        }
-    }*/
-
     public static List<UsrMedico> cargarMedicos(){
         List<UsrMedico> medicos = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(Constantes.RUTAMEDICOS))){
@@ -82,17 +70,65 @@ public class LeerEscribirDatos{
         return medicos;
     }
 
-    /*public static boolean añadirMedico(UsrMedico m){
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(Constantes.RUTAMEDICOS,true))){
-            String line = m.getNombre() + "|" + m.getApellido() + "|" + m.getEdad() + "|" + m.getGenero().toString() + "|" + m.getEspecialidad().toString() + "|" + m.getUsuario() + "|" + m.getContraseña() + "|null";
-            bw.newLine();
-            bw.write(line);
+    public static void updateMedicos(List<UsrMedico> medicos){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(Constantes.RUTAMEDICOS))){
+            for(UsrMedico m: medicos){
+                String line = m.infoText();
+                bw.write(line);
+                bw.newLine();
+            }
         }catch(IOException ex){
             System.out.println(ex.getMessage());
-            return false;
         }
-        return true;
+    }
+
+    //TURNOS
+    public static LinkedList<Turno> cargarTurnos(){
+        LinkedList<Turno> turnos = new LinkedList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(Constantes.RUTATURNOS))){
+            String line = br.readLine();
+            while(line != null){
+                String[] data = line.split("\\|");
+                for(UsrMedico m: SysData.getMedicosConPuesto()){
+                    if(m.getUsuario().equals(data[0])){
+                        String[] dataPaciente = data[1].split(",");
+                        turnos.add(new Turno(m,new UsrPaciente(dataPaciente[0],dataPaciente[1],Integer.valueOf(dataPaciente[2]),Genero.valueOf(dataPaciente[3]),new Sintoma(dataPaciente[4],Integer.valueOf(dataPaciente[5]))),Integer.valueOf(data[2])));
+                    }
+                }
+            }
+        }catch(IOException ex){
+            System.out.println("Archivo no encontrado");
+        }
+        return turnos;
+    }
+
+    /*public static LinkedList<Turno> cargarTurnos(){
+        LinkedList<Turno> turnos = new LinkedList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(Constantes.RUTATURNOS))){
+            String line = br.readLine();
+            while(line != null){
+                String[] data = line.split("\\|");
+                String[] dataMedico = data[0].split(",");
+                String[] dataPaciente = data[1].split(",");
+                turnos.add(new Turno(new UsrMedico(dataMedico[0],dataMedico[1],Integer.valueOf(dataMedico[2]),Genero.valueOf(dataMedico[3]),Especialidad.valueOf(dataMedico[4]),dataMedico[5],dataMedico[6]),new UsrPaciente(dataPaciente[0],dataPaciente[1],Integer.valueOf(dataPaciente[2]),Genero.valueOf(dataPaciente[3]),new Sintoma(dataPaciente[4],Integer.valueOf(dataPaciente[5]))),Integer.valueOf(data[2])));
+            }
+        }catch(IOException ex){
+            System.out.println("Archivo no encontrado");
+        }
+        return turnos;
     }*/
+
+    public static void updateTurnos(LinkedList<Turno> turnos){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(Constantes.RUTATURNOS))){
+            for(Turno t: turnos){
+                String line = t.infoText();
+                bw.write(line);
+                bw.newLine();
+            }
+        }catch(IOException ex){
+            System.out.println(ex.getMessage());
+        }
+    }
 
     //VIDEOS
     public static CircularSimplyLinkedList<Video> cargarVideos(){
@@ -137,6 +173,45 @@ public class LeerEscribirDatos{
         return puestos;
     }
 
+    /* SE BORRA */
+
+    /*public static boolean añadirTurno(Turno t){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(Constantes.RUTAMEDICOS,true))){
+            String line = t.infoText();
+            bw.newLine();
+            bw.write(line);
+        }catch(IOException ex){
+            System.out.println(ex.getMessage());
+            return false;
+        }
+        return true;
+    }*/
+
+    /*public static boolean añadirMedico(UsrMedico m){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(Constantes.RUTAMEDICOS,true))){
+            String line = m.getNombre() + "|" + m.getApellido() + "|" + m.getEdad() + "|" + m.getGenero().toString() + "|" + m.getEspecialidad().toString() + "|" + m.getUsuario() + "|" + m.getContraseña() + "|null";
+            bw.newLine();
+            bw.write(line);
+        }catch(IOException ex){
+            System.out.println(ex.getMessage());
+            return false;
+        }
+        return true;
+    }*/
+
+    /*public static void cargarMedicos(PriorityQueue<UsrMedico> medicosRegistrados){
+        try(BufferedReader br = new BufferedReader(new FileReader(Constantes.RUTAMEDICOS))){
+            String line = br.readLine();
+            while(line != null){
+                String[] data = line.split("\\|");
+                medicosRegistrados.offer(new UsrMedico(data[0],data[1],Integer.valueOf(data[2]),Genero.valueOf(data[3]),Especialidad.valueOf(data[4]),String.valueOf(data[5]),String.valueOf(data[6])));
+                line = br.readLine();
+            }
+        }catch(IOException ex){
+            System.out.println(ex.getMessage());
+        }
+    }*/
+
     //PERSISTENCIA SYSTEM
     /*public static List<UsrMedico> cargarMedicosBinary(){
         try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Constantes.INFOMED))){
@@ -147,18 +222,6 @@ public class LeerEscribirDatos{
         }
         return null;
     }*/
-
-    public static void updateMedicos(List<UsrMedico> medicos){
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(Constantes.RUTAMEDICOS))){
-            for(UsrMedico m: medicos){
-                String line = m.infoText();
-                bw.write(line);
-                bw.newLine();
-            }
-        }catch(IOException ex){
-            System.out.println(ex.getMessage());
-        }
-    }
 
     //public static void updateMed(PriorityQueue<UsrMedico> medicos)
 

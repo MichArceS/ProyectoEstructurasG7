@@ -69,13 +69,17 @@ public class UsrMedico extends Usuario implements Serializable {
         String line = nombre + "|" + apellido + "|" + edad + "|" + genero.toString() + "|" + especialidad.toString() + "|" + usuario + "|" + contra + "|";
         if(turnos.size()>=1){
             for(Turno t: turnos){
-                String infoPaciente = t.getPacienteAtender().toString() + "-";
+                String infoPaciente = t.getPacienteAtender().infoText() + "-";
                 line+=infoPaciente;
             }
         }else{
             line+="null";
         }
         return line;
+    }
+
+    public String infoTextTurno(){
+        return nombre + "," + apellido + "," + edad + "," + genero.toString() + "," + especialidad.toString() + "," + usuario + "," + contra;
     }
 
     public String infoCompleta() {
