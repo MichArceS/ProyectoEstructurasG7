@@ -23,3 +23,25 @@ Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-14 | Hora: 22h6 |
 Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-14 | Hora: 22h15 | Diagnostico: null | Receta: null
 Medico: Jose Alban | Paciente: Peter Parker | Fecha: 2020-07-18 | Hora: 12h46 | Diagnostico: null | Receta: null
 Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-18 | Hora: 14h57 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: sdf fdgd | Fecha: 2020-07-18 | Hora: 15h15 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-18 | Hora: 15h15 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Peter Parker | Fecha: 2020-07-18 | Hora: 15h15 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: dasdas dsadsaa | Fecha: 2020-07-18 | Hora: 15h15 | Diagnostico: null | Receta: null
+Medico: Juanito Alcachofa | Paciente: Mary Jane | Fecha: 2020-07-18 | Hora: 15h16 | Diagnostico: null | Receta: null
+Medico: Juanito Alcachofa | Paciente: fsdfd dfsfdsd | Fecha: 2020-07-18 | Hora: 15h16 | Diagnostico: null | Receta: null
+Medico: Juanito Alcachofa | Paciente: Barry Allen | Fecha: 2020-07-18 | Hora: 15h17 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-18 | Hora: 15h33 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-18 | Hora: 15h33 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-18 | Hora: 15h33 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Peter Parker | Fecha: 2020-07-18 | Hora: 15h34 | Diagnostico: null | Receta: null
+Medico: Juanito Alcachofa | Paciente: Mary Jane | Fecha: 2020-07-18 | Hora: 15h38 | Diagnostico:  | Receta: 
+Medico: Juanito Alcachofa | Paciente: Barry Allen | Fecha: 2020-07-18 | Hora: 15h38 | Diagnostico:  | Receta: 
+Medico: Juanito Alcachofa | Paciente: Mary Jane | Fecha: 2020-07-18 | Hora: 15h41 | Diagnostico: dfsfsdfs | Receta: fsdfsfdfs
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-18 | Hora: 16h19 | Diagnostico:  | Receta: 
+Medico: root root | Paciente: Peter Parker | Fecha: 2020-07-18 | Hora: 16h19 | Diagnostico:  | Receta: 
+Medico: Juanito Alcachofa | Paciente: Mary Jane | Fecha: 2020-07-18 | Hora: 16h19 | Diagnostico:  | Receta: 
+Medico: Juanito Alcachofa | Paciente: Barry Allen | Fecha: 2020-07-18 | Hora: 16h19 | Diagnostico:  | Receta: 
+Medico: root root | Paciente: dsfs fsfsd | Fecha: 2020-07-18 | Hora: 16h35 | Diagnostico:  | Receta: 
+Medico: root root | Paciente: dsadas dasdasa | Fecha: 2020-07-18 | Hora: 18h49 | Diagnostico:  | Receta: 
+Medico: root root | Paciente: dasds dadsds | Fecha: 2020-07-18 | Hora: 18h49 | Diagnostico:  | Receta: 
+Medico: Juanito Alcachofa | Paciente: dsads dadas | Fecha: 2020-07-18 | Hora: 18h50 | Diagnostico:  | Receta: 

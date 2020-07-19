@@ -1,6 +1,2 @@
-root|root|35|MASCULINO|MEDICINA_GENERAL|root|root
-Jose|Alban|35|MASCULINO|MEDICINA_GENERAL|josealb@espol.edu.ec|1234
-Bruce|Banner|42|MASCULINO|PSIQUIATRIA|bruban@espol.edu.ec|1234
-Peppa|Pig|29|FEMENINO|PEDIATRIA|pepapi@espol.edu.ec|1234
-Tony|Stark|32|MASCULINO|CARDIOLOGIA|tonyst@espol.edu.ec|1234
-Juanito|Alcachofa|31|MASCULINO|PEDIATRIA|juanito@espol.edu.ec|1234
+Juanito|Alcachofa|31|MASCULINO|PEDIATRIA|juanito|1234|Lola,Martinez,12,FEMENINO,Apnea,2-Linda,Lindao,33,FEMENINO,Escalofríos,2-
+Aileen|Mendoza|31|FEMENINO|PEDIATRIA|amendoza66|1234|null

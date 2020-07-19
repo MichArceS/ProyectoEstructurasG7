@@ -8,11 +8,12 @@ import ec.edu.espol.constants.Genero;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 
-public class LeerEscribirDatos {
+public class LeerEscribirDatos{
 
     //SINTOMAS
     public static List<Sintoma> cargarSintomas(){
@@ -43,7 +44,7 @@ public class LeerEscribirDatos {
     }
 
     //MEDICOS
-    public static void cargarMedicos(PriorityQueue<UsrMedico> medicosRegistrados){
+    /*public static void cargarMedicos(PriorityQueue<UsrMedico> medicosRegistrados){
         try(BufferedReader br = new BufferedReader(new FileReader(Constantes.RUTAMEDICOS))){
             String line = br.readLine();
             while(line != null){
@@ -54,11 +55,36 @@ public class LeerEscribirDatos {
         }catch(IOException ex){
             System.out.println(ex.getMessage());
         }
+    }*/
+
+    public static List<UsrMedico> cargarMedicos(){
+        List<UsrMedico> medicos = new ArrayList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(Constantes.RUTAMEDICOS))){
+            String line = br.readLine();
+            while(line != null){
+                String[] data = line.split("\\|");
+                UsrMedico m = new UsrMedico(data[0],data[1],Integer.valueOf(data[2]),Genero.valueOf(data[3]),Especialidad.valueOf(data[4]),String.valueOf(data[5]),String.valueOf(data[6]));
+                PriorityQueue<Turno> turnos = new PriorityQueue<>((Turno t1, Turno t2)->t1.getPacienteAtender().getSintoma().getPrioridad() - t2.getPacienteAtender().getSintoma().getPrioridad());
+                if(!data[7].equals("null")){
+                    String[] dataTurnos = data[7].split("-");
+                    for(String s: dataTurnos){
+                        String[] dataPaciente = s.split(",");
+                        turnos.offer(new Turno(m,new UsrPaciente(dataPaciente[0],dataPaciente[1],Integer.valueOf(dataPaciente[2]),Genero.valueOf(dataPaciente[3]),new Sintoma(dataPaciente[4],Integer.valueOf(dataPaciente[5])))));
+                    }
+                }
+                m.setTurnos(turnos);
+                medicos.add(m);
+                line = br.readLine();
+            }
+        }catch(IOException ex){
+            System.out.println(ex.getMessage());
+        }
+        return medicos;
     }
 
-    public static boolean añadirMedico(UsrMedico m){
+    /*public static boolean añadirMedico(UsrMedico m){
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(Constantes.RUTAMEDICOS,true))){
-            String line = m.getNombre() + "|" + m.getApellido() + "|" + m.getEdad() + "|" + m.getGenero().toString() + "|" + m.getEspecialidad().toString();
+            String line = m.getNombre() + "|" + m.getApellido() + "|" + m.getEdad() + "|" + m.getGenero().toString() + "|" + m.getEspecialidad().toString() + "|" + m.getUsuario() + "|" + m.getContraseña() + "|null";
             bw.newLine();
             bw.write(line);
         }catch(IOException ex){
@@ -66,7 +92,7 @@ public class LeerEscribirDatos {
             return false;
         }
         return true;
-    }
+    }*/
 
     //VIDEOS
     public static CircularSimplyLinkedList<Video> cargarVideos(){
@@ -110,6 +136,31 @@ public class LeerEscribirDatos {
         }
         return puestos;
     }
+
+    //PERSISTENCIA SYSTEM
+    /*public static List<UsrMedico> cargarMedicosBinary(){
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Constantes.INFOMED))){
+            List<UsrMedico> listaMedicos = (LinkedList<UsrMedico>)ois.readObject();
+            return listaMedicos;
+        }catch(IOException | ClassNotFoundException ex){
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }*/
+
+    public static void updateMedicos(List<UsrMedico> medicos){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(Constantes.RUTAMEDICOS))){
+            for(UsrMedico m: medicos){
+                String line = m.infoText();
+                bw.write(line);
+                bw.newLine();
+            }
+        }catch(IOException ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    //public static void updateMed(PriorityQueue<UsrMedico> medicos)
 
     /*public static void main(String[] args){
         List<Sintoma> sintomas = cargarSintomas();

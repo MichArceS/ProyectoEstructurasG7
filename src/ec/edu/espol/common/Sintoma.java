@@ -1,6 +1,8 @@
 package ec.edu.espol.common;
 
-public class Sintoma {
+import java.io.Serializable;
+
+public class Sintoma implements Serializable {
 
     private String nombre;
     private int prioridad;

@@ -74,14 +74,14 @@ public class ConsultaView implements View{
         });
         btnTerminar = new Button("TERMINAR");
         btnTerminar.setOnAction(e->{
-            txtDiagnostico.clear();
-            txtReceta.clear();
             if(MainScene.confirmStage.confirmar("terminar la consula?")) {
                 if(SysController.terminarConsulta(txtDiagnostico.getText(),txtReceta.getText())){
                     MainScene.scene.setRoot(MainScene.medicoView.getRoot());
                     MainScene.allowDrag();
                 }
             }
+            txtDiagnostico.clear();
+            txtReceta.clear();
         });
     }
 

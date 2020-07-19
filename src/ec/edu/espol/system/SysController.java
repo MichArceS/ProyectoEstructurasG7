@@ -27,11 +27,10 @@ public class SysController {
     }
 
     public static Consulta siguienteTurno(){
-        Turno turno = medicoLogeado.atenderPaciente();
+        Turno turno = medicoLogeado.siguienteTurno();
         if(turno != null){
             Consulta c = new Consulta(medicoLogeado,turno.getPacienteAtender());
             SysData.addConsulta(c);
-            LeerEscribirDatos.registrarConsulta(c);
             consulta = c;
             TurnosView.añadirTurnos(turno);
             return c;
@@ -43,7 +42,7 @@ public class SysController {
         Iterator<UsrMedico> it = SysData.medicosRegistrados.iterator();
         while(it.hasNext()) {
             UsrMedico m = it.next();
-            if (m.verificarUsuario(username,pass) && m.isDisponible()) {
+            if (m.verificarUsuario(username,pass)) {
                 medicoLogeado = m;
                 return true;
             }
@@ -54,6 +53,9 @@ public class SysController {
     public static boolean terminarConsulta(String diag, String rec){
         consulta.setDiagnostico(diag);
         consulta.setReceta(rec);
+        LeerEscribirDatos.registrarConsulta(consulta);
+        medicoLogeado.getTurnos().poll();
+        LeerEscribirDatos.updateMedicos(SysData.medicosRegistrados);
         consulta = null;
         return true;
     }
@@ -64,7 +66,6 @@ public class SysController {
         try {
             Puesto puesto = new Puesto(medico);
             medico.setPuesto(puesto);
-            medico.setDisponible(true);
             SysData.addPuesto(puesto);
             return true;
         }
@@ -82,12 +83,10 @@ public class SysController {
                 if (p.getMedico() == null) {
                     p.setMedico(medico);
                     medico.setPuesto(p);
-                    medico.setDisponible(true);
                     return true;}
                 else {
                     p.getMedico().setPuesto(null);
                     medico.setPuesto(p);
-                    medico.setDisponible(true);
                     p.setMedico(medico);
                     return true; } } }
         catch(Exception ex) {
@@ -101,7 +100,6 @@ public class SysController {
                 if (p.getMedico() == null) {
                     return false; }
                 else if (p.getMedico() != null) {
-                    p.getMedico().setDisponible(false);
                     p.getMedico().setPuesto(null);
                     p.setMedico(null);
                     return true; } }

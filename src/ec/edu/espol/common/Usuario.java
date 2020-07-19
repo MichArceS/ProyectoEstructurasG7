@@ -2,7 +2,9 @@ package ec.edu.espol.common;
 
 import ec.edu.espol.constants.Genero;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
 
     protected String nombre;
     protected String apellido;

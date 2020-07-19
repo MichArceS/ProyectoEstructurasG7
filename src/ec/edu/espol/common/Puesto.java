@@ -1,6 +1,8 @@
 package ec.edu.espol.common;
 
-public class Puesto {
+import java.io.Serializable;
+
+public class Puesto implements Serializable {
     private int puestoAsignado;
     private UsrMedico medico;
     private static int puestosTotales=0;

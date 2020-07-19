@@ -1,6 +1,8 @@
 package ec.edu.espol.common;
 
-public class Turno {
+import java.io.Serializable;
+
+public class Turno implements Serializable {
 
     private UsrMedico medicoAsignado;
     private UsrPaciente pacienteAtender;
@@ -10,7 +12,6 @@ public class Turno {
 
     public Turno(UsrMedico m, UsrPaciente p) {
         medicoAsignado = m;
-        m.setDisponible(true);
         pacienteAtender = p;
         puestoAsignado = m.getPuesto();
         turnoAsignado = turnosTotales+1;

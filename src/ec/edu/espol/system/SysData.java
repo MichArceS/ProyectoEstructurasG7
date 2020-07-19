@@ -15,20 +15,25 @@ import java.util.PriorityQueue;
 
 
 public class SysData {
-    protected static PriorityQueue<UsrMedico> medicosRegistrados;
+    protected static List<UsrMedico> medicosRegistrados;
+    protected static PriorityQueue<UsrMedico> medicosDisponibles;
     protected static CircularSimplyLinkedList<Video> videos;
     protected static List<Consulta> consultas;
     protected static List<Sintoma> sintomasActuales;
     protected static LinkedList<Puesto> puestos;
 
     public SysData(){
-        medicosRegistrados = new PriorityQueue<>((UsrMedico m1,UsrMedico m2)->m1.getTurnos().size() - m2.getTurnos().size());
-        LeerEscribirDatos.cargarMedicos(medicosRegistrados);
-        sintomasActuales = LeerEscribirDatos.cargarSintomas();
         puestos = new LinkedList<>();
-        videos = new CircularSimplyLinkedList<>();
-        consultas = new LinkedList<>();
+        medicosRegistrados = LeerEscribirDatos.cargarMedicos();
+        System.out.println(medicosRegistrados);
         añadirInfo();
+        medicosDisponibles = new PriorityQueue<>((UsrMedico m1,UsrMedico m2)->m1.getTurnos().size() - m2.getTurnos().size());
+        medicosDisponibles.addAll(getMedicosConPuesto());
+        sintomasActuales = LeerEscribirDatos.cargarSintomas();
+
+        videos = new CircularSimplyLinkedList<>();
+        cargarVideos();
+        consultas = new LinkedList<>();
         System.out.println(medicosRegistrados);
     }
 
@@ -42,40 +47,52 @@ public class SysData {
     }
 
     public static void addMedico(UsrMedico med){
-        medicosRegistrados.offer(med);
+        medicosRegistrados.add(med);
+        //LeerEscribirDatos.añadirMedico(med);
+        LeerEscribirDatos.updateMedicos(medicosRegistrados);
         System.out.println("Funciona");
     }
 
     public static void addPaciente(UsrPaciente p){
-        UsrMedico medico = medicosRegistrados.poll();
+        UsrMedico medico = medicosDisponibles.poll();
         Turno turno = new Turno(medico,p);
         medico.getTurnos().offer(turno);
-        medicosRegistrados.offer(medico);
+        medicosDisponibles.offer(medico);
+        LeerEscribirDatos.updateMedicos(medicosRegistrados);
     }
 
     public static List<UsrMedico> getMedicosSinPuestos(){
-        List<UsrMedico> md = new LinkedList<>(medicosRegistrados);
         List<UsrMedico> med = new LinkedList<>();
-        for(UsrMedico m: md){
+        for(UsrMedico m: medicosRegistrados){
             if(m.getPuesto() == null){
                 med.add(m);
             }
         }
-        md = null;
         return med;
     }
 
-    public static PriorityQueue<UsrMedico> getMedicosRegistrados() {
+    private static List<UsrMedico> getMedicosConPuesto(){
+        List<UsrMedico> med = new LinkedList<>();
+        for(UsrMedico m: medicosRegistrados){
+            if(m.getPuesto() != null){
+                med.add(m);
+            }
+        }
+        return med;
+    }
+
+    public static List<UsrMedico> getMedicosRegistrados() {
         return medicosRegistrados;
     }
 
-    public static LinkedList<Puesto> getPuestos() {
+    public static List<Puesto> getPuestos() {
         return puestos;
     }
 
     public static void addPuesto(Puesto p) {
         puestos.add(p);
     }
+
     public static void cargarVideos() {
         videos = LeerEscribirDatos.cargarVideos();
     }
@@ -102,12 +119,12 @@ public class SysData {
             puestos.add(p);
         }
 
-        addPaciente(new UsrPaciente("Natasha","Romanov",31,Genero.FEMENINO,sintomasActuales.get(0)));
+        /*addPaciente(new UsrPaciente("Natasha","Romanov",31,Genero.FEMENINO,sintomasActuales.get(0)));
         addPaciente(new UsrPaciente("Mary","Jane",28,Genero.FEMENINO,sintomasActuales.get(1)));
         addPaciente(new UsrPaciente("Peter","Parker",21,Genero.MASCULINO,sintomasActuales.get(2)));
-        addPaciente(new UsrPaciente("Barry","Allen",25,Genero.MASCULINO,sintomasActuales.get(3)));
+        addPaciente(new UsrPaciente("Barry","Allen",25,Genero.MASCULINO,sintomasActuales.get(3)));*/
 
-        cargarVideos();
+        //cargarVideos();
     }
 
 

@@ -2,7 +2,9 @@ package ec.edu.espol.common;
 
 import ec.edu.espol.constants.Genero;
 
-public class UsrPaciente extends Usuario{
+import java.io.Serializable;
+
+public class UsrPaciente extends Usuario implements Serializable {
 
     private Sintoma sintoma;
 
@@ -21,11 +23,6 @@ public class UsrPaciente extends Usuario{
 
     @Override
     public String toString() {
-        return "UsrPaciente{" +
-                "nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", edad=" + edad +
-                ", genero='" + genero + '\'' +
-                '}';
+        return nombre + "," + apellido + "," + edad + "," + genero + "," + sintoma.getNombre() + "," + sintoma.getPrioridad();
     }
 }

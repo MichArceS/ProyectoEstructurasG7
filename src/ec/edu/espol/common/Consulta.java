@@ -1,6 +1,8 @@
 package ec.edu.espol.common;
 
-public class Consulta {
+import java.io.Serializable;
+
+public class Consulta implements Serializable {
     private UsrMedico medico;
     private UsrPaciente paciente;
     private String diagnostico;

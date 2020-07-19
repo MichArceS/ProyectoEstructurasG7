@@ -2,12 +2,11 @@ package ec.edu.espol.common;
 
 import ec.edu.espol.constants.Especialidad;
 import ec.edu.espol.constants.Genero;
-
+import java.io.Serializable;
 import java.util.PriorityQueue;
 
-public class UsrMedico extends Usuario{
+public class UsrMedico extends Usuario implements Serializable {
     private Especialidad especialidad;
-    private boolean disponible;
     private Puesto puesto;
     private String usuario;
     private String contraseña;
@@ -29,8 +28,8 @@ public class UsrMedico extends Usuario{
         this.puesto = puesto;
     }
 
-    public Turno atenderPaciente(){
-        return turnos.poll();
+    public Turno siguienteTurno(){
+        return turnos.peek();
     }
 
     public Especialidad getEspecialidad() {
@@ -39,14 +38,6 @@ public class UsrMedico extends Usuario{
 
     public void setEspecialidad(Especialidad especialidad) {
         this.especialidad = especialidad;
-    }
-
-    public boolean isDisponible() {
-        return disponible;
-    }
-
-    public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
     }
 
     public PriorityQueue<Turno> getTurnos() {
@@ -61,18 +52,49 @@ public class UsrMedico extends Usuario{
         return (this.usuario.equals(usuario)) && (this.contraseña.equals(contrasenia));
     }
 
+    public String getUsuario(){
+        return usuario;
+    }
+
+    public String getContraseña(){
+        return contraseña;
+    }
 
     @Override
     public String toString() {
         return nombre+" "+apellido;
     }
 
+    public String infoText(){
+        String line = nombre + "|" + apellido + "|" + edad + "|" + genero.toString() + "|" + especialidad.toString() + "|" + usuario + "|" + contraseña + "|";
+        if(turnos.size()>=1){
+            for(Turno t: turnos){
+                String infoPaciente = t.getPacienteAtender().toString() + "-";
+                line+=infoPaciente;
+            }
+        }else{
+            line+="null";
+        }
+        return line;
+    }
+
     public String infoCompleta() {
         return "UsrMedico{" +
-                ", disponible=" + disponible +
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", pacientes=" + turnos.size() +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null){
+            if(obj instanceof UsrMedico){
+                UsrMedico m = (UsrMedico)obj;
+                if(usuario.equals(m.usuario))
+                    return true;
+            }
+        }
+        return false;
     }
 }
