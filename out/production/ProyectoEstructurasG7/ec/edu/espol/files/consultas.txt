@@ -45,3 +45,5 @@ Medico: root root | Paciente: dsfs fsfsd | Fecha: 2020-07-18 | Hora: 16h35 | Dia
 Medico: root root | Paciente: dsadas dasdasa | Fecha: 2020-07-18 | Hora: 18h49 | Diagnostico:  | Receta: 
 Medico: root root | Paciente: dasds dadsds | Fecha: 2020-07-18 | Hora: 18h49 | Diagnostico:  | Receta: 
 Medico: Juanito Alcachofa | Paciente: dsads dadas | Fecha: 2020-07-18 | Hora: 18h50 | Diagnostico:  | Receta: 
+Medico: Aileen Mendoza | Paciente: Jairo Campos | Fecha: 2020-07-19 | Hora: 0h43 | Diagnostico: Jugo de naranja | Receta: Paracetamol
+Medico: Aileen Mendoza | Paciente: Wacho Wachin | Fecha: 2020-07-19 | Hora: 0h45 | Diagnostico: Juguito | Receta: Nastizol

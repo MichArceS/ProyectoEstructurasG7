@@ -1,2 +1,3 @@
 Juanito|Alcachofa|31|MASCULINO|PEDIATRIA|juanito|1234|Lola,Martinez,12,FEMENINO,Apnea,2-Linda,Lindao,33,FEMENINO,Escalofríos,2-
 Aileen|Mendoza|31|FEMENINO|PEDIATRIA|amendoza66|1234|null
+Mauricio|Egas|42|MASCULINO|MEDICINA_GENERAL|megas21|abc|null

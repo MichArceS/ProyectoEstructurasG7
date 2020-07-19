@@ -9,15 +9,15 @@ public class UsrMedico extends Usuario implements Serializable {
     private Especialidad especialidad;
     private Puesto puesto;
     private String usuario;
-    private String contraseña;
+    private String contra;
     private PriorityQueue<Turno> turnos;
 
-    public UsrMedico(String n, String a, int e, Genero g, Especialidad esp, String usr, String contra) {
+    public UsrMedico(String n, String a, int e, Genero g, Especialidad esp, String usr, String cont) {
         super(n,a,e,g);
         especialidad = esp;
         usuario = usr;
-        contraseña = contra;
-        turnos = new PriorityQueue<>((Turno t1, Turno t2)->t1.getPacienteAtender().getSintoma().getPrioridad() - t2.getPacienteAtender().getSintoma().getPrioridad());
+        contra = cont;
+        turnos = new PriorityQueue<>((Turno t1, Turno t2)->t2.getPacienteAtender().getSintoma().getPrioridad() - t1.getPacienteAtender().getSintoma().getPrioridad());
     }
 
     public Puesto getPuesto() {
@@ -49,7 +49,7 @@ public class UsrMedico extends Usuario implements Serializable {
     }
 
     public boolean verificarUsuario(String usuario, String contrasenia){
-        return (this.usuario.equals(usuario)) && (this.contraseña.equals(contrasenia));
+        return (this.usuario.equals(usuario)) && (this.contra.equals(contrasenia));
     }
 
     public String getUsuario(){
@@ -57,7 +57,7 @@ public class UsrMedico extends Usuario implements Serializable {
     }
 
     public String getContraseña(){
-        return contraseña;
+        return contra;
     }
 
     @Override
@@ -66,7 +66,7 @@ public class UsrMedico extends Usuario implements Serializable {
     }
 
     public String infoText(){
-        String line = nombre + "|" + apellido + "|" + edad + "|" + genero.toString() + "|" + especialidad.toString() + "|" + usuario + "|" + contraseña + "|";
+        String line = nombre + "|" + apellido + "|" + edad + "|" + genero.toString() + "|" + especialidad.toString() + "|" + usuario + "|" + contra + "|";
         if(turnos.size()>=1){
             for(Turno t: turnos){
                 String infoPaciente = t.getPacienteAtender().toString() + "-";

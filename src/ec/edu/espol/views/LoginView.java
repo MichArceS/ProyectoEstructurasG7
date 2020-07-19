@@ -13,12 +13,12 @@ import javafx.scene.layout.GridPane;
 
 public class LoginView implements View{
     private BorderPane root;
-    private Label lblInicioSesion;
+    private static Label lblInicioSesion;
     public static Label lblHora;
-    private Label lblUsuario;
-    private TextField txtUsuario;
-    private Label lblPassword;
-    private PasswordField txtPassword;
+    private static Label lblUsuario;
+    private static TextField txtUsuario;
+    private static Label lblPassword;
+    private static PasswordField txtPassword;
     private Button btnCancelar;
     private Button btnIniciarSesion;
 
@@ -75,13 +75,13 @@ public class LoginView implements View{
         });
     }
 
-    private void creatTxtFields(){
+    private static void creatTxtFields(){
         txtUsuario = new TextField();
         txtPassword = new PasswordField();
 
     }
 
-    private void crearLabels(){
+    private static void crearLabels(){
         lblInicioSesion = new Label("Inicio de Sesion");
         lblHora = new Label("12:30");
         lblUsuario = new Label("Usuario:");
@@ -93,7 +93,7 @@ public class LoginView implements View{
         return root;
     }
 
-    private void instanciarIDs(){
+    private static void instanciarIDs(){
         lblHora.setId("lblHora");
         lblInicioSesion.setId("lblPaciente");
         txtPassword.setId("lblPassword");

@@ -10,33 +10,29 @@ public class Hora implements Runnable{
 
     Date objDate;
     boolean stop;
-
-    public Hora() {
-    }
-
+        
     @Override
     public void run() {
         while(!stop) {
-            Date objDate = new Date();
+            objDate = new Date();
             String strDateFormat = "hh:mm:ss";
             SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat);
-            Platform.runLater(()->{ConsultaView.lblHora.setText(objSDF.format(objDate));});
-            Platform.runLater(()->{FormMedicoView.lblHora.setText(objSDF.format(objDate));});
-            Platform.runLater(()->{FormPacienteView.lblHora.setText(objSDF.format(objDate));});
-            Platform.runLater(()->{MedicoView.lblHora.setText(objSDF.format(objDate));});
-            Platform.runLater(()->{LoginView.lblHora.setText(objSDF.format(objDate));});
-            Platform.runLater(()->{MedicoView.lblHora.setText(objSDF.format(objDate));});
-            Platform.runLater(()->{TurnosView.lblHora.setText(objSDF.format(objDate));});
-            Platform.runLater(()->{NuevoPuestoView.lblHora.setText(objSDF.format(objDate));});
-            Platform.runLater(()->{AsignarEditarPuestoView.lblHora.setText(objSDF.format(objDate));});
-            Platform.runLater(()->{EliminarPuestoView.lblHora.setText(objSDF.format(objDate));});
-            Platform.runLater(()->{PuestosView.lblHora.setText(objSDF.format(objDate));});
-            Platform.runLater(()->{
-                PuestosView.lblHora.setText(objSDF.format(objDate));});
+            Platform.runLater(()->{ConsultaView.lblHora.setText(objSDF.format(objDate));
+            FormMedicoView.lblHora.setText(objSDF.format(objDate));
+            FormPacienteView.lblHora.setText(objSDF.format(objDate));
+            MedicoView.lblHora.setText(objSDF.format(objDate));
+            LoginView.lblHora.setText(objSDF.format(objDate));
+            MedicoView.lblHora.setText(objSDF.format(objDate));
+            TurnosView.lblHora.setText(objSDF.format(objDate));
+            NuevoPuestoView.lblHora.setText(objSDF.format(objDate));
+            AsignarEditarPuestoView.lblHora.setText(objSDF.format(objDate));
+            EliminarPuestoView.lblHora.setText(objSDF.format(objDate));
+            PuestosView.lblHora.setText(objSDF.format(objDate));
+            PuestosView.lblHora.setText(objSDF.format(objDate));});
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
         }
     }

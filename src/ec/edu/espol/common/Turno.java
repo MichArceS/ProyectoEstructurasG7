@@ -8,7 +8,7 @@ public class Turno implements Serializable {
     private UsrPaciente pacienteAtender;
     private Puesto puestoAsignado;
     private int turnoAsignado;
-    private static int turnosTotales=0;
+    private static int turnosTotales;
 
     public Turno(UsrMedico m, UsrPaciente p) {
         medicoAsignado = m;

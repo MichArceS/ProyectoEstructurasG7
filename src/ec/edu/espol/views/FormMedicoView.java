@@ -13,22 +13,22 @@ import javafx.scene.layout.GridPane;
 
 public class FormMedicoView implements View{
     private BorderPane root;
-    private Label lblFormMedico;
+    private static Label lblFormMedico;
     public static Label lblHora;
-    private Label lblNombre;
-    private TextField txtNombre;
-    private Label lblApellido;
-    private TextField txtApellido;
-    private Label lblEdad;
-    private TextField txtEdad;
-    private Label lblGenero;
+    private static Label lblNombre;
+    private static TextField txtNombre;
+    private static Label lblApellido;
+    private static TextField txtApellido;
+    private static Label lblEdad;
+    private static TextField txtEdad;
+    private static Label lblGenero;
     private ComboBox comboGenero;
-    private Label lblEspecialidad;
+    private static Label lblEspecialidad;
     private ComboBox comboEspecialidad;
-    private Label lblUsuario;
-    private TextField txtUsuario;
-    private Label lblPassword;
-    private PasswordField txtPassword;
+    private static Label lblUsuario;
+    private static TextField txtUsuario;
+    private static Label lblPassword;
+    private static PasswordField txtPassword;
     private Button btnCancelar;
     private Button btnTerminar;
 
@@ -88,8 +88,8 @@ public class FormMedicoView implements View{
         });
         btnTerminar = new Button("TERMINAR");
         btnTerminar.setOnAction(e->{
-            if(MainScene.confirmStage.confirmar("terminar el Formulario?")) {
-                if(SysController.añadirMedico(txtNombre.getText(),txtApellido.getText(),txtEdad.getText(),(Genero) comboGenero.getSelectionModel().getSelectedItem(),(Especialidad)comboEspecialidad.getSelectionModel().getSelectedItem(),txtUsuario.getText(),txtPassword.getText())){
+            if(MainScene.confirmStage.confirmar("terminar el Formulario?") &&
+                    SysController.addMedico(txtNombre.getText(),txtApellido.getText(),txtEdad.getText(),(Genero) comboGenero.getSelectionModel().getSelectedItem(),(Especialidad)comboEspecialidad.getSelectionModel().getSelectedItem(),txtUsuario.getText(),txtPassword.getText())) {
                     txtNombre.clear();
                     txtApellido.clear();
                     txtEdad.clear();
@@ -97,12 +97,11 @@ public class FormMedicoView implements View{
                     txtUsuario.clear();
                     MainScene.scene.setRoot(MainScene.inicio.getRoot());
                     MainScene.allowDrag();
-                }
             }
         });
     }
 
-    private void creatTxtFields(){
+    private static void creatTxtFields(){
         txtEdad = new TextField();
         txtNombre = new TextField();
         txtApellido = new TextField();
@@ -111,7 +110,7 @@ public class FormMedicoView implements View{
 
     }
 
-    private void crearLabels(){
+    private static void crearLabels(){
         lblFormMedico = new Label("Formulario Medico");
         lblHora = new Label("12:30");
         lblNombre = new Label("Nombre:");
@@ -133,7 +132,7 @@ public class FormMedicoView implements View{
         return root;
     }
 
-    private void instanciarIDs(){
+    private static void instanciarIDs(){
         lblHora.setId("lblHora");
         lblFormMedico.setId("lblPaciente");
         txtPassword.setId("lblPassword");

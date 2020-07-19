@@ -1,6 +1,7 @@
 package ec.edu.espol.util;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class CircularSimplyLinkedList<E> implements Iterable<E>{
 
@@ -104,11 +105,13 @@ public class CircularSimplyLinkedList<E> implements Iterable<E>{
             last.data = null;
             last = last.next = null;
         } else {
-            Node<E> prev = getPrevious(last);
-            prev.next = last.next;
-            last.next = null;
-            last.data = null; //help GC
-            last = prev;
+                Node<E> prev = getPrevious(last);
+                if(prev != null) {
+                    prev.next = last.next;
+                    last.next = null;
+                    last.data = null; //help GC
+                    last = prev;
+                }
         }
         current--;
         return true;
@@ -217,9 +220,12 @@ public class CircularSimplyLinkedList<E> implements Iterable<E>{
 
             @Override
             public E next() {
-                E tmp = n.data;
-                n = n.next;
-                return tmp;
+                if(!hasNext()){
+                    throw new NoSuchElementException();
+                }
+                    E tmp = n.data;
+                    n = n.next;
+                    return tmp;
             }
         };
         return it;

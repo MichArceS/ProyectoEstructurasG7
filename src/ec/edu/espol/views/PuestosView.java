@@ -12,7 +12,7 @@ import javafx.scene.layout.GridPane;
 public class PuestosView implements View{
     private BorderPane root;
     public static Label lblHora;
-    private Label lblPuesto;
+    private static Label lblPuesto;
     private Button btnAsignarEditarPuesto;
     private Button btnDesasignarPuesto;
     private Button btnEliminarPuesto;
@@ -80,7 +80,7 @@ public class PuestosView implements View{
             MainScene.allowDrag();
         });
     }
-    private void crearLabels(){
+    private static void crearLabels(){
         lblHora = new Label("");
         lblHora.setId("lblHora");
         lblPuesto = new Label("Puesto");

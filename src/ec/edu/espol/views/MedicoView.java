@@ -14,7 +14,7 @@ import javafx.scene.layout.VBox;
 public class MedicoView implements View{
     private BorderPane root;
     public static Label lblHora;
-    private Label lblNombreMedico;
+    private static Label lblNombreMedico;
     private Button btnSgtTurno;
     private Button btnCerrarSesion;
 
@@ -62,7 +62,7 @@ public class MedicoView implements View{
                 }
             });
         }
-        private void crearLabels(){
+        private static void crearLabels(){
             lblHora = new Label("");
             lblHora.setId("lblHora");
             lblNombreMedico = new Label("Nombre del Medico");

@@ -19,11 +19,11 @@ import java.util.LinkedList;
 
 public class AsignarEditarPuestoView {
     private BorderPane root;
-    private Label lblInicioSesion;
+    private static Label lblInicioSesion;
     public static Label lblHora;
-    private Label lblPuesto;
+    private static Label lblPuesto;
     private ComboBox comboPuesto;
-    private Label lblMedico;
+    private static Label lblMedico;
     private ComboBox comboMedico;
     private Button btnCancelar;
     private Button btnAgregarPuesto;
@@ -68,11 +68,11 @@ public class AsignarEditarPuestoView {
         });
         btnAgregarPuesto = new Button("REASIGNAR PUESTO");
         btnAgregarPuesto.setOnAction(e->{
-            if(MainScene.confirmStage.confirmar("reasignar el puesto?")) {
-                if(SysController.asignarMedicoPuesto((Puesto)comboPuesto.getSelectionModel().getSelectedItem(),(UsrMedico)comboMedico.getSelectionModel().getSelectedItem())){
+            if(MainScene.confirmStage.confirmar("reasignar el puesto?") &&
+                SysController.asignarMedicoPuesto((Puesto)comboPuesto.getSelectionModel().getSelectedItem(),(UsrMedico)comboMedico.getSelectionModel().getSelectedItem()))
+            {
                     MainScene.scene.setRoot(MainScene.puestosView.getRoot());
                     MainScene.allowDrag();
-                }
             }
         });
     }
@@ -83,7 +83,7 @@ public class AsignarEditarPuestoView {
 
     }
 
-    private void crearLabels(){
+    private static void crearLabels(){
         lblInicioSesion = new Label("Reasignar Puesto");
         lblHora = new Label("12:30");
         lblPuesto = new Label("Puesto:");
@@ -95,7 +95,7 @@ public class AsignarEditarPuestoView {
         return root;
     }
 
-    private void instanciarIDs(){
+    private static void instanciarIDs(){
         lblHora.setId("lblHora");
         lblInicioSesion.setId("lblPaciente");
     }

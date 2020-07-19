@@ -15,10 +15,10 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    public static Hora hora = new Hora();
-    public static Thread hilo= new Thread(hora);
-    public static HiloVideos videos = new HiloVideos(LeerEscribirDatos.cargarVideos());
-    public static Thread hiloVideos= new Thread(videos);
+    public static final Hora hora = new Hora();
+    public static final Thread hilo= new Thread(hora);
+    public static final HiloVideos videos = new HiloVideos(LeerEscribirDatos.cargarVideos());
+    public static final Thread hiloVideos= new Thread(videos);
     MainScene mainScene;
     SysData sysData;
 

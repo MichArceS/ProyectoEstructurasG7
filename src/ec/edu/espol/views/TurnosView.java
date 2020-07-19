@@ -19,26 +19,26 @@ import java.util.List;
 
 public class TurnosView {
 
-    private BorderPane root;
+    private static BorderPane root;
     public static Label lblHora;
-    private VBox sup;
-    private HBox bot;
-    private HBox mid;
+    private static VBox sup;
+    private static HBox bot;
+    private static HBox mid;
     public static MediaView mediaView;
-    private GridPane turnosGrid;
+    private static GridPane turnosGrid;
     private static LinkedList<Turno> turnosMostrar;
     private static List<Label> puestos;
     private static List<Label> turnos;
 
     public TurnosView() {
-        turnosMostrar = new LinkedList<>();
         inicializarObjetos();
         crearEstructuraSuperior();
         crearEstructuraInferior();
         crearEstructuraMid();
         }
 
-    private void inicializarObjetos() {
+    private static void inicializarObjetos() {
+        turnosMostrar = new LinkedList<>();
         root = new BorderPane();
         lblHora = new Label();
         lblHora.setId("lblHora");
@@ -75,7 +75,7 @@ public class TurnosView {
         bot.getChildren().addAll(boton,l);
     }
 
-    public void crearEstructuraTurnos(){
+    public static void crearEstructuraTurnos(){
         Label turno = new Label("TURNO");
         Label puesto = new Label("PUESTO");
         Label turno1 = new Label("A001");
@@ -86,16 +86,18 @@ public class TurnosView {
         Label puesto3 = new Label("03");
         Label turno4 = new Label("A004");
         Label puesto4 = new Label("04");
-        turno.setId("turno");
-        puesto.setId("puesto");
-        turno1.setId("turno");
-        puesto1.setId("puesto");
-        turno2.setId("turno");
-        puesto2.setId("puesto");
-        turno3.setId("turno");
-        puesto3.setId("puesto");
-        turno4.setId("turno");
-        puesto4.setId("puesto");
+        String idTurnos = "turno";
+        String idPuestos = "turnos";
+        turno.setId(idTurnos);
+        puesto.setId(idPuestos);
+        turno1.setId(idTurnos);
+        puesto1.setId(idPuestos);
+        turno2.setId(idTurnos);
+        puesto2.setId(idPuestos);
+        turno3.setId(idTurnos);
+        puesto3.setId(idPuestos);
+        turno4.setId(idTurnos);
+        puesto4.setId(idPuestos);
         agregarListaPuestos(puesto1,puesto2,puesto3,puesto4);
         agregarListaTurnos(turno1,turno2,turno3,turno4);
         turnosGrid.setId("box-turnos");
@@ -116,14 +118,14 @@ public class TurnosView {
         actualizarTurnos();
     }
 
-    public void agregarListaTurnos(Label t1,Label t2,Label t3,Label t4){
+    public static void agregarListaTurnos(Label t1, Label t2, Label t3, Label t4){
         turnos.add(t1);
         turnos.add(t2);
         turnos.add(t3);
         turnos.add(t4);
     }
 
-    public void agregarListaPuestos(Label p1,Label p2,Label p3,Label p4){
+    public static void agregarListaPuestos(Label p1, Label p2, Label p3, Label p4){
         puestos.add(p1);
         puestos.add(p2);
         puestos.add(p3);
@@ -140,19 +142,19 @@ public class TurnosView {
 
     public static void actualizarTurnos(){
         Platform.runLater(()->{
-            Iterator<Turno> i1= turnosMostrar.iterator();
-            int n = 0;
-            while(n<4){
-                if(i1.hasNext()){
-                    Turno t = i1.next();
-                    turnos.get(n).setText("A0"+t.getTurnoAsignado());
-                    puestos.get(n).setText("0"+t.getPuestoAsignado());
-                }else{
-                    turnos.get(n).setText("-");
-                    puestos.get(n).setText("-");
+                Iterator<Turno> i1 = turnosMostrar.iterator();
+                int n = 0;
+                while (n < 4) {
+                    if (i1.hasNext()) {
+                        Turno t = i1.next();
+                        turnos.get(n).setText("A0" + t.getTurnoAsignado());
+                        puestos.get(n).setText("0" + t.getPuestoAsignado());
+                    } else {
+                        turnos.get(n).setText("-");
+                        puestos.get(n).setText("-");
+                    }
+                    n++;
                 }
-                n++;
-            }
         });
     }
     public BorderPane getRoot() {

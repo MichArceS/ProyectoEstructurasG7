@@ -26,7 +26,7 @@ public class SysData {
         puestos = new LinkedList<>();
         medicosRegistrados = LeerEscribirDatos.cargarMedicos();
         System.out.println(medicosRegistrados);
-        añadirInfo();
+        addInfo();
         medicosDisponibles = new PriorityQueue<>((UsrMedico m1,UsrMedico m2)->m1.getTurnos().size() - m2.getTurnos().size());
         medicosDisponibles.addAll(getMedicosConPuesto());
         sintomasActuales = LeerEscribirDatos.cargarSintomas();
@@ -105,7 +105,7 @@ public class SysData {
         return sintomasActuales;
     }
 
-    private void añadirInfo(){
+    private void addInfo(){
         /*
         addMedico(new UsrMedico("Jose","Alban",35, Genero.MASCULINO, Especialidad.MEDICINA_GENERAL,"josealb@espol.edu.ec","1234"));
         addMedico(new UsrMedico("Bruce","Banner",42, Genero.MASCULINO, Especialidad.PSIQUIATRIA,"bruban@espol.edu.ec","1234"));

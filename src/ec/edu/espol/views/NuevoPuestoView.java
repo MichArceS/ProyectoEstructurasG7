@@ -17,11 +17,11 @@ import javafx.scene.layout.GridPane;
 
 public class NuevoPuestoView {
     private BorderPane root;
-    private Label lblInicioSesion;
+    private static Label lblInicioSesion;
     public static Label lblHora;
-    private Label lblPuesto;
+    private static Label lblPuesto;
     private TextField txtPuesto;
-    private Label lblMedico;
+    private static Label lblMedico;
     private ComboBox comboMedico;
     private Button btnCancelar;
     private Button btnAgregarPuesto;
@@ -67,12 +67,11 @@ public class NuevoPuestoView {
         });
         btnAgregarPuesto = new Button("AGREGAR PUESTO");
         btnAgregarPuesto.setOnAction(e->{
-            if(MainScene.confirmStage.confirmar("agregar el nuevo puesto?")) {
-                if(SysController.crearPuesto((UsrMedico) comboMedico.getSelectionModel().getSelectedItem())){
+            if(MainScene.confirmStage.confirmar("agregar el nuevo puesto?") &&
+                    SysController.crearPuesto((UsrMedico) comboMedico.getSelectionModel().getSelectedItem())) {
                     txtPuesto.clear();
                     MainScene.scene.setRoot(MainScene.puestosView.getRoot());
                     MainScene.allowDrag();
-                }
             }
         });
     }
@@ -83,7 +82,7 @@ public class NuevoPuestoView {
         comboMedico = new ComboBox(FXCollections.observableList(SysData.getMedicosSinPuestos()));
     }
 
-    private void crearLabels(){
+    private static void crearLabels(){
         lblInicioSesion = new Label("Agregar Puesto");
         lblHora = new Label("12:30");
         lblPuesto = new Label("Nuevo Puesto:");
@@ -95,7 +94,7 @@ public class NuevoPuestoView {
         return root;
     }
 
-    private void instanciarIDs(){
+    private static void instanciarIDs(){
         lblHora.setId("lblHora");
         lblInicioSesion.setId("lblPaciente");
     }

@@ -16,9 +16,9 @@ import javafx.scene.layout.GridPane;
 
 public class EliminarPuestoView {
     private BorderPane root;
-    private Label lblInicioSesion;
+    private static Label lblInicioSesion;
     public static Label lblHora;
-    private Label lblPuesto;
+    private static Label lblPuesto;
     private ComboBox comboPuesto;
     private Button btnCancelar;
     private Button btnEliminarPuesto;
@@ -61,11 +61,10 @@ public class EliminarPuestoView {
         });
         btnEliminarPuesto = new Button("ELIMINAR PUESTO");
         btnEliminarPuesto.setOnAction(e->{
-            if(MainScene.confirmStage.confirmar("eliminar el puesto seleccionado?")) {
-                if(SysController.eliminarPuesto((Puesto)comboPuesto.getSelectionModel().getSelectedItem())){
+            if(MainScene.confirmStage.confirmar("eliminar el puesto seleccionado?") &&
+                    SysController.eliminarPuesto((Puesto)comboPuesto.getSelectionModel().getSelectedItem())) {
                     MainScene.scene.setRoot(MainScene.puestosView.getRoot());
                     MainScene.allowDrag();
-                }
             }
         });
     }
@@ -74,7 +73,7 @@ public class EliminarPuestoView {
         comboPuesto = new ComboBox(FXCollections.observableList(SysData.getPuestos()));
     }
 
-    private void crearLabels(){
+    private static void crearLabels(){
         lblInicioSesion = new Label("Eliminar Puesto");
         lblHora = new Label("12:30");
         lblPuesto = new Label("Puesto a Eliminar:");
@@ -85,7 +84,7 @@ public class EliminarPuestoView {
         return root;
     }
 
-    private void instanciarIDs(){
+    private static void instanciarIDs(){
         lblHora.setId("lblHora");
         lblInicioSesion.setId("lblPaciente");
     }

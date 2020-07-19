@@ -1,6 +1,6 @@
 package ec.edu.espol.constants;
 
-public class Constantes {
+public abstract class Constantes {
     public static final String RUTASINTOMAS = "src/ec/edu/espol/files/sintomas.txt";
     public static final String RUTASTYLE = "/ec/edu/espol/styles/StyleSheet.css";
     public static final String RUTAMEDICOS = "src/ec/edu/espol/files/medicos.txt";
