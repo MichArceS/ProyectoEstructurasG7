@@ -33,7 +33,7 @@ public class HiloVideos implements Runnable{
             try {
                 Thread.sleep(tiempo);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
         }
     }

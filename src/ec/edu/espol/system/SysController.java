@@ -9,17 +9,22 @@ import ec.edu.espol.views.TurnosView;
 import java.util.Iterator;
 
 public class SysController {
+
+    //Hide de public constructor
+    private SysController(){
+    }
+
     private static UsrMedico medicoLogeado = null;
     private static Consulta consulta = null;
-
-    public static boolean añadirMedico(String nomb, String ape, String ed, Genero gen, Especialidad esp,String usr,String contr) {
-        if(nomb.equals("") || ape.equals("") || ed.equals("") || gen == null || esp == null || usr.equals("") || usr.equals("")) return false;
+ 
+    public static boolean addMedico(String nomb, String ape, String ed, Genero gen, Especialidad esp,String usr,String contr) {
+        if(nomb.equals("") || ape.equals("") || ed.equals("") || gen == null || esp == null || usr.equals("") || contr.equals("")) return false;
         UsrMedico med = new UsrMedico(nomb, ape, Integer.parseInt(ed), gen, esp,usr,contr);
         SysData.addMedico(med);
         return true;
     }
 
-    public static boolean añadirPaciente(String nomb, String ape, String ed, Genero gen, Sintoma s){
+    public static boolean addPaciente(String nomb, String ape, String ed, Genero gen, Sintoma s){
         if(nomb.equals("") || ape.equals("") || ed.equals("") || gen == null || s == null) return false;
         UsrPaciente pac = new UsrPaciente(nomb, ape, Integer.parseInt(ed), gen,s);
         SysData.addPaciente(pac);
@@ -77,19 +82,18 @@ public class SysController {
         if(medico == null || p == null) return false;
         if (medico.getPuesto() != null) return false;
         try {
-            if (p == null) return false;
+            if (p.getMedico() == null) {
+                p.setMedico(medico);
+                medico.setPuesto(p);
+                medico.setDisponible(true);
+                return true;
+            }
             else {
-                if (p.getMedico() == null) {
-                    p.setMedico(medico);
-                    medico.setPuesto(p);
-                    medico.setDisponible(true);
-                    return true;}
-                else {
-                    p.getMedico().setPuesto(null);
-                    medico.setPuesto(p);
-                    medico.setDisponible(true);
-                    p.setMedico(medico);
-                    return true; } } }
+                p.getMedico().setPuesto(null);
+                medico.setPuesto(p);
+                medico.setDisponible(true);p.setMedico(medico);
+                return true;
+            } }
         catch(Exception ex) {
             return false; }
     }
@@ -97,14 +101,13 @@ public class SysController {
     public static boolean desasignarPuesto(Puesto p) {
         if(p == null) return false;
         try {
-            if(p != null) {
                 if (p.getMedico() == null) {
                     return false; }
                 else if (p.getMedico() != null) {
                     p.getMedico().setDisponible(false);
                     p.getMedico().setPuesto(null);
                     p.setMedico(null);
-                    return true; } }
+                    return true; }
             return false; }
         catch(Exception ex) {
             return false; }
@@ -112,10 +115,9 @@ public class SysController {
     public static boolean eliminarPuesto(Puesto p) {
         if(p == null) return false;
         try {
-            if (p != null) {
-                if (p.getMedico() == null) {
-                    SysData.puestos.remove(p);
-                    return true; } }
+            if (p != null && p.getMedico() == null) {
+                SysData.puestos.remove(p);
+                return true; }
             return false;
         }
         catch(Exception ex) {

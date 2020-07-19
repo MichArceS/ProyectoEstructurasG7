@@ -13,16 +13,16 @@ import javafx.scene.layout.VBox;
 
 public class ConsultaView implements View{
     private BorderPane root;
-    private  Label lblConsulta;
+    private static Label lblConsulta;
     public static Label lblHora;
-    private Label lblNombre;
-    private Label lblEdad;
-    private Label lblGenero;
-    private Label lblSintoma;
-    private Label lblDiagnostico;
-    private Label lblReceta;
-    private TextArea txtDiagnostico;
-    private TextArea txtReceta;
+    private static Label lblNombre;
+    private static Label lblEdad;
+    private static Label lblGenero;
+    private static Label lblSintoma;
+    private static Label lblDiagnostico;
+    private static Label lblReceta;
+    private static TextArea txtDiagnostico;
+    private static TextArea txtReceta;
     private Button btnCancelar;
     private Button btnTerminar;
 
@@ -76,16 +76,14 @@ public class ConsultaView implements View{
         btnTerminar.setOnAction(e->{
             txtDiagnostico.clear();
             txtReceta.clear();
-            if(MainScene.confirmStage.confirmar("terminar la consula?")) {
-                if(SysController.terminarConsulta(txtDiagnostico.getText(),txtReceta.getText())){
-                    MainScene.scene.setRoot(MainScene.medicoView.getRoot());
-                    MainScene.allowDrag();
-                }
+            if(MainScene.confirmStage.confirmar("terminar la consula?") && SysController.terminarConsulta(txtDiagnostico.getText(),txtReceta.getText())) {
+                MainScene.scene.setRoot(MainScene.medicoView.getRoot());
+                MainScene.allowDrag();
             }
         });
     }
 
-    private void creatTxtFields(){
+    private static void creatTxtFields(){
         txtDiagnostico = new TextArea();
         txtDiagnostico.setPromptText("Escribir diagnostico");
         txtDiagnostico.setWrapText(true);
@@ -94,7 +92,7 @@ public class ConsultaView implements View{
         txtReceta.setWrapText(true);
     }
 
-    private void crearLabels(){
+    private static void crearLabels(){
         lblConsulta = new Label("Consulta");
         lblHora = new Label("");
         lblNombre = new Label("Nombre:");
@@ -110,7 +108,7 @@ public class ConsultaView implements View{
         return root;
     }
 
-    private void instanciarIDs(){
+    private static void instanciarIDs(){
         lblHora.setId("lblHora");
         lblConsulta.setId("lblPaciente");
         txtReceta.setId("txtReceta");

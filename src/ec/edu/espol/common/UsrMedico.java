@@ -10,14 +10,14 @@ public class UsrMedico extends Usuario{
     private boolean disponible;
     private Puesto puesto;
     private String usuario;
-    private String contraseña;
+    private String contra;
     private PriorityQueue<Turno> turnos;
 
-    public UsrMedico(String n, String a, int e, Genero g, Especialidad esp, String usr, String contra) {
+    public UsrMedico(String n, String a, int e, Genero g, Especialidad esp, String usr, String cont) {
         super(n,a,e,g);
         especialidad = esp;
         usuario = usr;
-        contraseña = contra;
+        contra = cont;
         turnos = new PriorityQueue<>((Turno t1, Turno t2)->t2.getPacienteAtender().getSintoma().getPrioridad() - t1.getPacienteAtender().getSintoma().getPrioridad());
     }
 
@@ -58,7 +58,7 @@ public class UsrMedico extends Usuario{
     }
 
     public boolean verificarUsuario(String usuario, String contrasenia){
-        return (this.usuario.equals(usuario)) && (this.contraseña.equals(contrasenia));
+        return (this.usuario.equals(usuario)) && (this.contra.equals(contrasenia));
     }
 
 

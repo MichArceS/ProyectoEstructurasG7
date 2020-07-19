@@ -1,9 +1,11 @@
 package ec.edu.espol.common;
 
+import java.util.Objects;
+
 public class Puesto {
     private int puestoAsignado;
     private UsrMedico medico;
-    private static int puestosTotales=0;
+    private static int puestosTotales;
 
     public Puesto(UsrMedico medico){
         this.medico = medico;
@@ -38,5 +40,10 @@ public class Puesto {
         if (o == null || getClass() != o.getClass()) return false;
         Puesto puesto = (Puesto) o;
         return puestoAsignado == puesto.puestoAsignado;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(puestoAsignado, medico);
     }
 }

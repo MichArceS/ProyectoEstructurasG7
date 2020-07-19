@@ -18,19 +18,19 @@ import javafx.scene.layout.GridPane;
 
 public class FormPacienteView implements View{
     private BorderPane root;
-    private Label lblFormPaciente;
+    private static Label lblFormPaciente;
     public static Label lblHora;
-    private Label lblNombre;
+    private static Label lblNombre;
     private TextField txtNombre;
-    private Label lblApellido;
+    private static Label lblApellido;
     private TextField txtApellido;
-    private Label lblEdad;
+    private static Label lblEdad;
     private TextField txtEdad;
-    private Label lblGenero;
+    private static Label lblGenero;
     private ComboBox comboGenero;
-    private Label lblSintoma;
+    private static Label lblSintoma;
     private ComboBox comboSintoma;
-    private Label lblEspecialidad;
+    private static Label lblEspecialidad;
     private ComboBox comboEspecialidad;
     private Button btnCancelar;
     private Button btnTerminar;
@@ -39,7 +39,7 @@ public class FormPacienteView implements View{
         crearEstructura();
     }
 
-    private void crearEstructura(){
+    public void crearEstructura(){
         root = new BorderPane();
         crearBotones();
         creatTxtFields();
@@ -88,14 +88,13 @@ public class FormPacienteView implements View{
         });
         btnTerminar = new Button("TERMINAR");
         btnTerminar.setOnAction(e->{
-            if(MainScene.confirmStage.confirmar("terminar el Formulario?")) {
-                if(SysController.añadirPaciente(txtNombre.getText(),txtApellido.getText(),txtEdad.getText(),(Genero)comboGenero.getSelectionModel().getSelectedItem(),(Sintoma) comboSintoma.getSelectionModel().getSelectedItem())){
+            if(MainScene.confirmStage.confirmar("terminar el Formulario?") &&
+                    SysController.addPaciente(txtNombre.getText(),txtApellido.getText(),txtEdad.getText(),(Genero)comboGenero.getSelectionModel().getSelectedItem(),(Sintoma) comboSintoma.getSelectionModel().getSelectedItem())) {
                     txtNombre.clear();
                     txtApellido.clear();
                     txtEdad.clear();
                     MainScene.scene.setRoot(MainScene.inicio.getRoot());
                     MainScene.allowDrag();
-                }
             }
         });
     }
@@ -108,7 +107,7 @@ public class FormPacienteView implements View{
 
     }
 
-    private void crearLabels(){
+    private static void crearLabels(){
         lblFormPaciente = new Label("Formulario Paciente");
         lblHora = new Label("12:30");
         lblNombre = new Label("Nombre:");
@@ -130,7 +129,7 @@ public class FormPacienteView implements View{
         return root;
     }
 
-    private void instanciarIDs(){
+    private static void instanciarIDs(){
         lblHora.setId("lblHora");
         lblFormPaciente.setId("lblPaciente");
     }

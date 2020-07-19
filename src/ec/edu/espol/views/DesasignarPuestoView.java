@@ -16,9 +16,9 @@ import javafx.scene.layout.GridPane;
 
 public class DesasignarPuestoView {
     private BorderPane root;
-    private Label lblInicioSesion;
+    private static Label lblInicioSesion;
     public static Label lblHora;
-    private Label lblPuesto;
+    private static Label lblPuesto;
     private ComboBox comboPuesto;
     private Button btnCancelar;
     private Button btnDesasignarPuesto;
@@ -61,11 +61,11 @@ public class DesasignarPuestoView {
         });
         btnDesasignarPuesto = new Button("DESASIGNAR PUESTO");
         btnDesasignarPuesto.setOnAction(e->{
-            if(MainScene.confirmStage.confirmar("desasignar el puesto seleccionado?")) {
-                if(SysController.desasignarPuesto((Puesto)comboPuesto.getSelectionModel().getSelectedItem())){
-                    MainScene.scene.setRoot(MainScene.puestosView.getRoot());
-                    MainScene.allowDrag();
-                }
+            if(MainScene.confirmStage.confirmar("desasignar el puesto seleccionado?") &&
+                    SysController.desasignarPuesto((Puesto)comboPuesto.getSelectionModel().getSelectedItem()))
+            {
+                MainScene.scene.setRoot(MainScene.puestosView.getRoot());
+                MainScene.allowDrag();
             }
         });
     }
@@ -74,7 +74,7 @@ public class DesasignarPuestoView {
         comboPuesto = new ComboBox(FXCollections.observableList(SysData.getPuestos()));
     }
 
-    private void crearLabels(){
+    private static void crearLabels(){
         lblInicioSesion = new Label("Quitar a un medico de un puesto");
         lblHora = new Label("12:30");
         lblPuesto = new Label("Puesto a Desasignar:");
@@ -85,7 +85,7 @@ public class DesasignarPuestoView {
         return root;
     }
 
-    private void instanciarIDs(){
+    private static void instanciarIDs(){
         lblHora.setId("lblHora");
         lblInicioSesion.setId("lblPaciente");
     }

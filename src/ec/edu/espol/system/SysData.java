@@ -28,7 +28,7 @@ public class SysData {
         puestos = new LinkedList<>();
         videos = new CircularSimplyLinkedList<>();
         consultas = new LinkedList<>();
-        añadirInfo();
+        addInfo();
         System.out.println(medicosRegistrados);
     }
 
@@ -69,7 +69,7 @@ public class SysData {
         return medicosRegistrados;
     }
 
-    public static LinkedList<Puesto> getPuestos() {
+    public static List<Puesto> getPuestos() {
         return puestos;
     }
 
@@ -88,7 +88,7 @@ public class SysData {
         return sintomasActuales;
     }
 
-    private void añadirInfo(){
+    private void addInfo(){
         /*
         addMedico(new UsrMedico("Jose","Alban",35, Genero.MASCULINO, Especialidad.MEDICINA_GENERAL,"josealb@espol.edu.ec","1234"));
         addMedico(new UsrMedico("Bruce","Banner",42, Genero.MASCULINO, Especialidad.PSIQUIATRIA,"bruban@espol.edu.ec","1234"));
