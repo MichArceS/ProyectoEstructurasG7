@@ -95,6 +95,7 @@ public class LeerEscribirDatos{
                         turnos.add(new Turno(m,new UsrPaciente(dataPaciente[0],dataPaciente[1],Integer.valueOf(dataPaciente[2]),Genero.valueOf(dataPaciente[3]),new Sintoma(dataPaciente[4],Integer.valueOf(dataPaciente[5]))),Integer.valueOf(data[2])));
                     }
                 }
+                line = br.readLine();
             }
         }catch(IOException ex){
             System.out.println("Archivo no encontrado");

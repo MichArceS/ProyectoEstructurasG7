@@ -1,2 +1,3 @@
-Juanito|Alcachofa|37|MASCULINO|ODONTOLOGIA|juanito|abcd|Marcos,Segarra,33,MASCULINO,Tos,4-
+Juanito|Alcachofa|37|MASCULINO|ODONTOLOGIA|juanito|abcd|null
 Aileen|Mendoza|29|FEMENINO|PEDIATRIA|amendoza66|1234|null
+Sofía|Balladares|33|FEMENINO|TRAUMATOLOGIA|sof33|123|null
