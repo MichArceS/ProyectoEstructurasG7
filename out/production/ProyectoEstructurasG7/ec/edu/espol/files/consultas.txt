@@ -53,3 +53,7 @@ Medico: Sofía Balladares | Paciente: Helena Hernández | Fecha: 2020-07-19 | Ho
 Medico: Aileen Mendoza | Paciente: Martha Lindao | Fecha: 2020-07-19 | Hora: 15h33 | Diagnostico:  | Receta: 
 Medico: Juanito Alcachofa | Paciente: Nicole Sandoval | Fecha: 2020-07-19 | Hora: 15h42 | Diagnostico: PruebaD | Receta: PruebaR
 Medico: Sofía Balladares | Paciente: Julian Zevallos | Fecha: 2020-07-19 | Hora: 16h6 | Diagnostico:  | Receta: 
+Medico: Juanito Alcachofa | Paciente: Manuelita Saenz | Fecha: 2020-07-19 | Hora: 16h54 | Diagnostico:  | Receta: 
+Medico: Juanito Alcachofa | Paciente: Manuelita Saenz | Fecha: 2020-07-19 | Hora: 16h54 | Diagnostico:  | Receta: 
+Medico: Sofía Balladares | Paciente: Gloria Borbor | Fecha: 2020-07-19 | Hora: 17h3 | Diagnostico:  | Receta: 
+Medico: Aileen Mendoza | Paciente: Luis Orrala | Fecha: 2020-07-19 | Hora: 17h5 | Diagnostico:  | Receta: 
