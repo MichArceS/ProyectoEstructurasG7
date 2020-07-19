@@ -1,0 +1,6 @@
+juanito|Natasha,Romanov,31,FEMENINO,Vómito,1|5
+juanito|Natasha,Romanov,31,FEMENINO,Vómito,1|5
+juanito|Natasha,Romanov,31,FEMENINO,Vómito,1|5
+juanito|Natasha,Romanov,31,FEMENINO,Vómito,1|5
+juanito|Natasha,Romanov,31,FEMENINO,Vómito,1|2
+juanito|Natasha,Romanov,31,FEMENINO,Vómito,1|1

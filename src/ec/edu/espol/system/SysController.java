@@ -4,7 +4,6 @@ import ec.edu.espol.common.*;
 import ec.edu.espol.constants.Especialidad;
 import ec.edu.espol.constants.Genero;
 import ec.edu.espol.util.LeerEscribirDatos;
-import ec.edu.espol.views.TurnosView;
 
 import java.util.Iterator;
 
@@ -37,7 +36,8 @@ public class SysController {
             Consulta c = new Consulta(medicoLogeado,turno.getPacienteAtender());
             SysData.addConsulta(c);
             consulta = c;
-            TurnosView.añadirTurnos(turno);
+            SysData.agregarTurno(turno);
+            SysData.guardarTurnos();
             return c;
         }
         return null;

@@ -2,9 +2,10 @@ package ec.edu.espol.main;
 
 import ec.edu.espol.constants.Constantes;
 import ec.edu.espol.system.SysData;
+import ec.edu.espol.util.HiloTurnos;
+import ec.edu.espol.util.HiloVideos;
 import ec.edu.espol.util.Hora;
 import ec.edu.espol.util.LeerEscribirDatos;
-import ec.edu.espol.util.HiloVideos;
 import ec.edu.espol.views.MainScene;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -19,6 +20,8 @@ public class Main extends Application {
     public static final Thread hilo= new Thread(hora);
     public static final HiloVideos videos = new HiloVideos(LeerEscribirDatos.cargarVideos());
     public static final Thread hiloVideos= new Thread(videos);
+    public static final HiloTurnos turnos = new HiloTurnos();
+    public static final Thread hiloTurnos = new Thread(turnos);
     MainScene mainScene;
     SysData sysData;
 
@@ -27,6 +30,7 @@ public class Main extends Application {
     public void stop() throws Exception {
         hilo.stop();
         hiloVideos.stop();
+        hiloTurnos.stop();
     }
 
     @Override
@@ -35,6 +39,7 @@ public class Main extends Application {
         mainScene = new MainScene(primaryStage);
         hiloVideos.start();
         hilo.start();
+        hiloTurnos.start();
         setUserAgentStylesheet(Constantes.RUTASTYLE);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();

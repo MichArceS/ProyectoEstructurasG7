@@ -3,7 +3,6 @@ package ec.edu.espol.views;
 import ec.edu.espol.common.Turno;
 import ec.edu.espol.main.Main;
 import ec.edu.espol.system.SysData;
-import ec.edu.espol.util.LeerEscribirDatos;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -89,7 +88,7 @@ public class TurnosView {
         Label turno4 = new Label("A004");
         Label puesto4 = new Label("04");
         String idTurnos = "turno";
-        String idPuestos = "turnos";
+        String idPuestos = "puesto";
         turno.setId(idTurnos);
         puesto.setId(idPuestos);
         turno1.setId(idTurnos);
@@ -134,17 +133,9 @@ public class TurnosView {
         puestos.add(p4);
     }
 
-    public static void añadirTurnos(Turno turno) {
-        if (turnosMostrar.size() < 4) turnosMostrar.addFirst(turno);
-        else if (turnosMostrar.size() >= 4){
-            turnosMostrar.remove(turnosMostrar.size()-1);
-            turnosMostrar.addFirst(turno);
-        }
-        LeerEscribirDatos.updateTurnos(turnosMostrar);
-        actualizarTurnos();
-    }
 
     public static void actualizarTurnos(){
+        turnosMostrar = SysData.getTurnosActuales();
         Platform.runLater(()->{
                 Iterator<Turno> i1 = turnosMostrar.iterator();
                 int n = 0;

@@ -82,6 +82,17 @@ public class SysData {
         return med;
     }
 
+    public static void agregarTurno(Turno turno){
+        turnosActuales.addFirst(turno);
+    }
+    public static void actualizarTurnos(){
+        turnosActuales = LeerEscribirDatos.cargarTurnos();
+    }
+
+    public static void guardarTurnos(){
+        LeerEscribirDatos.updateTurnos(turnosActuales);
+    }
+
     public static List<UsrMedico> getMedicosRegistrados() {
         return medicosRegistrados;
     }
@@ -119,15 +130,15 @@ public class SysData {
             m.setPuesto(p);
             puestos.add(p);
         }
-
-        /*addPaciente(new UsrPaciente("Natasha","Romanov",31,Genero.FEMENINO,sintomasActuales.get(0)));
-        addPaciente(new UsrPaciente("Mary","Jane",28,Genero.FEMENINO,sintomasActuales.get(1)));
-        addPaciente(new UsrPaciente("Peter","Parker",21,Genero.MASCULINO,sintomasActuales.get(2)));
-        addPaciente(new UsrPaciente("Barry","Allen",25,Genero.MASCULINO,sintomasActuales.get(3)));*/
-
         //cargarVideos();
     }
 
+    public void addPacientes(){
+        addPaciente(new UsrPaciente("Natasha","Romanov",31, Genero.FEMENINO,sintomasActuales.get(0)));
+        addPaciente(new UsrPaciente("Mary","Jane",28,Genero.FEMENINO,sintomasActuales.get(1)));
+        addPaciente(new UsrPaciente("Peter","Parker",21,Genero.MASCULINO,sintomasActuales.get(2)));
+        addPaciente(new UsrPaciente("Barry","Allen",25,Genero.MASCULINO,sintomasActuales.get(3)));
+    }
     public static LinkedList<Turno> getTurnosActuales(){
         return turnosActuales;
     }
