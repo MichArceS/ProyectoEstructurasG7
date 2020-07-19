@@ -48,3 +48,8 @@ Medico: Juanito Alcachofa | Paciente: dsads dadas | Fecha: 2020-07-18 | Hora: 18
 Medico: Aileen Mendoza | Paciente: Jairo Campos | Fecha: 2020-07-19 | Hora: 0h43 | Diagnostico: Jugo de naranja | Receta: Paracetamol
 Medico: Aileen Mendoza | Paciente: Wacho Wachin | Fecha: 2020-07-19 | Hora: 0h45 | Diagnostico: Juguito | Receta: Nastizol
 Medico: Mauricio Egas | Paciente: Susana Vera | Fecha: 2020-07-19 | Hora: 12h14 | Diagnostico:  | Receta: 
+Medico: Sofía Balladares | Paciente: Segundo Solis | Fecha: 2020-07-19 | Hora: 15h21 | Diagnostico:  | Receta: 
+Medico: Sofía Balladares | Paciente: Helena Hernández | Fecha: 2020-07-19 | Hora: 15h29 | Diagnostico:  | Receta: 
+Medico: Aileen Mendoza | Paciente: Martha Lindao | Fecha: 2020-07-19 | Hora: 15h33 | Diagnostico:  | Receta: 
+Medico: Juanito Alcachofa | Paciente: Nicole Sandoval | Fecha: 2020-07-19 | Hora: 15h42 | Diagnostico: PruebaD | Receta: PruebaR
+Medico: Sofía Balladares | Paciente: Julian Zevallos | Fecha: 2020-07-19 | Hora: 16h6 | Diagnostico:  | Receta: 

@@ -40,7 +40,6 @@ public class TurnosView {
         }
 
     private static void inicializarObjetos() {
-
         turnosMostrar = SysData.getTurnosActuales();
         root = new BorderPane();
         lblHora = new Label();
@@ -136,7 +135,6 @@ public class TurnosView {
     }
 
     public static void añadirTurnos(Turno turno) {
-        System.out.println(turno.test());
         if (turnosMostrar.size() < 4) turnosMostrar.addFirst(turno);
         else if (turnosMostrar.size() >= 4){
             turnosMostrar.remove(turnosMostrar.size()-1);
