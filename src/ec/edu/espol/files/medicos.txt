@@ -1,5 +1,6 @@
-Juanito|Alcachofa|37|MASCULINO|ODONTOLOGIA|juanito|abcd|null
-Aileen|Mendoza|29|FEMENINO|PEDIATRIA|amendoza66|1234|null
-Sofía|Balladares|33|FEMENINO|TRAUMATOLOGIA|sof33|123|null
-Dayanna|Arias|23|FEMENINO|MEDICINA_GENERAL|daya23|xyz|null
-David|Santana|23|MASCULINO|CARDIOLOGIA|santana|a1a1|null
+Juanito|Alcachofa|37|MASCULINO|ODONTOLOGIA|juanito|abcd|2|null
+Aileen|Mendoza|29|FEMENINO|PEDIATRIA|amendoza66|1234|1|null
+Sofía|Balladares|33|FEMENINO|TRAUMATOLOGIA|sof33|123|3|null
+Dayanna|Arias|23|FEMENINO|MEDICINA_GENERAL|daya23|xyz|4|null
+David|Santana|23|MASCULINO|CARDIOLOGIA|santana|a1a1|5|null
+Michael|Arce|28|MASCULINO|PEDIATRIA|mikemane|1234|6|null

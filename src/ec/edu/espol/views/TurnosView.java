@@ -27,7 +27,7 @@ public class TurnosView {
     private static HBox mid;
     public static MediaView mediaView;
     private static GridPane turnosGrid;
-    //private static LinkedList<Turno> turnosMostrar;
+    private static LinkedList<Turno> turnosMostrar;
     private static List<Label> puestos;
     private static List<Label> turnos;
 

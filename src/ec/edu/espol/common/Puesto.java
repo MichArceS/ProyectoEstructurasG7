@@ -14,6 +14,11 @@ public class Puesto{
         puestosTotales+=1;
     }
 
+    public Puesto(int nPuesto){
+        puestoAsignado = nPuesto;
+        puestosTotales+=1;
+    }
+
     public static int getPuestosTotales() {
         return puestosTotales;
     }

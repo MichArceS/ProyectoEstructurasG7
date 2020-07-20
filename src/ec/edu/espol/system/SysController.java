@@ -73,6 +73,8 @@ public class SysController {
             medico.setPuesto(puesto);
             SysData.addPuesto(puesto);
             SysData.getMedicosDisponibles().offer(medico);
+            SysData.cargarPuestos();
+            LeerEscribirDatos.updateMedicos(SysData.medicosRegistrados);
             return true;
         }
         catch(Exception ex) {
@@ -93,6 +95,7 @@ public class SysController {
                 p.setMedico(medico);
             }
             SysData.getMedicosDisponibles().offer(medico);
+            LeerEscribirDatos.updateMedicos(SysData.medicosRegistrados);
             return true;
         }catch(Exception ex) {
             return false; }
@@ -107,6 +110,7 @@ public class SysController {
                 p.getMedico().setPuesto(null);
                 p.setMedico(null);
                 SysData.getMedicosDisponibles().remove(p.getMedico());
+                LeerEscribirDatos.updateMedicos(SysData.medicosRegistrados);
                 return true;
             }
             return false;

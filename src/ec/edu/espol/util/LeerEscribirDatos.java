@@ -51,10 +51,18 @@ public class LeerEscribirDatos{
             String line = br.readLine();
             while(line != null){
                 String[] data = line.split("\\|");
-                UsrMedico m = new UsrMedico(data[0],data[1],Integer.valueOf(data[2]),Genero.valueOf(data[3]),Especialidad.valueOf(data[4]),String.valueOf(data[5]),String.valueOf(data[6]));
+                Puesto puesto = null;
+                UsrMedico m = null;
+                if(data[7].equals("null")) {
+                    m = new UsrMedico(data[0],data[1],Integer.valueOf(data[2]),Genero.valueOf(data[3]),Especialidad.valueOf(data[4]),String.valueOf(data[5]),String.valueOf(data[6]));
+                }else{
+                    puesto = new Puesto(Integer.valueOf(data[7]));
+                    m = new UsrMedico(data[0],data[1],Integer.valueOf(data[2]),Genero.valueOf(data[3]),Especialidad.valueOf(data[4]),String.valueOf(data[5]),String.valueOf(data[6]),puesto);
+                    puesto.setMedico(m);
+                }
                 PriorityQueue<Turno> turnos = new PriorityQueue<>((Turno t1, Turno t2)->t1.getPacienteAtender().getSintoma().getPrioridad() - t2.getPacienteAtender().getSintoma().getPrioridad());
-                if(!data[7].equals("null")){
-                    String[] dataTurnos = data[7].split("-");
+                if(!data[8].equals("null")){
+                    String[] dataTurnos = data[8].split("-");
                     for(String s: dataTurnos){
                         String[] dataPaciente = s.split(",");
                         turnos.offer(new Turno(m,new UsrPaciente(dataPaciente[0],dataPaciente[1],Integer.valueOf(dataPaciente[2]),Genero.valueOf(dataPaciente[3]),new Sintoma(dataPaciente[4],Integer.valueOf(dataPaciente[5])))));

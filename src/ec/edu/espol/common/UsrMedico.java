@@ -20,6 +20,15 @@ public class UsrMedico extends Usuario implements Serializable {
         turnos = new PriorityQueue<>((Turno t1, Turno t2)->t2.getPacienteAtender().getSintoma().getPrioridad() - t1.getPacienteAtender().getSintoma().getPrioridad());
     }
 
+    public UsrMedico(String n, String a, int e, Genero g, Especialidad esp, String usr, String cont, Puesto p) {
+        super(n,a,e,g);
+        especialidad = esp;
+        usuario = usr;
+        contra = cont;
+        puesto = p;
+        turnos = new PriorityQueue<>((Turno t1, Turno t2)->t2.getPacienteAtender().getSintoma().getPrioridad() - t1.getPacienteAtender().getSintoma().getPrioridad());
+    }
+
     public Puesto getPuesto() {
         return puesto;
     }
@@ -66,7 +75,7 @@ public class UsrMedico extends Usuario implements Serializable {
     }
 
     public String infoText(){
-        String line = nombre + "|" + apellido + "|" + edad + "|" + genero.toString() + "|" + especialidad.toString() + "|" + usuario + "|" + contra + "|";
+        String line = nombre + "|" + apellido + "|" + edad + "|" + genero.toString() + "|" + especialidad.toString() + "|" + usuario + "|" + contra + "|" + puesto + "|" ;
         if(turnos.size()>=1){
             for(Turno t: turnos){
                 String infoPaciente = t.getPacienteAtender().infoText() + "-";

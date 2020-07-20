@@ -26,8 +26,7 @@ public class SysData {
     public SysData(){
 
         medicosRegistrados = LeerEscribirDatos.cargarMedicos();
-        puestos = new LinkedList<>();
-        addInfo();
+        cargarPuestos();
         System.out.println(medicosRegistrados);
         turnosActuales = LeerEscribirDatos.cargarTurnos();
         medicosDisponibles = new PriorityQueue<>((UsrMedico m1,UsrMedico m2)->m1.getTurnos().size() - m2.getTurnos().size());
@@ -86,6 +85,13 @@ public class SysData {
         return med;
     }
 
+    public static void cargarPuestos(){
+        puestos = new LinkedList<>();
+        for(UsrMedico m : medicosRegistrados){
+            puestos.add(m.getPuesto());
+        }
+    }
+
     public static void agregarTurno(Turno turno){
         turnosActuales.addFirst(turno);
     }
@@ -129,13 +135,9 @@ public class SysData {
         addMedico(new UsrMedico("Tony","Stark",32, Genero.MASCULINO, Especialidad.CARDIOLOGIA,"tonyst@espol.edu.ec","1234"));
         addMedico(new UsrMedico("Tony","Stark",32, Genero.MASCULINO, Especialidad.CARDIOLOGIA,"root","admin"));
         */
-        for(UsrMedico m : medicosRegistrados){
-            Puesto p = new Puesto(m);
-            m.setPuesto(p);
-            puestos.add(p);
-        }
         //cargarVideos();
     }
+
 
     public void addPacientes(){
         addPaciente(new UsrPaciente("Natasha","Romanov",31, Genero.FEMENINO,sintomasActuales.get(0)));
