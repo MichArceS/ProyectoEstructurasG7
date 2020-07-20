@@ -1,3 +1,5 @@
 Juanito|Alcachofa|37|MASCULINO|ODONTOLOGIA|juanito|abcd|null
 Aileen|Mendoza|29|FEMENINO|PEDIATRIA|amendoza66|1234|null
 Sofía|Balladares|33|FEMENINO|TRAUMATOLOGIA|sof33|123|null
+Dayanna|Arias|23|FEMENINO|MEDICINA_GENERAL|daya23|xyz|null
+David|Santana|23|MASCULINO|CARDIOLOGIA|santana|a1a1|null

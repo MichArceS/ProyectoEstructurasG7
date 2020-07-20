@@ -27,7 +27,7 @@ public class TurnosView {
     private static HBox mid;
     public static MediaView mediaView;
     private static GridPane turnosGrid;
-    private static LinkedList<Turno> turnosMostrar;
+    //private static LinkedList<Turno> turnosMostrar;
     private static List<Label> puestos;
     private static List<Label> turnos;
 
@@ -39,7 +39,7 @@ public class TurnosView {
         }
 
     private static void inicializarObjetos() {
-        turnosMostrar = SysData.getTurnosActuales();
+        //turnosMostrar = SysData.getTurnosActuales();
         root = new BorderPane();
         lblHora = new Label();
         lblHora.setId("lblHora");
@@ -137,7 +137,7 @@ public class TurnosView {
     public static void actualizarTurnos(){
         turnosMostrar = SysData.getTurnosActuales();
         Platform.runLater(()->{
-                Iterator<Turno> i1 = turnosMostrar.iterator();
+                Iterator<Turno> i1 = SysData.getTurnosActuales().iterator();
                 int n = 0;
                 while (n < 4) {
                     if (i1.hasNext()) {

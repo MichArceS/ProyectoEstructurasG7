@@ -72,6 +72,7 @@ public class SysController {
             Puesto puesto = new Puesto(medico);
             medico.setPuesto(puesto);
             SysData.addPuesto(puesto);
+            SysData.getMedicosDisponibles().offer(medico);
             return true;
         }
         catch(Exception ex) {
@@ -86,13 +87,13 @@ public class SysController {
             if (p.getMedico() == null) {
                 p.setMedico(medico);
                 medico.setPuesto(p);
-                return true;
             } else {
                 p.getMedico().setPuesto(null);
                 medico.setPuesto(p);
                 p.setMedico(medico);
-                return true;
             }
+            SysData.getMedicosDisponibles().offer(medico);
+            return true;
         }catch(Exception ex) {
             return false; }
     }
@@ -100,15 +101,18 @@ public class SysController {
     public static boolean desasignarPuesto(Puesto p) {
         if(p == null) return false;
         try {
-                if (p.getMedico() == null) {
-                    return false; }
-                else if (p.getMedico() != null) {
-                    p.getMedico().setPuesto(null);
-                    p.setMedico(null);
-                    return true; }
-            return false; }
-        catch(Exception ex) {
-            return false; }
+            if (p.getMedico() == null) {
+                return false;
+            } else if (p.getMedico() != null) {
+                p.getMedico().setPuesto(null);
+                p.setMedico(null);
+                SysData.getMedicosDisponibles().remove(p.getMedico());
+                return true;
+            }
+            return false;
+        } catch(Exception ex) {
+            return false;
+        }
     }
     public static boolean eliminarPuesto(Puesto p) {
         if(p == null) return false;

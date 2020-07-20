@@ -1,7 +1,59 @@
-Medico: Juanito Alcachofa | Paciente: Natasha Romanov | Fecha: 2020-07-19 | Hora: 18h25 | Diagnostico: hola que tal | Receta: holiwis
-Medico: Juanito Alcachofa | Paciente: Natasha Romanov | Fecha: 2020-07-19 | Hora: 18h31 | Diagnostico: wetwetwe | Receta: wertwertwert
-Medico: Juanito Alcachofa | Paciente: Mary Jane | Fecha: 2020-07-19 | Hora: 18h34 | Diagnostico: sfasfasf | Receta: asdfasfasdf
-Medico: Juanito Alcachofa | Paciente: Mary Jane | Fecha: 2020-07-19 | Hora: 18h41 | Diagnostico: sfasfasf | Receta: asfasdfasdf
-Medico: Juanito Alcachofa | Paciente: Natasha Romanov | Fecha: 2020-07-19 | Hora: 18h49 | Diagnostico: fasdfasdf | Receta: asfdasfasdf
-Medico: Juanito Alcachofa | Paciente: Natasha Romanov | Fecha: 2020-07-19 | Hora: 18h49 | Diagnostico: safsdf | Receta: asdfasdfasdf
-Medico: Juanito Alcachofa | Paciente: Michael Arce | Fecha: 2020-07-19 | Hora: 18h53 | Diagnostico: asdfasfasfas | Receta: asfasdfasdfsdf
+Medico: Tony Stark | Paciente: Julio Zevallos | Fecha: 2020-07-12 | Hora: 3h7 | Diagnostico: tiene que tomar agua | Receta: paracetamol y agua
+Medico: Tony Stark | Paciente: qwerty dcdcd | Fecha: 2020-07-12 | Hora: 3h7 | Diagnostico: asasasa | Receta: cxcxcxc
+Medico: Juanito Alcachofa | Paciente: Wacho Rivas | Fecha: 2020-07-12 | Hora: 3h8 | Diagnostico: qwerty | Receta: qw
+Medico: Tony Stark | Paciente: Mary Jane | Fecha: 2020-07-13 | Hora: 0h11 | Diagnostico: null | Receta: null
+Medico: Tony Stark | Paciente: Mary Jane | Fecha: 2020-07-13 | Hora: 0h15 | Diagnostico: null | Receta: null
+Medico: Tony Stark | Paciente: Mary Jane | Fecha: 2020-07-13 | Hora: 0h16 | Diagnostico: null | Receta: null
+Medico: Tony Stark | Paciente: Mary Jane | Fecha: 2020-07-13 | Hora: 0h27 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-13 | Hora: 2h35 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-13 | Hora: 2h36 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-13 | Hora: 2h41 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-13 | Hora: 2h43 | Diagnostico: null | Receta: null
+Medico: Jose Alban | Paciente: Peter Parker | Fecha: 2020-07-13 | Hora: 2h44 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-13 | Hora: 2h47 | Diagnostico: null | Receta: null
+Medico: Jose Alban | Paciente: Peter Parker | Fecha: 2020-07-13 | Hora: 2h48 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-13 | Hora: 2h56 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-13 | Hora: 3h1 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-13 | Hora: 3h3 | Diagnostico: null | Receta: null
+Medico: Jose Alban | Paciente: Peter Parker | Fecha: 2020-07-13 | Hora: 3h4 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-13 | Hora: 3h6 | Diagnostico: null | Receta: null
+Medico: Jose Alban | Paciente: Peter Parker | Fecha: 2020-07-13 | Hora: 3h6 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-13 | Hora: 3h15 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-14 | Hora: 22h6 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-14 | Hora: 22h15 | Diagnostico: null | Receta: null
+Medico: Jose Alban | Paciente: Peter Parker | Fecha: 2020-07-18 | Hora: 12h46 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-18 | Hora: 14h57 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: sdf fdgd | Fecha: 2020-07-18 | Hora: 15h15 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-18 | Hora: 15h15 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Peter Parker | Fecha: 2020-07-18 | Hora: 15h15 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: dasdas dsadsaa | Fecha: 2020-07-18 | Hora: 15h15 | Diagnostico: null | Receta: null
+Medico: Juanito Alcachofa | Paciente: Mary Jane | Fecha: 2020-07-18 | Hora: 15h16 | Diagnostico: null | Receta: null
+Medico: Juanito Alcachofa | Paciente: fsdfd dfsfdsd | Fecha: 2020-07-18 | Hora: 15h16 | Diagnostico: null | Receta: null
+Medico: Juanito Alcachofa | Paciente: Barry Allen | Fecha: 2020-07-18 | Hora: 15h17 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-18 | Hora: 15h33 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-18 | Hora: 15h33 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-18 | Hora: 15h33 | Diagnostico: null | Receta: null
+Medico: root root | Paciente: Peter Parker | Fecha: 2020-07-18 | Hora: 15h34 | Diagnostico: null | Receta: null
+Medico: Juanito Alcachofa | Paciente: Mary Jane | Fecha: 2020-07-18 | Hora: 15h38 | Diagnostico:  | Receta: 
+Medico: Juanito Alcachofa | Paciente: Barry Allen | Fecha: 2020-07-18 | Hora: 15h38 | Diagnostico:  | Receta: 
+Medico: Juanito Alcachofa | Paciente: Mary Jane | Fecha: 2020-07-18 | Hora: 15h41 | Diagnostico: dfsfsdfs | Receta: fsdfsfdfs
+Medico: root root | Paciente: Natasha Romanov | Fecha: 2020-07-18 | Hora: 16h19 | Diagnostico:  | Receta: 
+Medico: root root | Paciente: Peter Parker | Fecha: 2020-07-18 | Hora: 16h19 | Diagnostico:  | Receta: 
+Medico: Juanito Alcachofa | Paciente: Mary Jane | Fecha: 2020-07-18 | Hora: 16h19 | Diagnostico:  | Receta: 
+Medico: Juanito Alcachofa | Paciente: Barry Allen | Fecha: 2020-07-18 | Hora: 16h19 | Diagnostico:  | Receta: 
+Medico: root root | Paciente: dsfs fsfsd | Fecha: 2020-07-18 | Hora: 16h35 | Diagnostico:  | Receta: 
+Medico: root root | Paciente: dsadas dasdasa | Fecha: 2020-07-18 | Hora: 18h49 | Diagnostico:  | Receta: 
+Medico: root root | Paciente: dasds dadsds | Fecha: 2020-07-18 | Hora: 18h49 | Diagnostico:  | Receta: 
+Medico: Juanito Alcachofa | Paciente: dsads dadas | Fecha: 2020-07-18 | Hora: 18h50 | Diagnostico:  | Receta: 
+Medico: Aileen Mendoza | Paciente: Jairo Campos | Fecha: 2020-07-19 | Hora: 0h43 | Diagnostico: Jugo de naranja | Receta: Paracetamol
+Medico: Aileen Mendoza | Paciente: Wacho Wachin | Fecha: 2020-07-19 | Hora: 0h45 | Diagnostico: Juguito | Receta: Nastizol
+Medico: Mauricio Egas | Paciente: Susana Vera | Fecha: 2020-07-19 | Hora: 12h14 | Diagnostico:  | Receta: 
+Medico: Sofía Balladares | Paciente: Segundo Solis | Fecha: 2020-07-19 | Hora: 15h21 | Diagnostico:  | Receta: 
+Medico: Sofía Balladares | Paciente: Helena Hernández | Fecha: 2020-07-19 | Hora: 15h29 | Diagnostico:  | Receta: 
+Medico: Aileen Mendoza | Paciente: Martha Lindao | Fecha: 2020-07-19 | Hora: 15h33 | Diagnostico:  | Receta: 
+Medico: Juanito Alcachofa | Paciente: Nicole Sandoval | Fecha: 2020-07-19 | Hora: 15h42 | Diagnostico: PruebaD | Receta: PruebaR
+Medico: Sofía Balladares | Paciente: Julian Zevallos | Fecha: 2020-07-19 | Hora: 16h6 | Diagnostico:  | Receta: 
+Medico: Juanito Alcachofa | Paciente: Manuelita Saenz | Fecha: 2020-07-19 | Hora: 16h54 | Diagnostico:  | Receta: 
+Medico: Juanito Alcachofa | Paciente: Manuelita Saenz | Fecha: 2020-07-19 | Hora: 16h54 | Diagnostico:  | Receta: 
+Medico: Sofía Balladares | Paciente: Gloria Borbor | Fecha: 2020-07-19 | Hora: 17h3 | Diagnostico:  | Receta: 
+Medico: Aileen Mendoza | Paciente: Luis Orrala | Fecha: 2020-07-19 | Hora: 17h5 | Diagnostico:  | Receta: 

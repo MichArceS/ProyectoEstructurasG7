@@ -72,6 +72,10 @@ public class SysData {
         return med;
     }
 
+    public static PriorityQueue<UsrMedico> getMedicosDisponibles(){
+        return medicosDisponibles;
+    }
+
     public static List<UsrMedico> getMedicosConPuesto(){
         List<UsrMedico> med = new LinkedList<>();
         for(UsrMedico m: medicosRegistrados){
