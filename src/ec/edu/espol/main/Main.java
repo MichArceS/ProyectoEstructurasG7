@@ -8,6 +8,7 @@ import ec.edu.espol.util.Hora;
 import ec.edu.espol.util.LeerEscribirDatos;
 import ec.edu.espol.views.MainScene;
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -40,6 +41,7 @@ public class Main extends Application {
         hiloVideos.start();
         hilo.start();
         hiloTurnos.start();
+        primaryStage.getIcons().add(new Image("/ec/edu/espol/media/logo.png"));
         setUserAgentStylesheet(Constantes.RUTASTYLE);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
