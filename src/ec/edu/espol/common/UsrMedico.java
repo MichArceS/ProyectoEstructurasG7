@@ -3,6 +3,7 @@ package ec.edu.espol.common;
 import ec.edu.espol.constants.Especialidad;
 import ec.edu.espol.constants.Genero;
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.PriorityQueue;
 
 public class UsrMedico extends Usuario implements Serializable {
@@ -109,5 +110,10 @@ public class UsrMedico extends Usuario implements Serializable {
             }
         }
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(especialidad, puesto, usuario, contra, turnos);
     }
 }

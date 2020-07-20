@@ -27,7 +27,6 @@ public class SysData {
 
         medicosRegistrados = LeerEscribirDatos.cargarMedicos();
         cargarPuestos();
-        System.out.println(medicosRegistrados);
         turnosActuales = LeerEscribirDatos.cargarTurnos();
         medicosDisponibles = new PriorityQueue<>((UsrMedico m1,UsrMedico m2)->m1.getTurnos().size() - m2.getTurnos().size());
         medicosDisponibles.addAll(getMedicosConPuesto());
@@ -50,7 +49,6 @@ public class SysData {
         medicosRegistrados.add(med);
         //LeerEscribirDatos.añadirMedico(med);
         LeerEscribirDatos.updateMedicos(medicosRegistrados);
-        System.out.println("Funciona");
     }
 
     public static void addPaciente(UsrPaciente p){
