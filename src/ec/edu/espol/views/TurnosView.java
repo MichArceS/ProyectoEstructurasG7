@@ -1,8 +1,10 @@
 package ec.edu.espol.views;
 
 import ec.edu.espol.common.Turno;
+import ec.edu.espol.constants.Constantes;
 import ec.edu.espol.main.Main;
 import ec.edu.espol.system.SysData;
+import java.io.File;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -17,14 +19,19 @@ import javafx.scene.media.MediaView;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 public class TurnosView {
 
     private static BorderPane root;
     public static Label lblHora;
-    private static VBox sup;
+    private static AnchorPane sup;
     private static HBox bot;
     private static HBox mid;
+    private Image img;
+    private ImageView imagen;
     public static MediaView mediaView;
     private static GridPane turnosGrid;
     private static LinkedList<Turno> turnosMostrar;
@@ -45,7 +52,7 @@ public class TurnosView {
         lblHora.setId("lblHora");
         puestos = new LinkedList<>();
         turnos = new LinkedList<>();
-        sup = new VBox();
+        sup = new AnchorPane();
         bot = new HBox();
         mid = new HBox();
         mid.setAlignment(Pos.CENTER);
@@ -62,11 +69,20 @@ public class TurnosView {
     }
 
     private void crearEstructuraSuperior() {
-        sup.getChildren().addAll(lblHora);
+        File file = new File(Constantes.RUTALOGO); //
+        img = new Image(file.toURI().toString());
+        imagen = new ImageView(img);
+        imagen.setFitHeight(75);
+        imagen.setFitWidth(75);
+        imagen.setId("imagen");
+        AnchorPane.setLeftAnchor(lblHora,10d);
+        AnchorPane.setRightAnchor(imagen,10d);
+        sup.getChildren().addAll(lblHora,imagen);
     }
 
     private void crearEstructuraInferior() {
-        Label l = new Label("Bienvenidos! Los horarios de atención son: lunes a viernes de 6:00 -- 18:00");
+        Label l = new Label("Bienvenidos! Los horarios de atención son: Lunes a Viernes de 6:00 - 18:00");
+        l.setId("mensaje");
         Button boton = new Button("Volver");
         boton.setOnAction(e -> {
             MainScene.scene.setRoot(MainScene.inicio.getRoot());

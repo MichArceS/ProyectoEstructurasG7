@@ -57,3 +57,4 @@ Medico: Juanito Alcachofa | Paciente: Manuelita Saenz | Fecha: 2020-07-19 | Hora
 Medico: Juanito Alcachofa | Paciente: Manuelita Saenz | Fecha: 2020-07-19 | Hora: 16h54 | Diagnostico:  | Receta: 
 Medico: Sofía Balladares | Paciente: Gloria Borbor | Fecha: 2020-07-19 | Hora: 17h3 | Diagnostico:  | Receta: 
 Medico: Aileen Mendoza | Paciente: Luis Orrala | Fecha: 2020-07-19 | Hora: 17h5 | Diagnostico:  | Receta: 
+Medico: Juanito Alcachofa | Paciente: Michael Arce | Fecha: 2020-07-19 | Hora: 20h41 | Diagnostico: Falta de agua | Receta: Tome aguita

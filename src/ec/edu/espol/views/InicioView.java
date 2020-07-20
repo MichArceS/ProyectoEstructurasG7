@@ -1,15 +1,22 @@
 package ec.edu.espol.views;
 
+import ec.edu.espol.constants.Constantes;
 import ec.edu.espol.main.Main;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class InicioView implements View{
     private VBox root;
-    //Image image;
+    private Image img;
+    private ImageView imagen;
     private Button btnTurnos;
     private Button btnFormPaciente;
     private Button btnSisMedico;
@@ -24,6 +31,11 @@ public class InicioView implements View{
     public void crearEstructura(){
         root = new VBox();
         crearBotones();
+        File file = new File(Constantes.RUTALOGO); //
+        img = new Image(file.toURI().toString());
+        imagen = new ImageView(img);
+        imagen.setId("imagen");
+        root.getChildren().add(imagen);
         VBox column1 = new VBox();
         column1.getChildren().addAll(btnTurnos,btnSisMedico,btnPuestos);
         VBox column2 = new VBox();

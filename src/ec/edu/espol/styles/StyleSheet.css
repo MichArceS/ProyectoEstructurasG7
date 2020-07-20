@@ -196,6 +196,10 @@ BorderPane{
     -fx-alignment: center;
 }
 
+#mensaje {
+    -fx-font-size : 28;
+}
+
 
 
 

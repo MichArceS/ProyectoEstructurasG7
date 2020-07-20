@@ -8,4 +8,5 @@ public abstract class Constantes {
     public static final String RUTATURNOS = "src/ec/edu/espol/files/turnos.txt";
     public static final String RUTAVIDEOS = "src/ec/edu/espol/files/videos.txt";
     public static final String RUTACONSULTAS = "src/ec/edu/espol/files/consultas.txt";
+    public static final String RUTALOGO = "src/ec/edu/espol/media/logo.png";
 }
