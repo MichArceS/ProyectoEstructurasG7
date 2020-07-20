@@ -18,7 +18,7 @@ public class UsrMedico extends Usuario implements Serializable {
         especialidad = esp;
         usuario = usr;
         contra = cont;
-        turnos = new PriorityQueue<>((Turno t1, Turno t2)->t2.getPacienteAtender().getSintoma().getPrioridad() - t1.getPacienteAtender().getSintoma().getPrioridad());
+        turnos = new PriorityQueue<>((Turno t1, Turno t2)->t1.getPacienteAtender().getSintoma().getPrioridad() - t2.getPacienteAtender().getSintoma().getPrioridad());
     }
 
     public UsrMedico(String n, String a, int e, Genero g, Especialidad esp, String usr, String cont, Puesto p) {

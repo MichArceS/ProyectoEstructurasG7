@@ -25,6 +25,7 @@ public class SysController {
 
     public static boolean addPaciente(String nomb, String ape, String ed, Genero gen, Sintoma s){
         if(nomb.equals("") || ape.equals("") || ed.equals("") || gen == null || s == null) return false;
+        if(SysData.getMedicosDisponibles().isEmpty()) return false;
         UsrPaciente pac = new UsrPaciente(nomb, ape, Integer.parseInt(ed), gen,s);
         SysData.addPaciente(pac);
         return true;
